@@ -1,11 +1,12 @@
 import pais.Pais
-import java.awt.Color
 import org.uqbar.arena.layout.VerticalLayout
 import org.uqbar.arena.widgets.Button
 import org.uqbar.arena.widgets.Label
 import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.widgets.TextBox
 import org.uqbar.arena.windows.MainWindow
+import org.uqbar.arena.widgets.tables.Table
+import org.uqbar.arena.widgets.tables.Column
 
 abstract class VentanaPaisView extends MainWindow<Pais> {
 	
@@ -36,8 +37,16 @@ abstract class VentanaPaisView extends MainWindow<Pais> {
 			//bindEnabled(new NotNullObservable("conversion"))
 		]	
 	
-	new Label(mainPanel).setText("Caracteristicas:").setBackground(Color.CYAN)
-	new TextBox(mainPanel)//.bindValueToProperty("nombre") A QUE SE BINDEA
+	
+	var Table<String> y = new Table<String>(mainPanel,String)
+		y.bindItemsToProperty("caract")
+		y.heigth = 100
+		y.setWidth(500)
+		
+		new Column<String>(y)=>[
+ 		title='''Caracteristicas'''
+ 		bindContentsToTransformer([caract|caract])
+	]
 	
 
 
@@ -49,8 +58,16 @@ abstract class VentanaPaisView extends MainWindow<Pais> {
 			
 		]
 	
-	new Label(mainPanel).setText("Conexiones:").setBackground(Color.CYAN)
-	new TextBox(mainPanel)//.bindValueToProperty("nombre") A QUE SE BINDEA
+	
+	var Table<String> t = new Table<String>(mainPanel,String)
+		t.bindItemsToProperty("conexiones")
+		t.heigth = 100
+		t.setWidth(500)
+		
+		new Column<String>(t)=>[
+ 		title='''Conexiones'''
+ 		bindContentsToTransformer([conex |conex ])
+	]
 	
 
 	new Label(mainPanel).setText("Lugares:")
@@ -61,9 +78,16 @@ abstract class VentanaPaisView extends MainWindow<Pais> {
 			
 		]
 	
-	new Label(mainPanel).setText("Lugares:").setBackground(Color.CYAN)
-	new TextBox(mainPanel)//.bindValueToProperty("nombre") A QUE SE BINDEA
-	
+	// FIJARSE SI HAY QUE HACER UNA TABLE DE LUGAR : TABLE<LUGAR>
+	var Table<String> table = new Table<String>(mainPanel,String)
+		table.bindItemsToProperty("lugares")
+		table.heigth = 100
+		table.setWidth(500)
+		
+		new Column<String>(table)=>[
+ 		title='''Lugares'''
+ 		bindContentsToTransformer([lugar |lugar ])
+	]
 	
 		new Button(mainPanel) => [ 
 			caption = "Aceptar"

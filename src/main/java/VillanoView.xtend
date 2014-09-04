@@ -73,7 +73,7 @@ class VillanoView extends MainWindow<Villano>{
 			caption = "Aceptar"
 			onClick [ | print(modelObject.nombre)
 				        print(modelObject)
-				        print(modelObject.sexo)
+				        
 			]
 			//bindEnabled(new NotNullObservable("conversion"))
 		]	

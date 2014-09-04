@@ -12,7 +12,7 @@ class EditarCaractPaisView extends Dialog<Pais> {
 	
 	new(WindowOwner owner, Pais model) {
 		super(owner, model)
-		model.caract+="hola"
+		
 	}
 	
 	override protected createFormPanel(Panel mainPanel) {
@@ -59,11 +59,7 @@ class EditarCaractPaisView extends Dialog<Pais> {
 		]	
 	
 		
-	   //var Table<String> y = new Table<String>(mainPanel,String)
-	   //y.heigth = 100
-	    //new Column<String>(y)=>[
- 		//bindContentsToTransformer([hobbies|hobbies])
-	//]
+	   
 	}
 	
 	
