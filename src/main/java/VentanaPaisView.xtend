@@ -34,7 +34,6 @@ abstract class VentanaPaisView extends MainWindow<Pais> {
 	new Button(mainPanel) => [ 
 			caption = "Editar Caracteristicas"
 			onClick [ | new EditarCaractPaisView(this,modelObject).open]
-			//bindEnabled(new NotNullObservable("conversion"))
 		]	
 	
 	
@@ -54,9 +53,10 @@ abstract class VentanaPaisView extends MainWindow<Pais> {
 	
 	new Button(mainPanel) => [ 
 			caption = "Editar Conexiones"
-			onClick [ | ]
+			onClick [ | new EditarConexionesView(this,modelObject).open]
+	]
 			
-		]
+		
 	
 	
 	var Table<String> t = new Table<String>(mainPanel,String)
@@ -74,7 +74,7 @@ abstract class VentanaPaisView extends MainWindow<Pais> {
 	
 	new Button(mainPanel) => [ 
 			caption = "Editar Lugares"
-			onClick [ | ]
+			onClick [ | new EditarLugaresView(this,modelObject).open]
 			
 		]
 	
