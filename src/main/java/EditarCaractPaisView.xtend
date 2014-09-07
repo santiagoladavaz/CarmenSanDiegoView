@@ -31,19 +31,20 @@ class EditarCaractPaisView extends Dialog<Pais> {
 	
 		new Button(mainPanel) => [ 
 			caption = "Eliminar"
-			onClick [ | modelObject //eliminarCaract IMPLEMENTAR EN PAIS
-		
+			onClick [ | modelObject.eliminarCaract(modelObject.caracteristica)
+						// Agrega valores vacios - Modificarlo
 			]
-			//bindEnabled(new NotNullObservable("conversion"))
+			
 		]	
 		
-		new TextBox(mainPanel).bindValueToProperty("caractAAgregar")
+		new TextBox(mainPanel).bindValueToProperty("caracteristica")
 	
 		new Button(mainPanel) => [ 
 			caption = "Agregar"
-			onClick [ | modelObject.agregarCaract(modelObject.caractAAgregar)	        
+			onClick [ | modelObject.agregarCaract(modelObject.caracteristica)
+						// Agrega valores vacios - Modificarlo       
 			]
-			//bindEnabled(new NotNullObservable("conversion"))
+			
 		]	
 	
 	
@@ -55,7 +56,7 @@ class EditarCaractPaisView extends Dialog<Pais> {
 				        print(modelObject.caract)
 				        this.close
 			]
-			//bindEnabled(new NotNullObservable("conversion"))
+			
 		]	
 	
 		

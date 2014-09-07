@@ -53,7 +53,6 @@ class VillanoView extends MainWindow<Villano>{
 	
 	
 	
-	
 	new Button(mainPanel) => [ 
 			caption = "Editar Hobbies"
 		//	onClick [ | modelObject.convertir ]
@@ -63,6 +62,7 @@ class VillanoView extends MainWindow<Villano>{
 	var Table<String> y = new Table<String>(mainPanel,String)
 	y.bindItemsToProperty("hobbie")
 	y.heigth = 100
+	y.width = 500
 	new Column<String>(y)=>[
  		title='''Hobbies'''
  		bindContentsToTransformer([hobbies|hobbies])
