@@ -1,7 +1,4 @@
 import com.uqbar.commons.collections.Transformer;
-import java.util.List;
-import org.eclipse.xtend2.lib.StringConcatenation;
-import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.uqbar.arena.layout.VerticalLayout;
@@ -14,31 +11,42 @@ import org.uqbar.arena.windows.Dialog;
 import org.uqbar.arena.windows.WindowOwner;
 import org.uqbar.lacar.ui.model.Action;
 import org.uqbar.lacar.ui.model.ControlBuilder;
-import pais.Pais;
+import persona.Villano;
 
 @SuppressWarnings("all")
-public class EditarCaractPaisView extends Dialog<Pais> {
-  public EditarCaractPaisView(final WindowOwner owner, final Pais model) {
+public abstract class EditarCaractVillanoView extends Dialog<Villano> {
+  public EditarCaractVillanoView(final WindowOwner owner, final Villano model) {
     super(owner, model);
   }
   
-  protected void createFormPanel(final Panel mainPanel) {
-    this.setTitle("Editar Caracteristicas");
+  public abstract String listaAModificar();
+  
+  public abstract String getTitle();
+  
+  public abstract String getNameTable();
+  
+  public abstract void getAgregar();
+  
+  public abstract void getEliminar();
+  
+  public void createContents(final Panel mainPanel) {
+    String _title = this.getTitle();
+    this.setTitle(_title);
     VerticalLayout _verticalLayout = new VerticalLayout();
     mainPanel.setLayout(_verticalLayout);
     Table<String> y = new Table<String>(mainPanel, String.class);
-    y.bindItemsToProperty("caract");
+    String _listaAModificar = this.listaAModificar();
+    y.bindItemsToProperty(_listaAModificar);
     y.setHeigth(100);
     y.setWidth(500);
     Column<String> _column = new Column<String>(y);
     final Procedure1<Column<String>> _function = new Procedure1<Column<String>>() {
       public void apply(final Column<String> it) {
-        StringConcatenation _builder = new StringConcatenation();
-        _builder.append("Caracteristicas");
-        it.setTitle(_builder.toString());
+        String _nameTable = EditarCaractVillanoView.this.getNameTable();
+        it.setTitle(_nameTable);
         final Transformer<String, String> _function = new Transformer<String, String>() {
-          public String transform(final String caract) {
-            return caract;
+          public String transform(final String seña) {
+            return seña;
           }
         };
         it.<String>bindContentsToTransformer(_function);
@@ -51,10 +59,7 @@ public class EditarCaractPaisView extends Dialog<Pais> {
         it.setCaption("Eliminar");
         final Action _function = new Action() {
           public void execute() {
-            Pais _modelObject = EditarCaractPaisView.this.getModelObject();
-            Pais _modelObject_1 = EditarCaractPaisView.this.getModelObject();
-            String _caracteristica = _modelObject_1.getCaracteristica();
-            _modelObject.eliminarCaract(_caracteristica);
+            EditarCaractVillanoView.this.getEliminar();
           }
         };
         it.onClick(_function);
@@ -62,17 +67,14 @@ public class EditarCaractPaisView extends Dialog<Pais> {
     };
     ObjectExtensions.<Button>operator_doubleArrow(_button, _function_1);
     TextBox _textBox = new TextBox(mainPanel);
-    _textBox.<ControlBuilder>bindValueToProperty("caracteristica");
+    _textBox.<ControlBuilder>bindValueToProperty("valor");
     Button _button_1 = new Button(mainPanel);
     final Procedure1<Button> _function_2 = new Procedure1<Button>() {
       public void apply(final Button it) {
         it.setCaption("Agregar");
         final Action _function = new Action() {
           public void execute() {
-            Pais _modelObject = EditarCaractPaisView.this.getModelObject();
-            Pais _modelObject_1 = EditarCaractPaisView.this.getModelObject();
-            String _caracteristica = _modelObject_1.getCaracteristica();
-            _modelObject.agregarCaract(_caracteristica);
+            EditarCaractVillanoView.this.getAgregar();
           }
         };
         it.onClick(_function);
@@ -85,15 +87,7 @@ public class EditarCaractPaisView extends Dialog<Pais> {
         it.setCaption("Aceptar");
         final Action _function = new Action() {
           public void execute() {
-            Pais _modelObject = EditarCaractPaisView.this.getModelObject();
-            String _nombre = _modelObject.getNombre();
-            InputOutput.<String>print(_nombre);
-            Pais _modelObject_1 = EditarCaractPaisView.this.getModelObject();
-            InputOutput.<Pais>print(_modelObject_1);
-            Pais _modelObject_2 = EditarCaractPaisView.this.getModelObject();
-            List<String> _caract = _modelObject_2.getCaract();
-            InputOutput.<List<String>>print(_caract);
-            EditarCaractPaisView.this.close();
+            EditarCaractVillanoView.this.close();
           }
         };
         it.onClick(_function);
