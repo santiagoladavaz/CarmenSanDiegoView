@@ -1,3 +1,6 @@
+package villanoView
+
+
 class EditarVillanoView extends VillanoAbstractView{
 
 	override getTitle() {

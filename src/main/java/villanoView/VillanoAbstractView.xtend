@@ -1,4 +1,4 @@
-import persona.Villano
+package villanoView import persona.Villano
 import org.uqbar.arena.layout.VerticalLayout
 import org.uqbar.arena.widgets.Button
 import org.uqbar.arena.widgets.Label
@@ -58,8 +58,7 @@ abstract class VillanoAbstractView extends MainWindow<Villano>{
 	
 	new Button(mainPanel) => [ 
 			caption = "Editar Hobbies"
-		//	onClick [ | modelObject.convertir ]
-			//bindEnabled(new NotNullObservable("conversion"))
+			onClick [ | new EditarHobbiesView(this,modelObject).open ]
 		]	
 	
 	var Table<String> y = new Table<String>(mainPanel,String)
@@ -74,7 +73,8 @@ abstract class VillanoAbstractView extends MainWindow<Villano>{
 	
 	new Button(mainPanel) => [ 
 			caption = "Aceptar"
-			onClick [ | print(modelObject.nombre)
+			onClick [ | this.close()
+				        print(modelObject.nombre)
 				        print(modelObject)
 				        print(modelObject.señas)
 				        print(modelObject.hobbie)

@@ -1,3 +1,6 @@
+package villanoView 
+
+
 class NuevoVillanoView extends VillanoAbstractView{
 
 	override getTitle() {

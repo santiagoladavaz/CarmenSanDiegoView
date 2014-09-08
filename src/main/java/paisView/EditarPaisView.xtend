@@ -1,4 +1,4 @@
-import pais.Pais
+package paisView import pais.Pais
 
 class EditarPaisView extends VentanaPaisView {
 	

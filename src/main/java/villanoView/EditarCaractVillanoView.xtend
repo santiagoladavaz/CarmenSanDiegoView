@@ -1,3 +1,4 @@
+package villanoView 
 import org.uqbar.arena.layout.VerticalLayout
 import org.uqbar.arena.widgets.Button
 import org.uqbar.arena.widgets.Panel
@@ -41,29 +42,21 @@ abstract class EditarCaractVillanoView extends Dialog<Villano> {
 		new Button(mainPanel) => [ 
 			caption = "Eliminar"
 			onClick [ | this.getEliminar()
-			]
-			
+			]	
 		]	
 		
 		new TextBox(mainPanel).bindValueToProperty("valor")
 	
 		new Button(mainPanel) => [ 
 			caption = "Agregar"
-			onClick [ | this.getAgregar()
-						
-						// Agrega valores vacios - Modificarlo       
-			]
-			
+			onClick [ | this.getAgregar()]			
 		]	
 	
 	
 		
 		new Button(mainPanel) => [ 
 			caption = "Aceptar"
-			onClick [ | 
-				        this.close
-			        ]
-			
+			onClick [ |this.close]
 		]	
 	
 		

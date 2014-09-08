@@ -1,4 +1,4 @@
-import org.uqbar.arena.windows.Dialog
+package paisView import org.uqbar.arena.windows.Dialog
 import org.uqbar.arena.windows.WindowOwner
 import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.layout.VerticalLayout
@@ -32,7 +32,6 @@ class EditarCaractPaisView extends Dialog<Pais> {
 		new Button(mainPanel) => [ 
 			caption = "Eliminar"
 			onClick [ | modelObject.eliminarCaract(modelObject.caracteristica)
-						// Agrega valores vacios - Modificarlo
 			]
 			
 		]	
@@ -41,9 +40,7 @@ class EditarCaractPaisView extends Dialog<Pais> {
 	
 		new Button(mainPanel) => [ 
 			caption = "Agregar"
-			onClick [ | modelObject.agregarCaract(modelObject.caracteristica)
-						// Agrega valores vacios - Modificarlo       
-			]
+			onClick [ | modelObject.agregarCaract(modelObject.caracteristica)]
 			
 		]	
 	

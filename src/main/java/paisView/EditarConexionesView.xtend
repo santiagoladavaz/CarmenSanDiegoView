@@ -1,4 +1,4 @@
-import org.uqbar.arena.widgets.Panel
+package paisView import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.windows.WindowOwner
 import pais.Pais
 
@@ -15,14 +15,31 @@ class EditarConexionesView extends EdicionPaisAtribView {
 	override getTitleTable() {
 		return "Conexiones"
 	}
+	
+	
+	
+	
 
 	
 	override protected createFormPanel(Panel mainPanel) {
 		createContents(mainPanel)
+		
+	}
 	
-		
-		
-		
+	override agregarLugarOConexion() {
+		modelObject.agregarConexion(modelObject.paisElegido)
+	}
+	
+	override getObservableProperty() {
+		"paises"
+	}
+	
+	override propertyToAdd() {
+		"paisElegido"
+	}
+	
+	override eliminarLugarOConexion() {
+		modelObject.eliminarConexion(modelObject.paisElegido)
 	}
 	
 //	override createSelector(Panel mainPanel) {

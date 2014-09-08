@@ -1,3 +1,5 @@
+package paisView
+
 import org.uqbar.arena.bindings.ObservableProperty
 import org.uqbar.arena.layout.VerticalLayout
 import org.uqbar.arena.widgets.Button
@@ -22,54 +24,55 @@ abstract class EdicionPaisAtribView extends Dialog<Pais>{
 
 	abstract override def String getTitle()
 	
+	abstract def void agregarLugarOConexion()
+	abstract def void eliminarLugarOConexion()
+	
 	abstract  def String getTitleTable()
 	
-	//abstract  def Selector createSelector(mainPanel)
+	//abstract  def Selector<Pais> createSelector(mainPanel)
 	
 	
 	override createContents(Panel mainPanel) {
 		this.setTitle(this.getTitle())
 		mainPanel.setLayout(new VerticalLayout)	
 		
-	var Table<String> y = new Table<String>(mainPanel,String)
-	y.heigth = 100
-	y.width = 500
-	new Column<String>(y)=>[
- 		title= getTitleTable()
- 		bindContentsToTransformer([hobbies|hobbies])
-	]
+		var Table<String> y = new Table<String>(mainPanel,String)
+		y.heigth = 100
+		y.width = 500
+		new Column<String>(y)=>[
+ 			title= getTitleTable()
+ 			bindContentsToProperty("conexiones")
+		]
 	
 	
 	new Button(mainPanel) => [ 
 			caption = "Eliminar"
-			onClick [ | ]
+			onClick [ | eliminarLugarOConexion() ]
 			
 		]
-	
-	
+		
 	new Selector(mainPanel) => [
 			allowNull = false
-			bindItems(new ObservableProperty(juego,"paises"))
-			bindValueToProperty("paisElegido")
-//			bindValue(new ObservableProperty(this.modelObject, "tipo")) Comentado en el ejemplo
-		]	
-		
+			bindItems(new ObservableProperty(juego,getObservableProperty()))
+			bindValueToProperty(propertyToAdd())
+		]		
 		
 		new Button(mainPanel) => [ 
 				caption = "Agregar"
-			onClick [ | modelObject.agregarConexion((modelObject.paisElegido))
-			]
-			
+				onClick [ | this.agregarLugarOConexion()]
 		]
+	
 	
 		new Button(mainPanel) => [ 
 			caption = "Aceptar"
 			onClick [ | this.close
 			]
-			
 		]
 	
-	
 	}
+	
+	def abstract String propertyToAdd()
+	
+	def abstract String getObservableProperty()
 	
 }

@@ -1,4 +1,4 @@
-import pais.Pais
+package paisView import pais.Pais
 import org.uqbar.arena.layout.VerticalLayout
 import org.uqbar.arena.widgets.Button
 import org.uqbar.arena.widgets.Label
@@ -9,9 +9,6 @@ import org.uqbar.arena.widgets.tables.Table
 import org.uqbar.arena.widgets.tables.Column
 
 abstract class VentanaPaisView extends MainWindow<Pais> {
-	
-	
-	
 	
 	new(Pais model) {
 		super(model)
@@ -64,11 +61,14 @@ abstract class VentanaPaisView extends MainWindow<Pais> {
 		t.heigth = 100
 		t.setWidth(500)
 		
-		new Column<String>(t)=>[
- 		title='''Conexiones'''
- 		bindContentsToTransformer([conex |conex ])
-	]
-	
+		
+		// CORRIGIENDO ESTE ERROR SE MOSTRARIAN LOS VALORES EN LA SEGUNDA TABLA ####
+		
+//		new Column<String>(t)=>[      
+// 		title='''Conexiones'''
+// 		bindContentsToTransformer([conex |conex ])
+//	] ERROR PARA MOSTRAR LOS PAISES EN LA TABLA -> SOLUCIONAR
+//	
 
 	new Label(mainPanel).setText("Lugares:")
 	
@@ -84,15 +84,20 @@ abstract class VentanaPaisView extends MainWindow<Pais> {
 		table.heigth = 100
 		table.setWidth(500)
 		
-		new Column<String>(table)=>[
- 		title='''Lugares'''
- 		bindContentsToTransformer([lugar |lugar ])
-	]
+		//MISMO ERROR DE ARRIBA ---------- #####
+//		new Column<String>(table)=>[
+// 		title='''Lugares'''
+// 		bindContentsToTransformer([lugar |lugar ])
+//	]
 	
 		new Button(mainPanel) => [ 
 			caption = "Aceptar"
-			onClick [ | print(modelObject.nombre)
-				        print(modelObject.caract)
+			onClick [ | print("nombre " + modelObject.nombre+"\n")
+				        print("conexiones "+modelObject.conexiones+"\n")
+				        print("caracteristicas "+modelObject.caract+"\n")
+				        print("lugares "+modelObject.lugares+"\n")
+				        
+				        this.close()
 			]
 			
 		]

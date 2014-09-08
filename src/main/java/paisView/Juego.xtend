@@ -1,13 +1,17 @@
+package paisView
 import pais.Pais
 import java.util.List
 import java.util.ArrayList
 import org.uqbar.commons.utils.Observable
+import pais.Lugar
+import pais.Banco
 
 @Observable
 class Juego {
 	
  private static Juego JUEGO = new Juego
  @Property  List<Pais> paises = new ArrayList<Pais>
+ @Property List<Lugar>lugares = new ArrayList<Lugar>
  
  
   
@@ -22,6 +26,8 @@ class Juego {
 			add(new Pais("Brasil"))
 			add(new Pais("Uruguay"))
 		]
+		lugares =>[ add(new Banco("BANCO - Provincia"))
+		            ]
 		
 	}
 	
