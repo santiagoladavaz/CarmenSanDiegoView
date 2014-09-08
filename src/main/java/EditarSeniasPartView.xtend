@@ -27,7 +27,7 @@ class EditarSeniasPartView extends EditarCaractVillanoView {
 	
 	
 	override getEliminar() {
-		modelObject.eliminarValor(modelObject.valor,modelObject.señas)
+		modelObject.eliminarValor(modelObject.valor,"señas",modelObject.señas)
 	}
 	
 	override listaAModificar() {

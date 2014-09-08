@@ -1,7 +1,5 @@
 import com.uqbar.commons.collections.Transformer;
-import java.util.List;
 import org.eclipse.xtend2.lib.StringConcatenation;
-import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.uqbar.arena.layout.VerticalLayout;
@@ -85,14 +83,6 @@ public class EditarCaractPaisView extends Dialog<Pais> {
         it.setCaption("Aceptar");
         final Action _function = new Action() {
           public void execute() {
-            Pais _modelObject = EditarCaractPaisView.this.getModelObject();
-            String _nombre = _modelObject.getNombre();
-            InputOutput.<String>print(_nombre);
-            Pais _modelObject_1 = EditarCaractPaisView.this.getModelObject();
-            InputOutput.<Pais>print(_modelObject_1);
-            Pais _modelObject_2 = EditarCaractPaisView.this.getModelObject();
-            List<String> _caract = _modelObject_2.getCaract();
-            InputOutput.<List<String>>print(_caract);
             EditarCaractPaisView.this.close();
           }
         };

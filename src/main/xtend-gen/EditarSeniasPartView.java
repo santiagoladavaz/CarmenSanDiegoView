@@ -36,7 +36,7 @@ public class EditarSeniasPartView extends EditarCaractVillanoView {
     String _valor = _modelObject_1.getValor();
     Villano _modelObject_2 = this.getModelObject();
     List<String> _señas = _modelObject_2.getSeñas();
-    _modelObject.eliminarValor(_valor, _señas);
+    _modelObject.eliminarValor(_valor, "señas", _señas);
   }
   
   public String listaAModificar() {

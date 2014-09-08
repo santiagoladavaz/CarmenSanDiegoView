@@ -51,10 +51,7 @@ class EditarCaractPaisView extends Dialog<Pais> {
 		
 		new Button(mainPanel) => [ 
 			caption = "Aceptar"
-			onClick [ | print(modelObject.nombre)
-				        print(modelObject)
-				        print(modelObject.caract)
-				        this.close
+			onClick [ |  this.close
 			]
 			
 		]	

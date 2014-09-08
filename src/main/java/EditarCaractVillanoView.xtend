@@ -62,7 +62,7 @@ abstract class EditarCaractVillanoView extends Dialog<Villano> {
 			caption = "Aceptar"
 			onClick [ | 
 				        this.close
-			]
+			        ]
 			
 		]	
 	
