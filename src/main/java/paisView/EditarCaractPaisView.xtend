@@ -21,6 +21,7 @@ class EditarCaractPaisView extends Dialog<Pais> {
 		
 		var Table<String> y = new Table<String>(mainPanel,String)
 		y.bindItemsToProperty("caract")
+		y.bindValueToProperty("caracteristica")
 		y.heigth = 100
 		y.setWidth(500)
 		
@@ -31,7 +32,7 @@ class EditarCaractPaisView extends Dialog<Pais> {
 	
 		new Button(mainPanel) => [ 
 			caption = "Eliminar"
-			onClick [ | modelObject.eliminarCaract(modelObject.caracteristica)
+			onClick [ | modelObject.eliminarCaract
 			]
 			
 		]	
@@ -40,7 +41,7 @@ class EditarCaractPaisView extends Dialog<Pais> {
 	
 		new Button(mainPanel) => [ 
 			caption = "Agregar"
-			onClick [ | modelObject.agregarCaract(modelObject.caracteristica)]
+			onClick [ | modelObject.agregarCaract]
 			
 		]	
 	
@@ -53,7 +54,6 @@ class EditarCaractPaisView extends Dialog<Pais> {
 			
 		]	
 	
-		
 	   
 	}
 	

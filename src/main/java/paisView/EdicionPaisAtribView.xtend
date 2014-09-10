@@ -29,7 +29,6 @@ abstract class EdicionPaisAtribView extends Dialog<Pais>{
 	
 	abstract  def String getTitleTable()
 	
-	//abstract  def Selector<Pais> createSelector(mainPanel)
 	
 	
 	override createContents(Panel mainPanel) {
