@@ -96,10 +96,10 @@ abstract class VentanaPaisView extends MainWindow<Pais> {
 				        print("conexiones "+modelObject.conexiones+"\n")
 				        print("caracteristicas "+modelObject.caract+"\n")
 				        print("lugares "+modelObject.lugares+"\n")
-				        
 				        this.close()
 			]
-			
+			bindEnabledToProperty("consistente")
+			disableOnError	
 		]
    }
 	

@@ -147,6 +147,8 @@ public abstract class VentanaPaisView extends MainWindow<Pais> {
           }
         };
         it.onClick(_function);
+        it.<ControlBuilder>bindEnabledToProperty("consistente");
+        it.disableOnError();
       }
     };
     ObjectExtensions.<Button>operator_doubleArrow(_button_3, _function_4);
