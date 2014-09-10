@@ -28,6 +28,7 @@ public class EditarCaractPaisView extends Dialog<Pais> {
     mainPanel.setLayout(_verticalLayout);
     Table<String> y = new Table<String>(mainPanel, String.class);
     y.bindItemsToProperty("caract");
+    y.<ControlBuilder>bindValueToProperty("caracteristica");
     y.setHeigth(100);
     y.setWidth(500);
     Column<String> _column = new Column<String>(y);
@@ -52,9 +53,7 @@ public class EditarCaractPaisView extends Dialog<Pais> {
         final Action _function = new Action() {
           public void execute() {
             Pais _modelObject = EditarCaractPaisView.this.getModelObject();
-            Pais _modelObject_1 = EditarCaractPaisView.this.getModelObject();
-            String _caracteristica = _modelObject_1.getCaracteristica();
-            _modelObject.eliminarCaract(_caracteristica);
+            _modelObject.eliminarCaract();
           }
         };
         it.onClick(_function);
@@ -70,9 +69,7 @@ public class EditarCaractPaisView extends Dialog<Pais> {
         final Action _function = new Action() {
           public void execute() {
             Pais _modelObject = EditarCaractPaisView.this.getModelObject();
-            Pais _modelObject_1 = EditarCaractPaisView.this.getModelObject();
-            String _caracteristica = _modelObject_1.getCaracteristica();
-            _modelObject.agregarCaract(_caracteristica);
+            _modelObject.agregarCaract();
           }
         };
         it.onClick(_function);
