@@ -7,6 +7,7 @@ import org.uqbar.arena.widgets.TextBox
 import org.uqbar.arena.windows.MainWindow
 import org.uqbar.arena.widgets.tables.Table
 import org.uqbar.arena.widgets.tables.Column
+import org.uqbar.arena.widgets.List
 
 abstract class VentanaPaisView extends MainWindow<Pais> {
 	
@@ -32,20 +33,17 @@ abstract class VentanaPaisView extends MainWindow<Pais> {
 			caption = "Editar Caracteristicas"
 			onClick [ | new EditarCaractPaisView(this,modelObject).open]
 		]	
-	
-	
-	var Table<String> y = new Table<String>(mainPanel,String)
-		y.bindItemsToProperty("caract")
-		y.heigth = 100
-		y.setWidth(500)
 		
-		new Column<String>(y)=>[
- 		title='''Caracteristicas'''
- 		bindContentsToTransformer([caract|caract])
-	]
+		new Label(mainPanel) => [ 
+				text = "Caracteristicas" 
+			]
+		new List(mainPanel) => [
+			bindItemsToProperty("caract")
+			heigth = 100
+			width = 500
+		]
 	
-
-
+	
 	new Label(mainPanel).setText("Conexiones:")
 	
 	new Button(mainPanel) => [ 
@@ -54,21 +52,11 @@ abstract class VentanaPaisView extends MainWindow<Pais> {
 	]
 			
 		
-	
-	
-	var Table<String> t = new Table<String>(mainPanel,String)
-		t.bindItemsToProperty("conexiones")
-		t.heigth = 100
-		t.setWidth(500)
-		
-		
-		// CORRIGIENDO ESTE ERROR SE MOSTRARIAN LOS VALORES EN LA SEGUNDA TABLA ####
-		
-//		new Column<String>(t)=>[      
-// 		title='''Conexiones'''
-// 		bindContentsToTransformer([conex |conex ])
-//	] ERROR PARA MOSTRAR LOS PAISES EN LA TABLA -> SOLUCIONAR
-//	
+	new List(mainPanel) => [
+			bindItemsToProperty("conexiones")
+			heigth = 100
+			width = 500
+		]
 
 	new Label(mainPanel).setText("Lugares:")
 	
@@ -78,17 +66,11 @@ abstract class VentanaPaisView extends MainWindow<Pais> {
 			
 		]
 	
-	// FIJARSE SI HAY QUE HACER UNA TABLE DE LUGAR : TABLE<LUGAR>
-	var Table<String> table = new Table<String>(mainPanel,String)
-		table.bindItemsToProperty("lugares")
-		table.heigth = 100
-		table.setWidth(500)
-		
-		//MISMO ERROR DE ARRIBA ---------- #####
-//		new Column<String>(table)=>[
-// 		title='''Lugares'''
-// 		bindContentsToTransformer([lugar |lugar ])
-//	]
+	new List(mainPanel) => [
+			bindItemsToProperty("lugares")
+			heigth = 100
+			width = 500
+		]
 	
 		new Button(mainPanel) => [ 
 			caption = "Aceptar"
@@ -96,10 +78,12 @@ abstract class VentanaPaisView extends MainWindow<Pais> {
 				        print("conexiones "+modelObject.conexiones+"\n")
 				        print("caracteristicas "+modelObject.caract+"\n")
 				        print("lugares "+modelObject.lugares+"\n")
+				        print(modelObject.nombre !=null && !modelObject.conexiones.empty &&
+				        	!modelObject.lugares.empty && !modelObject.caract.empty)
 				        this.close()
 			]
 			bindEnabledToProperty("consistente")
-			disableOnError	
+			disableOnError
 		]
    }
 	

@@ -1,4 +1,5 @@
 package paisView import pais.Pais
+import pais.Banco
 
 class NewPaisView extends VentanaPaisView{
 	

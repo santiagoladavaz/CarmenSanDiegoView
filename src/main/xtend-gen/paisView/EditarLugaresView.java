@@ -20,6 +20,10 @@ public class EditarLugaresView extends EdicionPaisAtribView {
     return "Lugares de Interés";
   }
   
+  public String getEditableProperty() {
+    return "lugares";
+  }
+  
   protected void createFormPanel(final Panel mainPanel) {
     this.createContents(mainPanel);
   }
@@ -31,7 +35,7 @@ public class EditarLugaresView extends EdicionPaisAtribView {
     _modelObject.agregarLugar(_lugarElegido);
   }
   
-  public String getObservableProperty() {
+  public String getOptionsProperty() {
     return "lugares";
   }
   

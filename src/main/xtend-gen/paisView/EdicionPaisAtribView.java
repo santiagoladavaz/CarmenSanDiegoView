@@ -5,10 +5,10 @@ import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.uqbar.arena.bindings.ObservableProperty;
 import org.uqbar.arena.layout.VerticalLayout;
 import org.uqbar.arena.widgets.Button;
+import org.uqbar.arena.widgets.Label;
+import org.uqbar.arena.widgets.List;
 import org.uqbar.arena.widgets.Panel;
 import org.uqbar.arena.widgets.Selector;
-import org.uqbar.arena.widgets.tables.Column;
-import org.uqbar.arena.widgets.tables.Table;
 import org.uqbar.arena.windows.Dialog;
 import org.uqbar.arena.windows.WindowOwner;
 import org.uqbar.lacar.ui.model.Action;
@@ -32,33 +32,31 @@ public abstract class EdicionPaisAtribView extends Dialog<Pais> {
     super(owner, model);
   }
   
-  public abstract String getTitle();
-  
-  public abstract void agregarLugarOConexion();
-  
-  public abstract void eliminarLugarOConexion();
-  
-  public abstract String getTitleTable();
-  
   public void createContents(final Panel mainPanel) {
     String _title = this.getTitle();
     this.setTitle(_title);
     VerticalLayout _verticalLayout = new VerticalLayout();
     mainPanel.setLayout(_verticalLayout);
-    Table<String> y = new Table<String>(mainPanel, String.class);
-    y.setHeigth(100);
-    y.setWidth(500);
-    Column<String> _column = new Column<String>(y);
-    final Procedure1<Column<String>> _function = new Procedure1<Column<String>>() {
-      public void apply(final Column<String> it) {
+    Label _label = new Label(mainPanel);
+    final Procedure1<Label> _function = new Procedure1<Label>() {
+      public void apply(final Label it) {
         String _titleTable = EdicionPaisAtribView.this.getTitleTable();
-        it.setTitle(_titleTable);
-        it.bindContentsToProperty("conexiones");
+        it.setText(_titleTable);
       }
     };
-    ObjectExtensions.<Column<String>>operator_doubleArrow(_column, _function);
+    ObjectExtensions.<Label>operator_doubleArrow(_label, _function);
+    List<Object> _list = new List<Object>(mainPanel);
+    final Procedure1<List<Object>> _function_1 = new Procedure1<List<Object>>() {
+      public void apply(final List<Object> it) {
+        String _editableProperty = EdicionPaisAtribView.this.getEditableProperty();
+        it.bindItemsToProperty(_editableProperty);
+        it.setHeigth(100);
+        it.setWidth(500);
+      }
+    };
+    ObjectExtensions.<List<Object>>operator_doubleArrow(_list, _function_1);
     Button _button = new Button(mainPanel);
-    final Procedure1<Button> _function_1 = new Procedure1<Button>() {
+    final Procedure1<Button> _function_2 = new Procedure1<Button>() {
       public void apply(final Button it) {
         it.setCaption("Eliminar");
         final Action _function = new Action() {
@@ -69,22 +67,22 @@ public abstract class EdicionPaisAtribView extends Dialog<Pais> {
         it.onClick(_function);
       }
     };
-    ObjectExtensions.<Button>operator_doubleArrow(_button, _function_1);
+    ObjectExtensions.<Button>operator_doubleArrow(_button, _function_2);
     Selector<Object> _selector = new Selector<Object>(mainPanel);
-    final Procedure1<Selector<Object>> _function_2 = new Procedure1<Selector<Object>>() {
+    final Procedure1<Selector<Object>> _function_3 = new Procedure1<Selector<Object>>() {
       public void apply(final Selector<Object> it) {
         it.allowNull(false);
         Juego _juego = EdicionPaisAtribView.this.getJuego();
-        String _observableProperty = EdicionPaisAtribView.this.getObservableProperty();
-        ObservableProperty _observableProperty_1 = new ObservableProperty(_juego, _observableProperty);
-        it.bindItems(_observableProperty_1);
+        String _optionsProperty = EdicionPaisAtribView.this.getOptionsProperty();
+        ObservableProperty _observableProperty = new ObservableProperty(_juego, _optionsProperty);
+        it.bindItems(_observableProperty);
         String _propertyToAdd = EdicionPaisAtribView.this.propertyToAdd();
         it.<ControlBuilder>bindValueToProperty(_propertyToAdd);
       }
     };
-    ObjectExtensions.<Selector<Object>>operator_doubleArrow(_selector, _function_2);
+    ObjectExtensions.<Selector<Object>>operator_doubleArrow(_selector, _function_3);
     Button _button_1 = new Button(mainPanel);
-    final Procedure1<Button> _function_3 = new Procedure1<Button>() {
+    final Procedure1<Button> _function_4 = new Procedure1<Button>() {
       public void apply(final Button it) {
         it.setCaption("Agregar");
         final Action _function = new Action() {
@@ -95,9 +93,9 @@ public abstract class EdicionPaisAtribView extends Dialog<Pais> {
         it.onClick(_function);
       }
     };
-    ObjectExtensions.<Button>operator_doubleArrow(_button_1, _function_3);
+    ObjectExtensions.<Button>operator_doubleArrow(_button_1, _function_4);
     Button _button_2 = new Button(mainPanel);
-    final Procedure1<Button> _function_4 = new Procedure1<Button>() {
+    final Procedure1<Button> _function_5 = new Procedure1<Button>() {
       public void apply(final Button it) {
         it.setCaption("Aceptar");
         final Action _function = new Action() {
@@ -108,10 +106,20 @@ public abstract class EdicionPaisAtribView extends Dialog<Pais> {
         it.onClick(_function);
       }
     };
-    ObjectExtensions.<Button>operator_doubleArrow(_button_2, _function_4);
+    ObjectExtensions.<Button>operator_doubleArrow(_button_2, _function_5);
   }
+  
+  public abstract String getEditableProperty();
   
   public abstract String propertyToAdd();
   
-  public abstract String getObservableProperty();
+  public abstract String getOptionsProperty();
+  
+  public abstract String getTitle();
+  
+  public abstract void agregarLugarOConexion();
+  
+  public abstract void eliminarLugarOConexion();
+  
+  public abstract String getTitleTable();
 }

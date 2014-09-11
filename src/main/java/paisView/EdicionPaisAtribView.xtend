@@ -3,10 +3,11 @@ package paisView
 import org.uqbar.arena.bindings.ObservableProperty
 import org.uqbar.arena.layout.VerticalLayout
 import org.uqbar.arena.widgets.Button
+import org.uqbar.arena.widgets.Label
+import org.uqbar.arena.widgets.List
 import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.widgets.Selector
 import org.uqbar.arena.widgets.tables.Column
-import org.uqbar.arena.widgets.tables.Table
 import org.uqbar.arena.windows.Dialog
 import org.uqbar.arena.windows.WindowOwner
 import pais.Pais
@@ -19,32 +20,22 @@ abstract class EdicionPaisAtribView extends Dialog<Pais>{
 	
 	new(WindowOwner owner, Pais model) {
 		super(owner, model)
-	}
-	
-
-	abstract override def String getTitle()
-	
-	abstract def void agregarLugarOConexion()
-	abstract def void eliminarLugarOConexion()
-	
-	abstract  def String getTitleTable()
-	
-	
+	}	
 	
 	override createContents(Panel mainPanel) {
 		this.setTitle(this.getTitle())
 		mainPanel.setLayout(new VerticalLayout)	
 		
-		var Table<String> y = new Table<String>(mainPanel,String)
-		y.heigth = 100
-		y.width = 500
-		new Column<String>(y)=>[
- 			title= getTitleTable()
- 			bindContentsToProperty("conexiones")
+		new Label(mainPanel) => [ 
+			text = getTitleTable()
+		]
+		new List(mainPanel) => [
+			bindItemsToProperty(getEditableProperty())
+			heigth = 100
+			width = 500
 		]
 	
-	
-	new Button(mainPanel) => [ 
+		new Button(mainPanel) => [ 
 			caption = "Eliminar"
 			onClick [ | eliminarLugarOConexion() ]
 			
@@ -52,7 +43,7 @@ abstract class EdicionPaisAtribView extends Dialog<Pais>{
 		
 	new Selector(mainPanel) => [
 			allowNull = false
-			bindItems(new ObservableProperty(juego,getObservableProperty()))
+			bindItems(new ObservableProperty(juego,getOptionsProperty()))
 			bindValueToProperty(propertyToAdd())
 		]		
 		
@@ -70,8 +61,17 @@ abstract class EdicionPaisAtribView extends Dialog<Pais>{
 	
 	}
 	
+	def abstract String getEditableProperty()
+	
 	def abstract String propertyToAdd()
 	
-	def abstract String getObservableProperty()
+	def abstract String getOptionsProperty()
+	
+	abstract override def String getTitle()
+	
+	abstract def void agregarLugarOConexion()
+	abstract def void eliminarLugarOConexion()
+	
+	abstract  def String getTitleTable()
 	
 }

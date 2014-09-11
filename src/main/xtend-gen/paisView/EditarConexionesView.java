@@ -19,6 +19,10 @@ public class EditarConexionesView extends EdicionPaisAtribView {
     return "Conexiones";
   }
   
+  public String getEditableProperty() {
+    return "conexiones";
+  }
+  
   protected void createFormPanel(final Panel mainPanel) {
     this.createContents(mainPanel);
   }
@@ -30,7 +34,7 @@ public class EditarConexionesView extends EdicionPaisAtribView {
     _modelObject.agregarConexion(_paisElegido);
   }
   
-  public String getObservableProperty() {
+  public String getOptionsProperty() {
     return "paises";
   }
   

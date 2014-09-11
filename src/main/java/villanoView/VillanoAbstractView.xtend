@@ -7,6 +7,7 @@ import org.uqbar.arena.widgets.TextBox
 import org.uqbar.arena.widgets.tables.Column
 import org.uqbar.arena.widgets.tables.Table
 import org.uqbar.arena.windows.MainWindow
+import org.uqbar.arena.widgets.List
 
 abstract class VillanoAbstractView extends MainWindow<Villano>{
 
@@ -41,16 +42,15 @@ abstract class VillanoAbstractView extends MainWindow<Villano>{
 			
 		]
 
+		new Label(mainPanel) => [ 
+			text = "Seña"
+		]
+		new List(mainPanel) => [
+			bindItemsToProperty("señas")
+			heigth = 100
+			width = 500
+		]
 
-	var Table<String> x = new Table<String>(mainPanel,String)
-	x.bindItemsToProperty("señas")
-	x.heigth = 100
-	new Column<String>(x)=>[
- 		title='''Seña'''
- 		bindContentsToTransformer([senia|senia])
-	]
-		
-	
 	
 	new Label(mainPanel).setText("Hobbie:")
 	
@@ -61,14 +61,19 @@ abstract class VillanoAbstractView extends MainWindow<Villano>{
 			onClick [ | new EditarHobbiesView(this,modelObject).open ]
 		]	
 	
-	var Table<String> y = new Table<String>(mainPanel,String)
-	y.bindItemsToProperty("hobbie")
-	y.heigth = 100
-	y.width = 500
-	new Column<String>(y)=>[
- 		title='''Hobbies'''
- 		bindContentsToTransformer([hobbies|hobbies])
-	]
+
+
+		new Label(mainPanel) => [ 
+			text = "Hobbies"
+		]
+		new List(mainPanel) => [
+			bindItemsToProperty("hobbie")
+			heigth = 100
+			width = 500
+		]
+
+
+
 	
 	
 	new Button(mainPanel) => [ 

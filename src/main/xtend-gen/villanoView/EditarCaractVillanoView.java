@@ -1,14 +1,12 @@
 package villanoView;
 
-import com.uqbar.commons.collections.Transformer;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.uqbar.arena.layout.VerticalLayout;
 import org.uqbar.arena.widgets.Button;
+import org.uqbar.arena.widgets.List;
 import org.uqbar.arena.widgets.Panel;
 import org.uqbar.arena.widgets.TextBox;
-import org.uqbar.arena.widgets.tables.Column;
-import org.uqbar.arena.widgets.tables.Table;
 import org.uqbar.arena.windows.Dialog;
 import org.uqbar.arena.windows.WindowOwner;
 import org.uqbar.lacar.ui.model.Action;
@@ -36,25 +34,16 @@ public abstract class EditarCaractVillanoView extends Dialog<Villano> {
     this.setTitle(_title);
     VerticalLayout _verticalLayout = new VerticalLayout();
     mainPanel.setLayout(_verticalLayout);
-    Table<String> y = new Table<String>(mainPanel, String.class);
-    String _listaAModificar = this.listaAModificar();
-    y.bindItemsToProperty(_listaAModificar);
-    y.setHeigth(100);
-    y.setWidth(500);
-    Column<String> _column = new Column<String>(y);
-    final Procedure1<Column<String>> _function = new Procedure1<Column<String>>() {
-      public void apply(final Column<String> it) {
-        String _nameTable = EditarCaractVillanoView.this.getNameTable();
-        it.setTitle(_nameTable);
-        final Transformer<String, String> _function = new Transformer<String, String>() {
-          public String transform(final String seña) {
-            return seña;
-          }
-        };
-        it.<String>bindContentsToTransformer(_function);
+    List<Object> _list = new List<Object>(mainPanel);
+    final Procedure1<List<Object>> _function = new Procedure1<List<Object>>() {
+      public void apply(final List<Object> it) {
+        String _listaAModificar = EditarCaractVillanoView.this.listaAModificar();
+        it.bindItemsToProperty(_listaAModificar);
+        it.setHeigth(100);
+        it.setWidth(500);
       }
     };
-    ObjectExtensions.<Column<String>>operator_doubleArrow(_column, _function);
+    ObjectExtensions.<List<Object>>operator_doubleArrow(_list, _function);
     Button _button = new Button(mainPanel);
     final Procedure1<Button> _function_1 = new Procedure1<Button>() {
       public void apply(final Button it) {

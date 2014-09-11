@@ -8,6 +8,7 @@ import org.uqbar.arena.widgets.tables.Table
 import org.uqbar.arena.windows.Dialog
 import org.uqbar.arena.windows.WindowOwner
 import persona.Villano
+import org.uqbar.arena.widgets.List
 
 abstract class EditarCaractVillanoView extends Dialog<Villano> {
 	
@@ -29,15 +30,14 @@ abstract class EditarCaractVillanoView extends Dialog<Villano> {
 	override createContents(Panel mainPanel) {
 		this.setTitle(this.getTitle())
 		mainPanel.setLayout(new VerticalLayout)	
-		var Table<String> y = new Table<String>(mainPanel,String)
-		y.bindItemsToProperty(this.listaAModificar())
-		y.heigth = 100
-		y.setWidth(500)
 		
-		new Column<String>(y)=>[
- 		title= this.getNameTable()
- 		bindContentsToTransformer([seña|seña])
-	]
+		
+	
+		new List(mainPanel) => [
+			bindItemsToProperty(this.listaAModificar())
+			heigth = 100
+			width = 500
+		]
 	
 		new Button(mainPanel) => [ 
 			caption = "Eliminar"

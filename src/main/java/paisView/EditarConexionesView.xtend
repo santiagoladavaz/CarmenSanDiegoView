@@ -17,7 +17,9 @@ class EditarConexionesView extends EdicionPaisAtribView {
 	}
 	
 	
-	
+	override getEditableProperty() {
+		"conexiones"
+	}
 	
 
 	
@@ -30,7 +32,7 @@ class EditarConexionesView extends EdicionPaisAtribView {
 		modelObject.agregarConexion(modelObject.paisElegido)
 	}
 	
-	override getObservableProperty() {
+	override getOptionsProperty() {
 		"paises"
 	}
 	
@@ -41,14 +43,5 @@ class EditarConexionesView extends EdicionPaisAtribView {
 	override eliminarLugarOConexion() {
 		modelObject.eliminarConexion(modelObject.paisElegido)
 	}
-	
-//	override createSelector(Panel mainPanel) {
-//			new Selector(mainPanel) => [
-//			allowNull = false
-//			bindItems(new ObservableProperty(this, "paises"))
-//			bindValueToProperty("tipo")
-////			bindValue(new ObservableProperty(this.modelObject, "tipo")) Comentado en el ejemplo
-//		]
-//	}
 	
 }
