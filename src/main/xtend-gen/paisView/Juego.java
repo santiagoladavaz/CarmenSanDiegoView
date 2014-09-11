@@ -19,14 +19,14 @@ import pais.Pais;
 public class Juego {
   private static Juego JUEGO = new Juego();
   
-  private List<Pais> _paises = new ArrayList<Pais>();
+  private List<Pais> _conexiones = new ArrayList<Pais>();
   
-  public List<Pais> getPaises() {
-    return this._paises;
+  public List<Pais> getConexiones() {
+    return this._conexiones;
   }
   
-  public void setPaises(final List<Pais> paises) {
-    this._paises = paises;
+  public void setConexiones(final List<Pais> conexiones) {
+    this._conexiones = conexiones;
   }
   
   private List<Lugar> _lugares = new ArrayList<Lugar>();
@@ -44,7 +44,7 @@ public class Juego {
   }
   
   public Juego() {
-    List<Pais> _paises = this.getPaises();
+    List<Pais> _conexiones = this.getConexiones();
     final Procedure1<List<Pais>> _function = new Procedure1<List<Pais>>() {
       public void apply(final List<Pais> it) {
         Pais _pais = new Pais("Argentina");
@@ -55,7 +55,7 @@ public class Juego {
         it.add(_pais_2);
       }
     };
-    ObjectExtensions.<List<Pais>>operator_doubleArrow(_paises, _function);
+    ObjectExtensions.<List<Pais>>operator_doubleArrow(_conexiones, _function);
     List<Lugar> _lugares = this.getLugares();
     final Procedure1<List<Lugar>> _function_1 = new Procedure1<List<Lugar>>() {
       public void apply(final List<Lugar> it) {
@@ -70,7 +70,7 @@ public class Juego {
     Pais _xblockexpression = null;
     {
       InputOutput.<Pais>print(string);
-      List<Pais> _paises = this.getPaises();
+      List<Pais> _conexiones = this.getConexiones();
       final Function1<Pais, Boolean> _function = new Function1<Pais, Boolean>() {
         public Boolean apply(final Pais p) {
           String _nombre = p.getNombre();
@@ -78,7 +78,7 @@ public class Juego {
           return Boolean.valueOf(Objects.equal(_nombre, _nombre_1));
         }
       };
-      Iterable<Pais> _filter = IterableExtensions.<Pais>filter(_paises, _function);
+      Iterable<Pais> _filter = IterableExtensions.<Pais>filter(_conexiones, _function);
       _xblockexpression = ((Pais[])Conversions.unwrapArray(_filter, Pais.class))[0];
     }
     return _xblockexpression;

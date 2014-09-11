@@ -10,7 +10,7 @@ import pais.Banco
 class Juego {
 	
  private static Juego JUEGO = new Juego
- @Property  List<Pais> paises = new ArrayList<Pais>
+ @Property  List<Pais> conexiones = new ArrayList<Pais>
  @Property List<Lugar>lugares = new ArrayList<Lugar>
  
  
@@ -21,7 +21,7 @@ class Juego {
 	
 	
 	new(){
-		paises =>[
+		conexiones =>[
 			add(new Pais("Argentina"))
 			add(new Pais("Brasil"))
 			add(new Pais("Uruguay"))
@@ -33,7 +33,7 @@ class Juego {
 	
 	def Pais buscarPais(Pais string) {
 		print(string)
-		paises.filter[p| p.nombre == string.nombre].get(0)
+		conexiones.filter[p| p.nombre == string.nombre].get(0)
 	}
 	
 	

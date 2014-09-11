@@ -124,6 +124,8 @@ public abstract class VillanoAbstractView extends MainWindow<Villano> {
           }
         };
         it.onClick(_function);
+        it.<ControlBuilder>bindEnabledToProperty("consistente");
+        it.disableOnError();
       }
     };
     ObjectExtensions.<Button>operator_doubleArrow(_button_2, _function_6);

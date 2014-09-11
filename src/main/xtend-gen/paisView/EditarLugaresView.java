@@ -35,10 +35,6 @@ public class EditarLugaresView extends EdicionPaisAtribView {
     _modelObject.agregarLugar(_lugarElegido);
   }
   
-  public String getOptionsProperty() {
-    return "lugares";
-  }
-  
   public String propertyToAdd() {
     return "lugarElegido";
   }
