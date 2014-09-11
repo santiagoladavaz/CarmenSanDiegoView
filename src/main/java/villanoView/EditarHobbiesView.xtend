@@ -11,7 +11,7 @@ class EditarHobbiesView extends EditarCaractVillanoView {
 	}
 	
 	override listaAModificar() {
-		"hobbie"
+		"villano.hobbie"
 	}
 	
 	override getTitle() {
@@ -23,11 +23,11 @@ class EditarHobbiesView extends EditarCaractVillanoView {
 	}
 	
 	override getAgregar() {
-		modelObject.agregarValor(modelObject.valor,"hobbie",modelObject.hobbie)
+		modelObject.agregarValor("villano.hobbie",modelObject.villano.hobbie)
 	}
 	
 	override getEliminar() {
-		modelObject.eliminarValor(modelObject.valor,"hobbie",modelObject.hobbie)
+		modelObject.eliminarValor("villano.hobbie",modelObject.villano.hobbie)
 	}
 	
 	override protected createFormPanel(Panel arg0) {

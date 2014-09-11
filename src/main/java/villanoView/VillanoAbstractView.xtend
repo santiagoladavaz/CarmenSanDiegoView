@@ -1,13 +1,13 @@
-package villanoView import persona.Villano
+package villanoView
+
 import org.uqbar.arena.layout.VerticalLayout
 import org.uqbar.arena.widgets.Button
 import org.uqbar.arena.widgets.Label
+import org.uqbar.arena.widgets.List
 import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.widgets.TextBox
-import org.uqbar.arena.widgets.tables.Column
-import org.uqbar.arena.widgets.tables.Table
 import org.uqbar.arena.windows.MainWindow
-import org.uqbar.arena.widgets.List
+import persona.Villano
 
 abstract class VillanoAbstractView extends MainWindow<Villano>{
 

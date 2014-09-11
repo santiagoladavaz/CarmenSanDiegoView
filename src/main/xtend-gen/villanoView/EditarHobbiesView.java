@@ -4,6 +4,7 @@ import java.util.List;
 import org.uqbar.arena.widgets.Panel;
 import org.uqbar.arena.windows.WindowOwner;
 import persona.Villano;
+import persona.VillanoApplicationModel;
 import villanoView.EditarCaractVillanoView;
 
 @SuppressWarnings("all")
@@ -13,7 +14,7 @@ public class EditarHobbiesView extends EditarCaractVillanoView {
   }
   
   public String listaAModificar() {
-    return "hobbie";
+    return "villano.hobbie";
   }
   
   public String getTitle() {
@@ -25,21 +26,19 @@ public class EditarHobbiesView extends EditarCaractVillanoView {
   }
   
   public void getAgregar() {
-    Villano _modelObject = this.getModelObject();
-    Villano _modelObject_1 = this.getModelObject();
-    String _valor = _modelObject_1.getValor();
-    Villano _modelObject_2 = this.getModelObject();
-    List<String> _hobbie = _modelObject_2.getHobbie();
-    _modelObject.agregarValor(_valor, "hobbie", _hobbie);
+    VillanoApplicationModel _modelObject = this.getModelObject();
+    VillanoApplicationModel _modelObject_1 = this.getModelObject();
+    Villano _villano = _modelObject_1.getVillano();
+    List<String> _hobbie = _villano.getHobbie();
+    _modelObject.agregarValor("villano.hobbie", _hobbie);
   }
   
   public void getEliminar() {
-    Villano _modelObject = this.getModelObject();
-    Villano _modelObject_1 = this.getModelObject();
-    String _valor = _modelObject_1.getValor();
-    Villano _modelObject_2 = this.getModelObject();
-    List<String> _hobbie = _modelObject_2.getHobbie();
-    _modelObject.eliminarValor(_valor, "hobbie", _hobbie);
+    VillanoApplicationModel _modelObject = this.getModelObject();
+    VillanoApplicationModel _modelObject_1 = this.getModelObject();
+    Villano _villano = _modelObject_1.getVillano();
+    List<String> _hobbie = _villano.getHobbie();
+    _modelObject.eliminarValor("villano.hobbie", _hobbie);
   }
   
   protected void createFormPanel(final Panel arg0) {

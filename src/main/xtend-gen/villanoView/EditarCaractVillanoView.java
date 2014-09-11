@@ -12,11 +12,12 @@ import org.uqbar.arena.windows.WindowOwner;
 import org.uqbar.lacar.ui.model.Action;
 import org.uqbar.lacar.ui.model.ControlBuilder;
 import persona.Villano;
+import persona.VillanoApplicationModel;
 
 @SuppressWarnings("all")
-public abstract class EditarCaractVillanoView extends Dialog<Villano> {
+public abstract class EditarCaractVillanoView extends Dialog<VillanoApplicationModel> {
   public EditarCaractVillanoView(final WindowOwner owner, final Villano model) {
-    super(owner, model);
+    super(owner, new VillanoApplicationModel(model));
   }
   
   public abstract String listaAModificar();
@@ -39,6 +40,7 @@ public abstract class EditarCaractVillanoView extends Dialog<Villano> {
       public void apply(final List<Object> it) {
         String _listaAModificar = EditarCaractVillanoView.this.listaAModificar();
         it.bindItemsToProperty(_listaAModificar);
+        it.<ControlBuilder>bindValueToProperty("valorAEliminar");
         it.setHeigth(100);
         it.setWidth(500);
       }
@@ -58,7 +60,7 @@ public abstract class EditarCaractVillanoView extends Dialog<Villano> {
     };
     ObjectExtensions.<Button>operator_doubleArrow(_button, _function_1);
     TextBox _textBox = new TextBox(mainPanel);
-    _textBox.<ControlBuilder>bindValueToProperty("valor");
+    _textBox.<ControlBuilder>bindValueToProperty("valorAAgregar");
     Button _button_1 = new Button(mainPanel);
     final Procedure1<Button> _function_2 = new Procedure1<Button>() {
       public void apply(final Button it) {

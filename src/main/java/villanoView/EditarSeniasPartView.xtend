@@ -18,20 +18,19 @@ class EditarSeniasPartView extends EditarCaractVillanoView {
 		"Seña"
 	}
 	
+	
 	override getAgregar() {
-		modelObject.agregarValor(modelObject.valor,"señas",modelObject.señas)
-		print(modelObject.señas)
+		modelObject.agregarValor("villano.señas",modelObject.villano.señas)
 		
 	}
 	
 	
-	
 	override getEliminar() {
-		modelObject.eliminarValor(modelObject.valor,"señas",modelObject.señas)
+		modelObject.eliminarValor("villano.señas",modelObject.villano.señas)
 	}
 	
 	override listaAModificar() {
-		"señas"
+		"villano.señas"
 	}
 	
 	override protected createFormPanel(Panel mainPanel) {

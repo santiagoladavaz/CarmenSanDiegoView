@@ -1,19 +1,18 @@
-package villanoView 
+package villanoView
 import org.uqbar.arena.layout.VerticalLayout
 import org.uqbar.arena.widgets.Button
+import org.uqbar.arena.widgets.List
 import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.widgets.TextBox
-import org.uqbar.arena.widgets.tables.Column
-import org.uqbar.arena.widgets.tables.Table
 import org.uqbar.arena.windows.Dialog
 import org.uqbar.arena.windows.WindowOwner
 import persona.Villano
-import org.uqbar.arena.widgets.List
+import persona.VillanoApplicationModel
 
-abstract class EditarCaractVillanoView extends Dialog<Villano> {
+abstract class EditarCaractVillanoView extends Dialog<VillanoApplicationModel> {
 	
 	new(WindowOwner owner, Villano model) {
-		super(owner, model)
+		super(owner, new VillanoApplicationModel(model))
 		
 	}
 	
@@ -35,6 +34,7 @@ abstract class EditarCaractVillanoView extends Dialog<Villano> {
 	
 		new List(mainPanel) => [
 			bindItemsToProperty(this.listaAModificar())
+			bindValueToProperty("valorAEliminar")
 			heigth = 100
 			width = 500
 		]
@@ -45,7 +45,7 @@ abstract class EditarCaractVillanoView extends Dialog<Villano> {
 			]	
 		]	
 		
-		new TextBox(mainPanel).bindValueToProperty("valor")
+		new TextBox(mainPanel).bindValueToProperty("valorAAgregar")
 	
 		new Button(mainPanel) => [ 
 			caption = "Agregar"
@@ -60,6 +60,5 @@ abstract class EditarCaractVillanoView extends Dialog<Villano> {
 		]	
 	
 		
-	   
-	}
+	 }
 }
