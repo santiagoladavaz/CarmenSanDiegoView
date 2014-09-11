@@ -32,10 +32,6 @@ class EditarConexionesView extends EdicionPaisAtribView {
 		modelObject.agregarConexion(modelObject.paisElegido)
 	}
 	
-	override getOptionsProperty() {
-		"paises"
-	}
-	
 	override propertyToAdd() {
 		"paisElegido"
 	}

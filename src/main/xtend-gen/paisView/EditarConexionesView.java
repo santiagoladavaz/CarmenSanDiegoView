@@ -34,10 +34,6 @@ public class EditarConexionesView extends EdicionPaisAtribView {
     _modelObject.agregarConexion(_paisElegido);
   }
   
-  public String getOptionsProperty() {
-    return "paises";
-  }
-  
   public String propertyToAdd() {
     return "paisElegido";
   }

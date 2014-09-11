@@ -43,8 +43,8 @@ abstract class EdicionPaisAtribView extends Dialog<Pais>{
 		
 	new Selector(mainPanel) => [
 			allowNull = false
-			bindItems(new ObservableProperty(juego,getOptionsProperty()))
-			bindValueToProperty(propertyToAdd())
+			bindItems(new ObservableProperty(juego,getEditableProperty)) //# le cambio la prop. a juego para que machee este bind
+			bindValueToProperty(propertyToAdd())                         // y asi borrar 2 metodos
 		]		
 		
 		new Button(mainPanel) => [ 
@@ -61,13 +61,11 @@ abstract class EdicionPaisAtribView extends Dialog<Pais>{
 	
 	}
 	
-	def abstract String getEditableProperty()
+	abstract def String getEditableProperty()
 	
-	def abstract String propertyToAdd()
+	abstract def String propertyToAdd()
 	
-	def abstract String getOptionsProperty()
-	
-	abstract override def String getTitle()
+	abstract override String getTitle()
 	
 	abstract def void agregarLugarOConexion()
 	abstract def void eliminarLugarOConexion()

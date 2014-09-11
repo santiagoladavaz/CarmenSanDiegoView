@@ -73,8 +73,8 @@ public abstract class EdicionPaisAtribView extends Dialog<Pais> {
       public void apply(final Selector<Object> it) {
         it.allowNull(false);
         Juego _juego = EdicionPaisAtribView.this.getJuego();
-        String _optionsProperty = EdicionPaisAtribView.this.getOptionsProperty();
-        ObservableProperty _observableProperty = new ObservableProperty(_juego, _optionsProperty);
+        String _editableProperty = EdicionPaisAtribView.this.getEditableProperty();
+        ObservableProperty _observableProperty = new ObservableProperty(_juego, _editableProperty);
         it.bindItems(_observableProperty);
         String _propertyToAdd = EdicionPaisAtribView.this.propertyToAdd();
         it.<ControlBuilder>bindValueToProperty(_propertyToAdd);
@@ -112,8 +112,6 @@ public abstract class EdicionPaisAtribView extends Dialog<Pais> {
   public abstract String getEditableProperty();
   
   public abstract String propertyToAdd();
-  
-  public abstract String getOptionsProperty();
   
   public abstract String getTitle();
   

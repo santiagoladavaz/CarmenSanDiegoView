@@ -14,6 +14,7 @@ abstract class VillanoAbstractView extends MainWindow<Villano>{
 	
 	new() {
 		super(new Villano)
+		
 	}	
 
 
@@ -83,8 +84,9 @@ abstract class VillanoAbstractView extends MainWindow<Villano>{
 				        print(modelObject)
 				        print(modelObject.señas)
 				        print(modelObject.hobbie)
-				        
-			]
+				        ]
+				    bindEnabledToProperty("consistente")
+				    disableOnError
 			
 		]	
 		

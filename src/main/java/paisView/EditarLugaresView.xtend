@@ -28,10 +28,6 @@ class EditarLugaresView extends EdicionPaisAtribView {
 		modelObject.agregarLugar(modelObject.lugarElegido)
 	}
 	
-	override getOptionsProperty() {
-		"lugares"
-	}
-	
 	override propertyToAdd() {
 		"lugarElegido"
 	}

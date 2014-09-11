@@ -50,11 +50,8 @@ class EditarCaractPaisView extends Dialog<Pais> {
 		new Button(mainPanel) => [ 
 			caption = "Aceptar"
 			onClick [ |  this.close
-			]
-			
-		]	
-	
-	   
+			]	
+		]	  
 	}
 	
 	
