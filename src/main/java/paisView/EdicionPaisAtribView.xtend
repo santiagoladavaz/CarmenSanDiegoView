@@ -1,5 +1,6 @@
 package paisView
 
+import Juego.Juego
 import org.uqbar.arena.bindings.ObservableProperty
 import org.uqbar.arena.layout.VerticalLayout
 import org.uqbar.arena.widgets.Button
@@ -7,18 +8,17 @@ import org.uqbar.arena.widgets.Label
 import org.uqbar.arena.widgets.List
 import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.widgets.Selector
-import org.uqbar.arena.widgets.tables.Column
 import org.uqbar.arena.windows.Dialog
 import org.uqbar.arena.windows.WindowOwner
-import pais.Pais
+import pais.PaisApplicationModel
 
-abstract class EdicionPaisAtribView extends Dialog<Pais>{
+abstract class EdicionPaisAtribView extends Dialog<PaisApplicationModel>{
 	
 	@Property Juego juego = Juego.getInstance()
 	
 	//Clase abstracta de las ediciones de Lugares y Conexiones
 	
-	new(WindowOwner owner, Pais model) {
+	new(WindowOwner owner, PaisApplicationModel model) {
 		super(owner, model)
 	}	
 	
@@ -30,7 +30,7 @@ abstract class EdicionPaisAtribView extends Dialog<Pais>{
 			text = getTitleTable()
 		]
 		new List(mainPanel) => [
-			bindItemsToProperty(getEditableProperty())
+			bindItemsToProperty(this.getEditableProperty)
 			heigth = 100
 			width = 500
 		]
@@ -43,8 +43,9 @@ abstract class EdicionPaisAtribView extends Dialog<Pais>{
 		
 	new Selector(mainPanel) => [
 			allowNull = false
-			bindItems(new ObservableProperty(juego,getEditableProperty)) //# le cambio la prop. a juego para que machee este bind
-			bindValueToProperty(propertyToAdd())                         // y asi borrar 2 metodos
+			//# le cambio la prop. a juego para que machee este bind y asi borrar 2 metodos.
+			bindItems(new ObservableProperty(juego,getJuegoEditableProperty)) 
+			bindValueToProperty(propertyToAdd())                        
 		]		
 		
 		new Button(mainPanel) => [ 
@@ -61,15 +62,12 @@ abstract class EdicionPaisAtribView extends Dialog<Pais>{
 	
 	}
 	
+	abstract def String getGetJuegoEditableProperty()
 	abstract def String getEditableProperty()
-	
 	abstract def String propertyToAdd()
-	
 	abstract override String getTitle()
-	
 	abstract def void agregarLugarOConexion()
 	abstract def void eliminarLugarOConexion()
-	
-	abstract  def String getTitleTable()
+	abstract def String getTitleTable()
 	
 }

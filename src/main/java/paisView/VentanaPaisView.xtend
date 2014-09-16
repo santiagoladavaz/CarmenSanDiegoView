@@ -1,13 +1,14 @@
-package paisView import pais.Pais
+package paisView
+
 import org.uqbar.arena.layout.VerticalLayout
 import org.uqbar.arena.widgets.Button
 import org.uqbar.arena.widgets.Label
+import org.uqbar.arena.widgets.List
 import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.widgets.TextBox
 import org.uqbar.arena.windows.MainWindow
-import org.uqbar.arena.widgets.tables.Table
-import org.uqbar.arena.widgets.tables.Column
-import org.uqbar.arena.widgets.List
+import pais.Pais
+import pais.PaisApplicationModel
 
 abstract class VentanaPaisView extends MainWindow<Pais> {
 	
@@ -48,7 +49,7 @@ abstract class VentanaPaisView extends MainWindow<Pais> {
 	
 	new Button(mainPanel) => [ 
 			caption = "Editar Conexiones"
-			onClick [ | new EditarConexionesView(this,modelObject).open]
+			onClick [ | new EditarConexionesView(this,new PaisApplicationModel(modelObject)).open]
 	]
 			
 		
@@ -62,7 +63,7 @@ abstract class VentanaPaisView extends MainWindow<Pais> {
 	
 	new Button(mainPanel) => [ 
 			caption = "Editar Lugares"
-			onClick [ | new EditarLugaresView(this,modelObject).open]
+			onClick [ | new EditarLugaresView(this,new PaisApplicationModel(modelObject)).open]
 			
 		]
 	

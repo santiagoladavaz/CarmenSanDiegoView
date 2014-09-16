@@ -1,10 +1,12 @@
-package paisView import org.uqbar.arena.widgets.Panel
+package paisView
+
+import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.windows.WindowOwner
-import pais.Pais
+import pais.PaisApplicationModel
 
 class EditarConexionesView extends EdicionPaisAtribView {
 	
-	new(WindowOwner owner, Pais model) {
+	new(WindowOwner owner, PaisApplicationModel model) {
 		super(owner, model)
 	}
 	
@@ -18,7 +20,7 @@ class EditarConexionesView extends EdicionPaisAtribView {
 	
 	
 	override getEditableProperty() {
-		"conexiones"
+		"paisModel.conexiones"
 	}
 	
 
@@ -29,7 +31,7 @@ class EditarConexionesView extends EdicionPaisAtribView {
 	}
 	
 	override agregarLugarOConexion() {
-		modelObject.agregarConexion(modelObject.paisElegido)
+		modelObject.agregarConexion()
 	}
 	
 	override propertyToAdd() {
@@ -37,7 +39,11 @@ class EditarConexionesView extends EdicionPaisAtribView {
 	}
 	
 	override eliminarLugarOConexion() {
-		modelObject.eliminarConexion(modelObject.paisElegido)
+		modelObject.eliminarConexion()
+	}
+	
+	override getGetJuegoEditableProperty() {
+		"conexiones"
 	}
 	
 }

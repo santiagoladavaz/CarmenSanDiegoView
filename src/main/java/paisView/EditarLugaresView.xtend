@@ -1,10 +1,10 @@
 package paisView import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.windows.WindowOwner
-import pais.Pais
+import pais.PaisApplicationModel
 
 class EditarLugaresView extends EdicionPaisAtribView {
 	
-	new(WindowOwner owner, Pais model) {
+	new(WindowOwner owner, PaisApplicationModel model) {
 		super(owner, model)
 	}
 		
@@ -17,7 +17,7 @@ class EditarLugaresView extends EdicionPaisAtribView {
 	}
 	
 	override getEditableProperty() {
-		"lugares"
+		"paisModel.lugares"
 	}
 	
 	override protected createFormPanel(Panel mainPanel) {
@@ -25,7 +25,7 @@ class EditarLugaresView extends EdicionPaisAtribView {
 	}
 	
 	override agregarLugarOConexion() {
-		modelObject.agregarLugar(modelObject.lugarElegido)
+		modelObject.agregarLugar()
 	}
 	
 	override propertyToAdd() {
@@ -33,7 +33,11 @@ class EditarLugaresView extends EdicionPaisAtribView {
 	}
 	
 	override eliminarLugarOConexion() {
-		modelObject.eliminarLugar(modelObject.lugarElegido)
+		modelObject.eliminarLugar()
+	}
+	
+	override getGetJuegoEditableProperty() {
+		"lugares"
 	}
 	
 
