@@ -3,10 +3,11 @@ package villanoView
 import org.uqbar.arena.windows.WindowOwner
 import persona.Villano
 import org.uqbar.arena.widgets.Panel
+import persona.VillanoApplicationModel
 
 class EditarSeniasPartView extends EditarCaractVillanoView {
 	
-	new(WindowOwner owner, Villano model) {
+	new(WindowOwner owner, VillanoApplicationModel model) {
 		super(owner, model)
 	}
 	
@@ -20,13 +21,13 @@ class EditarSeniasPartView extends EditarCaractVillanoView {
 	
 	
 	override getAgregar() {
-		modelObject.agregarValor("villano.señas",modelObject.villano.señas)
+		modelObject.agregarValor("señas",modelObject.villano.señas)
 		
 	}
 	
 	
 	override getEliminar() {
-		modelObject.eliminarValor("villano.señas",modelObject.villano.señas)
+		modelObject.eliminarValor("señas",modelObject.villano.señas)
 	}
 	
 	override listaAModificar() {

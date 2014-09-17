@@ -9,7 +9,7 @@ import villanoView.EditarCaractVillanoView;
 
 @SuppressWarnings("all")
 public class EditarSeniasPartView extends EditarCaractVillanoView {
-  public EditarSeniasPartView(final WindowOwner owner, final Villano model) {
+  public EditarSeniasPartView(final WindowOwner owner, final VillanoApplicationModel model) {
     super(owner, model);
   }
   
@@ -26,7 +26,7 @@ public class EditarSeniasPartView extends EditarCaractVillanoView {
     VillanoApplicationModel _modelObject_1 = this.getModelObject();
     Villano _villano = _modelObject_1.getVillano();
     List<String> _señas = _villano.getSeñas();
-    _modelObject.agregarValor("villano.señas", _señas);
+    _modelObject.agregarValor("señas", _señas);
   }
   
   public void getEliminar() {
@@ -34,7 +34,7 @@ public class EditarSeniasPartView extends EditarCaractVillanoView {
     VillanoApplicationModel _modelObject_1 = this.getModelObject();
     Villano _villano = _modelObject_1.getVillano();
     List<String> _señas = _villano.getSeñas();
-    _modelObject.eliminarValor("villano.señas", _señas);
+    _modelObject.eliminarValor("señas", _señas);
   }
   
   public String listaAModificar() {

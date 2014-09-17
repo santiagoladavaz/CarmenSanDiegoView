@@ -11,13 +11,12 @@ import org.uqbar.arena.windows.Dialog;
 import org.uqbar.arena.windows.WindowOwner;
 import org.uqbar.lacar.ui.model.Action;
 import org.uqbar.lacar.ui.model.ControlBuilder;
-import persona.Villano;
 import persona.VillanoApplicationModel;
 
 @SuppressWarnings("all")
 public abstract class EditarCaractVillanoView extends Dialog<VillanoApplicationModel> {
-  public EditarCaractVillanoView(final WindowOwner owner, final Villano model) {
-    super(owner, new VillanoApplicationModel(model));
+  public EditarCaractVillanoView(final WindowOwner owner, final VillanoApplicationModel model) {
+    super(owner, model);
   }
   
   public abstract String listaAModificar();

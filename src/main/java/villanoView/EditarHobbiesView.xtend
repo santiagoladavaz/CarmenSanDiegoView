@@ -3,10 +3,11 @@ package villanoView
 import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.windows.WindowOwner
 import persona.Villano
+import persona.VillanoApplicationModel
 
 class EditarHobbiesView extends EditarCaractVillanoView {
 	
-	new(WindowOwner owner, Villano model) {
+	new(WindowOwner owner, VillanoApplicationModel model) {
 		super(owner, model)
 	}
 	
@@ -23,11 +24,11 @@ class EditarHobbiesView extends EditarCaractVillanoView {
 	}
 	
 	override getAgregar() {
-		modelObject.agregarValor("villano.hobbie",modelObject.villano.hobbie)
+		modelObject.agregarValor("hobbie",modelObject.villano.hobbie)
 	}
 	
 	override getEliminar() {
-		modelObject.eliminarValor("villano.hobbie",modelObject.villano.hobbie)
+		modelObject.eliminarValor("hobbie",modelObject.villano.hobbie)
 	}
 	
 	override protected createFormPanel(Panel arg0) {

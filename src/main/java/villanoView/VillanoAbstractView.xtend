@@ -8,6 +8,7 @@ import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.widgets.TextBox
 import org.uqbar.arena.windows.MainWindow
 import persona.Villano
+import persona.VillanoApplicationModel
 
 abstract class VillanoAbstractView extends MainWindow<Villano>{
 
@@ -39,7 +40,7 @@ abstract class VillanoAbstractView extends MainWindow<Villano>{
 	
 		new Button(mainPanel) => [ 
 			caption = "Editar Señas Particulares"
-			onClick [ | new EditarSeniasPartView(this,modelObject).open]
+			onClick [ | new EditarSeniasPartView(this,new VillanoApplicationModel(modelObject)).open]
 			
 		]
 
@@ -59,7 +60,7 @@ abstract class VillanoAbstractView extends MainWindow<Villano>{
 	
 	new Button(mainPanel) => [ 
 			caption = "Editar Hobbies"
-			onClick [ | new EditarHobbiesView(this,modelObject).open ]
+			onClick [ | new EditarHobbiesView(this,new VillanoApplicationModel(modelObject)).open ]
 		]	
 	
 

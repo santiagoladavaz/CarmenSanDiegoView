@@ -13,6 +13,7 @@ import org.uqbar.arena.windows.MainWindow;
 import org.uqbar.lacar.ui.model.Action;
 import org.uqbar.lacar.ui.model.ControlBuilder;
 import persona.Villano;
+import persona.VillanoApplicationModel;
 import villanoView.EditarHobbiesView;
 import villanoView.EditarSeniasPartView;
 
@@ -46,7 +47,8 @@ public abstract class VillanoAbstractView extends MainWindow<Villano> {
         final Action _function = new Action() {
           public void execute() {
             Villano _modelObject = VillanoAbstractView.this.getModelObject();
-            EditarSeniasPartView _editarSeniasPartView = new EditarSeniasPartView(VillanoAbstractView.this, _modelObject);
+            VillanoApplicationModel _villanoApplicationModel = new VillanoApplicationModel(_modelObject);
+            EditarSeniasPartView _editarSeniasPartView = new EditarSeniasPartView(VillanoAbstractView.this, _villanoApplicationModel);
             _editarSeniasPartView.open();
           }
         };
@@ -79,7 +81,8 @@ public abstract class VillanoAbstractView extends MainWindow<Villano> {
         final Action _function = new Action() {
           public void execute() {
             Villano _modelObject = VillanoAbstractView.this.getModelObject();
-            EditarHobbiesView _editarHobbiesView = new EditarHobbiesView(VillanoAbstractView.this, _modelObject);
+            VillanoApplicationModel _villanoApplicationModel = new VillanoApplicationModel(_modelObject);
+            EditarHobbiesView _editarHobbiesView = new EditarHobbiesView(VillanoAbstractView.this, _villanoApplicationModel);
             _editarHobbiesView.open();
           }
         };

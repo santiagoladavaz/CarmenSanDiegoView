@@ -9,7 +9,7 @@ import villanoView.EditarCaractVillanoView;
 
 @SuppressWarnings("all")
 public class EditarHobbiesView extends EditarCaractVillanoView {
-  public EditarHobbiesView(final WindowOwner owner, final Villano model) {
+  public EditarHobbiesView(final WindowOwner owner, final VillanoApplicationModel model) {
     super(owner, model);
   }
   
@@ -30,7 +30,7 @@ public class EditarHobbiesView extends EditarCaractVillanoView {
     VillanoApplicationModel _modelObject_1 = this.getModelObject();
     Villano _villano = _modelObject_1.getVillano();
     List<String> _hobbie = _villano.getHobbie();
-    _modelObject.agregarValor("villano.hobbie", _hobbie);
+    _modelObject.agregarValor("hobbie", _hobbie);
   }
   
   public void getEliminar() {
@@ -38,7 +38,7 @@ public class EditarHobbiesView extends EditarCaractVillanoView {
     VillanoApplicationModel _modelObject_1 = this.getModelObject();
     Villano _villano = _modelObject_1.getVillano();
     List<String> _hobbie = _villano.getHobbie();
-    _modelObject.eliminarValor("villano.hobbie", _hobbie);
+    _modelObject.eliminarValor("hobbie", _hobbie);
   }
   
   protected void createFormPanel(final Panel arg0) {

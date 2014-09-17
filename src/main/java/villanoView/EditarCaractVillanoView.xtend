@@ -11,19 +11,15 @@ import persona.VillanoApplicationModel
 
 abstract class EditarCaractVillanoView extends Dialog<VillanoApplicationModel> {
 	
-	new(WindowOwner owner, Villano model) {
-		super(owner, new VillanoApplicationModel(model))
+	new(WindowOwner owner, VillanoApplicationModel model) {
+		super(owner, model)
 		
 	}
 	
-	abstract def String listaAModificar()
-	
-	abstract override def String getTitle()
-	
-	abstract def String getNameTable()
-	
-	abstract def void getAgregar()
-	
+	abstract def String listaAModificar()	
+	abstract override def String getTitle()	
+	abstract def String getNameTable()	
+	abstract def void getAgregar()	
 	abstract def void getEliminar()
 	
 	override createContents(Panel mainPanel) {
