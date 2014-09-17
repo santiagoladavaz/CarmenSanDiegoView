@@ -7,6 +7,8 @@ import org.uqbar.arena.layout.HorizontalLayout
 import org.uqbar.arena.widgets.Label
 import org.uqbar.arena.widgets.Button
 import Juego.JuegoAppModel
+import persona.VillanoApplicationModel
+import villanoView.ExpedientesView
 
 class JuegoView extends MainWindow<Juego> {
 	
@@ -36,9 +38,10 @@ class JuegoView extends MainWindow<Juego> {
 		
 		new Button(mainPanel) => [ 
 			caption = "Expedientes"
-			onClick [ | //new ExpedientesView(this,modelObject).open
-			]
+			onClick [ | new ExpedientesView(this, new VillanoApplicationModel()).open
 		]
+		]
+		
 		}
 		
 		def static void main(String[] args) {

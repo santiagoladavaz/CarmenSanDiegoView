@@ -11,6 +11,8 @@ import org.uqbar.arena.widgets.Label;
 import org.uqbar.arena.widgets.Panel;
 import org.uqbar.arena.windows.MainWindow;
 import org.uqbar.lacar.ui.model.Action;
+import persona.VillanoApplicationModel;
+import villanoView.ExpedientesView;
 
 @SuppressWarnings("all")
 public class JuegoView extends MainWindow<Juego> {
@@ -57,6 +59,9 @@ public class JuegoView extends MainWindow<Juego> {
         it.setCaption("Expedientes");
         final Action _function = new Action() {
           public void execute() {
+            VillanoApplicationModel _villanoApplicationModel = new VillanoApplicationModel();
+            ExpedientesView _expedientesView = new ExpedientesView(JuegoView.this, _villanoApplicationModel);
+            _expedientesView.open();
           }
         };
         it.onClick(_function);
