@@ -6,3 +6,10 @@
 /.Juego.java._trace
 /.NewPaisView.java._trace
 /.VentanaPaisView.java._trace
+/EdicionPaisAtribView.java
+/EditarCaractPaisView.java
+/EditarConexionesView.java
+/EditarLugaresView.java
+/EditarPaisView.java
+/NewPaisView.java
+/VentanaPaisView.java
