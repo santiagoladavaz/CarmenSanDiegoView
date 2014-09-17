@@ -39,11 +39,11 @@ public class MapamundiView extends SimpleWindow<JuegoAppModel> {
     Panel contentPanel = new Panel(mainPanel);
     ColumnLayout _columnLayout = new ColumnLayout(2);
     contentPanel.setLayout(_columnLayout);
-    this.crearListadoDeMaterias(contentPanel);
+    this.crearListadoDePaises(contentPanel);
     this.crearPanelPaisSeleccionado(contentPanel);
   }
   
-  public Button crearListadoDeMaterias(final Panel owner) {
+  public Button crearListadoDePaises(final Panel owner) {
     Button _xblockexpression = null;
     {
       Panel panelDeListadoDePaises = new Panel(owner);
@@ -54,7 +54,7 @@ public class MapamundiView extends SimpleWindow<JuegoAppModel> {
       List<Pais> _list = new List<Pais>(panelDeListadoDePaises);
       final Procedure1<List<Pais>> _function = new Procedure1<List<Pais>>() {
         public void apply(final List<Pais> it) {
-          Binding<ListBuilder<Pais>> _bindItemsToProperty = it.bindItemsToProperty("MapamundiAppModel.juego.conexiones");
+          Binding<ListBuilder<Pais>> _bindItemsToProperty = it.bindItemsToProperty("juego.conexiones");
           PropertyAdapter _propertyAdapter = new PropertyAdapter(Pais.class, "nombre");
           _bindItemsToProperty.setAdapter(_propertyAdapter);
           it.setHeigth(150);
@@ -111,20 +111,48 @@ public class MapamundiView extends SimpleWindow<JuegoAppModel> {
     return _xblockexpression;
   }
   
-  public Label crearPanelPaisSeleccionado(final Panel owner) {
-    Label _xblockexpression = null;
+  public List<Object> crearPanelPaisSeleccionado(final Panel owner) {
+    List<Object> _xblockexpression = null;
     {
       Panel paisCompletaPanel = new Panel(owner);
       VerticalLayout _verticalLayout = new VerticalLayout();
       paisCompletaPanel.setLayout(_verticalLayout);
       Label _label = new Label(paisCompletaPanel);
+      _label.setText("Nombre:");
+      Label _label_1 = new Label(paisCompletaPanel);
       final Procedure1<Label> _function = new Procedure1<Label>() {
         public void apply(final Label it) {
-          it.setText("Nombre:");
-          it.<ControlBuilder>bindValueToProperty("MapamundiAppModel.paisSeleccionado.nombre");
+          it.<ControlBuilder>bindValueToProperty("paisSeleccionado.nombre");
         }
       };
-      _xblockexpression = ObjectExtensions.<Label>operator_doubleArrow(_label, _function);
+      ObjectExtensions.<Label>operator_doubleArrow(_label_1, _function);
+      Label _label_2 = new Label(paisCompletaPanel);
+      _label_2.setText("Caracteristicas");
+      List<Object> _list = new List<Object>(paisCompletaPanel);
+      final Procedure1<List<Object>> _function_1 = new Procedure1<List<Object>>() {
+        public void apply(final List<Object> it) {
+          it.<ControlBuilder>bindValueToProperty("paisSeleccionado.caract");
+        }
+      };
+      ObjectExtensions.<List<Object>>operator_doubleArrow(_list, _function_1);
+      Label _label_3 = new Label(paisCompletaPanel);
+      _label_3.setText("Conexciones");
+      List<Object> _list_1 = new List<Object>(paisCompletaPanel);
+      final Procedure1<List<Object>> _function_2 = new Procedure1<List<Object>>() {
+        public void apply(final List<Object> it) {
+          it.<ControlBuilder>bindValueToProperty("paisSeleccionado.conexiones");
+        }
+      };
+      ObjectExtensions.<List<Object>>operator_doubleArrow(_list_1, _function_2);
+      Label _label_4 = new Label(paisCompletaPanel);
+      _label_4.setText("Lugares de interes");
+      List<Object> _list_2 = new List<Object>(paisCompletaPanel);
+      final Procedure1<List<Object>> _function_3 = new Procedure1<List<Object>>() {
+        public void apply(final List<Object> it) {
+          it.<ControlBuilder>bindValueToProperty("paisSeleccionado.lugares");
+        }
+      };
+      _xblockexpression = ObjectExtensions.<List<Object>>operator_doubleArrow(_list_2, _function_3);
     }
     return _xblockexpression;
   }

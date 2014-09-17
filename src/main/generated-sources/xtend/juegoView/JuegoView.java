@@ -1,6 +1,8 @@
 package juegoView;
 
 import Juego.Juego;
+import Juego.JuegoAppModel;
+import juegoView.MapamundiView;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.uqbar.arena.layout.HorizontalLayout;
@@ -40,6 +42,9 @@ public class JuegoView extends MainWindow<Juego> {
         it.setCaption("Mapamundi");
         final Action _function = new Action() {
           public void execute() {
+            JuegoAppModel _juegoAppModel = new JuegoAppModel();
+            MapamundiView _mapamundiView = new MapamundiView(JuegoView.this, _juegoAppModel);
+            _mapamundiView.open();
           }
         };
         it.onClick(_function);

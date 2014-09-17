@@ -12,4 +12,4 @@ class NuevoVillanoView extends VillanoAbstractView{
 		new NuevoVillanoView().startApplication
 	}
 	
-}
+	}

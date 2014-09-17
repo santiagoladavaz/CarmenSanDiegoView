@@ -6,6 +6,7 @@ import Juego.Juego
 import org.uqbar.arena.layout.HorizontalLayout
 import org.uqbar.arena.widgets.Label
 import org.uqbar.arena.widgets.Button
+import Juego.JuegoAppModel
 
 class JuegoView extends MainWindow<Juego> {
 	
@@ -29,7 +30,7 @@ class JuegoView extends MainWindow<Juego> {
 		
 		new Button(mainPanel) => [ 
 			caption = "Mapamundi"
-			onClick [ | //new MapamundiView(this,  )
+			onClick [ | new MapamundiView(this, new JuegoAppModel()).open
 			]
 		]
 		

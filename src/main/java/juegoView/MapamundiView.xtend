@@ -34,17 +34,17 @@ class MapamundiView extends SimpleWindow<JuegoAppModel> {
 		
 		var Panel contentPanel = new Panel(mainPanel)
 		contentPanel.layout = new ColumnLayout(2)
-		this.crearListadoDeMaterias(contentPanel)
+		this.crearListadoDePaises(contentPanel)
 		this.crearPanelPaisSeleccionado(contentPanel)
 	}
 
-	def crearListadoDeMaterias(Panel owner) {
+	def crearListadoDePaises(Panel owner) {
 		var Panel panelDeListadoDePaises = new Panel(owner)
 		panelDeListadoDePaises.layout = new VerticalLayout
 
 		new Label(panelDeListadoDePaises).text = "Paises"
 		new List<Pais>(panelDeListadoDePaises) => [
-				bindItemsToProperty("MapamundiAppModel.juego.conexiones").adapter = new PropertyAdapter(Pais, "nombre")
+				bindItemsToProperty("juego.conexiones").adapter = new PropertyAdapter(Pais, "nombre")
 				heigth = 150
 				width = 130
 				bindValueToProperty("paisSeleccionado")
@@ -73,18 +73,30 @@ class MapamundiView extends SimpleWindow<JuegoAppModel> {
 		var Panel paisCompletaPanel = new Panel(owner)
 		paisCompletaPanel.layout = new VerticalLayout
 
+		new Label(paisCompletaPanel).setText("Nombre:")
+	
 		new Label(paisCompletaPanel) => [
-			text="Nombre:"
-			bindValueToProperty("MapamundiAppModel.paisSeleccionado.nombre")
-			]		
+			bindValueToProperty("paisSeleccionado.nombre")
+			]
+			
+		new Label(paisCompletaPanel).setText("Caracteristicas")
 		
-		//FALTA TERMINAR LA PARTE DONDE MUESTRA LOS DATOS DEL PAIS SELECCIONADO
+		new List(paisCompletaPanel)	=> [
+			bindValueToProperty("paisSeleccionado.caract")
+		]
 		
+		new Label(paisCompletaPanel).setText("Conexciones")
 		
+		new List(paisCompletaPanel)	=> [
+			bindValueToProperty("paisSeleccionado.conexiones")
+		]
 		
+		new Label(paisCompletaPanel).setText("Lugares de interes")
 		
-		
-		
+		new List(paisCompletaPanel)	=> [
+			bindValueToProperty("paisSeleccionado.lugares")
+		]
+
 		
 		}
 		
