@@ -58,15 +58,20 @@ class MapamundiView extends SimpleWindow<JuegoAppModel> {
 		
 		new Button(panelDeListadoDePaises) =>[
 			caption = "Editar"
-			onClick = [ | new EditarPaisView(modelObject.paisSeleccionado).open
+			onClick = [ | new EditarPaisView(this,modelObject.paisSeleccionado).open
 			]	
 		] 
 		
 		new Button(panelDeListadoDePaises) =>[
 			caption = "Nuevo"
-			onClick = [ | new NewPaisView().open
+			onClick = [ | new NewPaisView(this).open
 			]	
 		]  
+		
+		new Button(panelDeListadoDePaises)=> [
+			caption = "Aceptar"
+			onClick = [ | this.close]
+		]
 	}
 
 	def crearPanelPaisSeleccionado(Panel owner) {
@@ -85,7 +90,7 @@ class MapamundiView extends SimpleWindow<JuegoAppModel> {
 			bindValueToProperty("paisSeleccionado.caract")
 		]
 		
-		new Label(paisCompletaPanel).setText("Conexciones")
+		new Label(paisCompletaPanel).setText("Conexiones")
 		
 		new List(paisCompletaPanel)	=> [
 			bindValueToProperty("paisSeleccionado.conexiones")

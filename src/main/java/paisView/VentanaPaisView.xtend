@@ -6,17 +6,20 @@ import org.uqbar.arena.widgets.Label
 import org.uqbar.arena.widgets.List
 import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.widgets.TextBox
-import org.uqbar.arena.windows.MainWindow
+import org.uqbar.arena.windows.SimpleWindow
 import pais.Pais
 import pais.PaisApplicationModel
+import org.uqbar.arena.windows.WindowOwner
+import Juego.Juego
 
-abstract class VentanaPaisView extends MainWindow<Pais> {
+abstract class VentanaPaisView extends SimpleWindow<Pais> {
 	
-	new(Pais model) {
-		super(model)
+	new(WindowOwner w,Pais model) {
+		super(w,model)
 	}
 	
 	abstract override def String getTitle()
+	abstract def void procesar(Juego j, Pais p)
 	
 	override createContents(Panel mainPanel) {
 		this.setTitle(this.getTitle())
@@ -75,15 +78,9 @@ abstract class VentanaPaisView extends MainWindow<Pais> {
 	
 		new Button(mainPanel) => [ 
 			caption = "Aceptar"
-			onClick [ | print("nombre " + modelObject.nombre+"\n")
-				        print("conexiones "+modelObject.conexiones+"\n")
-				        print("caracteristicas "+modelObject.caract+"\n")
-				        print("lugares "+modelObject.lugares+"\n")
-				        print(modelObject.nombre !=null && !modelObject.conexiones.empty &&
-				        	!modelObject.lugares.empty && !modelObject.caract.empty)
-				        this.close()
+			onClick [ | this.procesar(Juego.getInstance,modelObject)
+						this.close()
 			]
-			bindEnabledToProperty("consistente")
 			disableOnError
 		]
    }

@@ -1,7 +1,6 @@
 package paisView;
 
-import com.google.common.base.Objects;
-import org.eclipse.xtext.xbase.lib.InputOutput;
+import Juego.Juego;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.uqbar.arena.layout.VerticalLayout;
@@ -10,10 +9,10 @@ import org.uqbar.arena.widgets.Label;
 import org.uqbar.arena.widgets.List;
 import org.uqbar.arena.widgets.Panel;
 import org.uqbar.arena.widgets.TextBox;
-import org.uqbar.arena.windows.MainWindow;
+import org.uqbar.arena.windows.SimpleWindow;
+import org.uqbar.arena.windows.WindowOwner;
 import org.uqbar.lacar.ui.model.Action;
 import org.uqbar.lacar.ui.model.ControlBuilder;
-import pais.Lugar;
 import pais.Pais;
 import pais.PaisApplicationModel;
 import paisView.EditarCaractPaisView;
@@ -21,12 +20,14 @@ import paisView.EditarConexionesView;
 import paisView.EditarLugaresView;
 
 @SuppressWarnings("all")
-public abstract class VentanaPaisView extends MainWindow<Pais> {
-  public VentanaPaisView(final Pais model) {
-    super(model);
+public abstract class VentanaPaisView extends SimpleWindow<Pais> {
+  public VentanaPaisView(final WindowOwner w, final Pais model) {
+    super(w, model);
   }
   
   public abstract String getTitle();
+  
+  public abstract void procesar(final Juego j, final Pais p);
   
   public void createContents(final Panel mainPanel) {
     String _title = this.getTitle();
@@ -130,65 +131,13 @@ public abstract class VentanaPaisView extends MainWindow<Pais> {
         it.setCaption("Aceptar");
         final Action _function = new Action() {
           public void execute() {
+            Juego _instance = Juego.getInstance();
             Pais _modelObject = VentanaPaisView.this.getModelObject();
-            String _nombre = _modelObject.getNombre();
-            String _plus = ("nombre " + _nombre);
-            String _plus_1 = (_plus + "\n");
-            InputOutput.<String>print(_plus_1);
-            Pais _modelObject_1 = VentanaPaisView.this.getModelObject();
-            java.util.List<Pais> _conexiones = _modelObject_1.getConexiones();
-            String _plus_2 = ("conexiones " + _conexiones);
-            String _plus_3 = (_plus_2 + "\n");
-            InputOutput.<String>print(_plus_3);
-            Pais _modelObject_2 = VentanaPaisView.this.getModelObject();
-            java.util.List<String> _caract = _modelObject_2.getCaract();
-            String _plus_4 = ("caracteristicas " + _caract);
-            String _plus_5 = (_plus_4 + "\n");
-            InputOutput.<String>print(_plus_5);
-            Pais _modelObject_3 = VentanaPaisView.this.getModelObject();
-            java.util.List<Lugar> _lugares = _modelObject_3.getLugares();
-            String _plus_6 = ("lugares " + _lugares);
-            String _plus_7 = (_plus_6 + "\n");
-            InputOutput.<String>print(_plus_7);
-            boolean _and = false;
-            boolean _and_1 = false;
-            boolean _and_2 = false;
-            Pais _modelObject_4 = VentanaPaisView.this.getModelObject();
-            String _nombre_1 = _modelObject_4.getNombre();
-            boolean _notEquals = (!Objects.equal(_nombre_1, null));
-            if (!_notEquals) {
-              _and_2 = false;
-            } else {
-              Pais _modelObject_5 = VentanaPaisView.this.getModelObject();
-              java.util.List<Pais> _conexiones_1 = _modelObject_5.getConexiones();
-              boolean _isEmpty = _conexiones_1.isEmpty();
-              boolean _not = (!_isEmpty);
-              _and_2 = _not;
-            }
-            if (!_and_2) {
-              _and_1 = false;
-            } else {
-              Pais _modelObject_6 = VentanaPaisView.this.getModelObject();
-              java.util.List<Lugar> _lugares_1 = _modelObject_6.getLugares();
-              boolean _isEmpty_1 = _lugares_1.isEmpty();
-              boolean _not_1 = (!_isEmpty_1);
-              _and_1 = _not_1;
-            }
-            if (!_and_1) {
-              _and = false;
-            } else {
-              Pais _modelObject_7 = VentanaPaisView.this.getModelObject();
-              java.util.List<String> _caract_1 = _modelObject_7.getCaract();
-              boolean _isEmpty_2 = _caract_1.isEmpty();
-              boolean _not_2 = (!_isEmpty_2);
-              _and = _not_2;
-            }
-            InputOutput.<Boolean>print(Boolean.valueOf(_and));
+            VentanaPaisView.this.procesar(_instance, _modelObject);
             VentanaPaisView.this.close();
           }
         };
         it.onClick(_function);
-        it.<ControlBuilder>bindEnabledToProperty("consistente");
         it.disableOnError();
       }
     };

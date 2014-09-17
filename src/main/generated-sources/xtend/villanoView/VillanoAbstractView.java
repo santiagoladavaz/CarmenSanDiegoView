@@ -1,6 +1,6 @@
 package villanoView;
 
-import org.eclipse.xtext.xbase.lib.InputOutput;
+import Juego.Juego;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.uqbar.arena.layout.VerticalLayout;
@@ -9,7 +9,8 @@ import org.uqbar.arena.widgets.Label;
 import org.uqbar.arena.widgets.List;
 import org.uqbar.arena.widgets.Panel;
 import org.uqbar.arena.widgets.TextBox;
-import org.uqbar.arena.windows.MainWindow;
+import org.uqbar.arena.windows.SimpleWindow;
+import org.uqbar.arena.windows.WindowOwner;
 import org.uqbar.lacar.ui.model.Action;
 import org.uqbar.lacar.ui.model.ControlBuilder;
 import persona.Villano;
@@ -18,12 +19,14 @@ import villanoView.EditarHobbiesView;
 import villanoView.EditarSeniasPartView;
 
 @SuppressWarnings("all")
-public abstract class VillanoAbstractView extends MainWindow<Villano> {
-  public VillanoAbstractView() {
-    super(new Villano());
+public abstract class VillanoAbstractView extends SimpleWindow<Villano> {
+  public VillanoAbstractView(final WindowOwner w, final Villano v) {
+    super(w, v);
   }
   
   public abstract String getTitle();
+  
+  public abstract void procesar(final Juego j, final Villano v);
   
   public void createContents(final Panel mainPanel) {
     String _title = this.getTitle();
@@ -112,18 +115,10 @@ public abstract class VillanoAbstractView extends MainWindow<Villano> {
         it.setCaption("Aceptar");
         final Action _function = new Action() {
           public void execute() {
-            VillanoAbstractView.this.close();
+            Juego _instance = Juego.getInstance();
             Villano _modelObject = VillanoAbstractView.this.getModelObject();
-            String _nombre = _modelObject.getNombre();
-            InputOutput.<String>print(_nombre);
-            Villano _modelObject_1 = VillanoAbstractView.this.getModelObject();
-            InputOutput.<Villano>print(_modelObject_1);
-            Villano _modelObject_2 = VillanoAbstractView.this.getModelObject();
-            java.util.List<String> _señas = _modelObject_2.getSeñas();
-            InputOutput.<java.util.List<String>>print(_señas);
-            Villano _modelObject_3 = VillanoAbstractView.this.getModelObject();
-            java.util.List<String> _hobbie = _modelObject_3.getHobbie();
-            InputOutput.<java.util.List<String>>print(_hobbie);
+            VillanoAbstractView.this.procesar(_instance, _modelObject);
+            VillanoAbstractView.this.close();
           }
         };
         it.onClick(_function);

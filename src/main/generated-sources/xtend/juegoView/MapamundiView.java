@@ -85,7 +85,7 @@ public class MapamundiView extends SimpleWindow<JuegoAppModel> {
             public void execute() {
               JuegoAppModel _modelObject = MapamundiView.this.getModelObject();
               Pais _paisSeleccionado = _modelObject.getPaisSeleccionado();
-              EditarPaisView _editarPaisView = new EditarPaisView(_paisSeleccionado);
+              EditarPaisView _editarPaisView = new EditarPaisView(MapamundiView.this, _paisSeleccionado);
               _editarPaisView.open();
             }
           };
@@ -99,14 +99,27 @@ public class MapamundiView extends SimpleWindow<JuegoAppModel> {
           it.setCaption("Nuevo");
           final Action _function = new Action() {
             public void execute() {
-              NewPaisView _newPaisView = new NewPaisView();
+              NewPaisView _newPaisView = new NewPaisView(MapamundiView.this);
               _newPaisView.open();
             }
           };
           it.onClick(_function);
         }
       };
-      _xblockexpression = ObjectExtensions.<Button>operator_doubleArrow(_button_2, _function_3);
+      ObjectExtensions.<Button>operator_doubleArrow(_button_2, _function_3);
+      Button _button_3 = new Button(panelDeListadoDePaises);
+      final Procedure1<Button> _function_4 = new Procedure1<Button>() {
+        public void apply(final Button it) {
+          it.setCaption("Aceptar");
+          final Action _function = new Action() {
+            public void execute() {
+              MapamundiView.this.close();
+            }
+          };
+          it.onClick(_function);
+        }
+      };
+      _xblockexpression = ObjectExtensions.<Button>operator_doubleArrow(_button_3, _function_4);
     }
     return _xblockexpression;
   }
@@ -136,7 +149,7 @@ public class MapamundiView extends SimpleWindow<JuegoAppModel> {
       };
       ObjectExtensions.<List<Object>>operator_doubleArrow(_list, _function_1);
       Label _label_3 = new Label(paisCompletaPanel);
-      _label_3.setText("Conexciones");
+      _label_3.setText("Conexiones");
       List<Object> _list_1 = new List<Object>(paisCompletaPanel);
       final Procedure1<List<Object>> _function_2 = new Procedure1<List<Object>>() {
         public void apply(final List<Object> it) {

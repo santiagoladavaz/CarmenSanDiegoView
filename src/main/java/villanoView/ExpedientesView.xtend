@@ -8,6 +8,7 @@ import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.windows.SimpleWindow
 import org.uqbar.arena.windows.WindowOwner
 import persona.VillanoApplicationModel
+import persona.Villano
 
 class ExpedientesView extends SimpleWindow<VillanoApplicationModel>{
 	
@@ -64,12 +65,18 @@ class ExpedientesView extends SimpleWindow<VillanoApplicationModel>{
 		
 		new Button(mainPanel) => [
 			caption = "Nuevo"
-			onClick = [|new NuevoVillanoView().open]
+			onClick = [|new NuevoVillanoView(this,new Villano).open]
 		]
 		
 		new Button(mainPanel) => [
 			caption = "Editar"
-			onClick = [|new EditarVillanoView().open]
+			onClick = [|new EditarVillanoView(this,modelObject.villano).open]
+			
+		]
+		
+		new Button(mainPanel) => [
+			caption = "Aceptar"
+			onClick = [ | this.close]
 		]		
 		
 	}

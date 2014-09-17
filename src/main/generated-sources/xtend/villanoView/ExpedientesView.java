@@ -11,6 +11,7 @@ import org.uqbar.arena.windows.SimpleWindow;
 import org.uqbar.arena.windows.WindowOwner;
 import org.uqbar.lacar.ui.model.Action;
 import org.uqbar.lacar.ui.model.ControlBuilder;
+import persona.Villano;
 import persona.VillanoApplicationModel;
 import villanoView.EditarVillanoView;
 import villanoView.NuevoVillanoView;
@@ -82,7 +83,8 @@ public class ExpedientesView extends SimpleWindow<VillanoApplicationModel> {
         it.setCaption("Nuevo");
         final Action _function = new Action() {
           public void execute() {
-            NuevoVillanoView _nuevoVillanoView = new NuevoVillanoView();
+            Villano _villano = new Villano();
+            NuevoVillanoView _nuevoVillanoView = new NuevoVillanoView(ExpedientesView.this, _villano);
             _nuevoVillanoView.open();
           }
         };
@@ -96,7 +98,9 @@ public class ExpedientesView extends SimpleWindow<VillanoApplicationModel> {
         it.setCaption("Editar");
         final Action _function = new Action() {
           public void execute() {
-            EditarVillanoView _editarVillanoView = new EditarVillanoView();
+            VillanoApplicationModel _modelObject = ExpedientesView.this.getModelObject();
+            Villano _villano = _modelObject.getVillano();
+            EditarVillanoView _editarVillanoView = new EditarVillanoView(ExpedientesView.this, _villano);
             _editarVillanoView.open();
           }
         };
@@ -104,5 +108,18 @@ public class ExpedientesView extends SimpleWindow<VillanoApplicationModel> {
       }
     };
     ObjectExtensions.<Button>operator_doubleArrow(_button_1, _function_3);
+    Button _button_2 = new Button(mainPanel);
+    final Procedure1<Button> _function_4 = new Procedure1<Button>() {
+      public void apply(final Button it) {
+        it.setCaption("Aceptar");
+        final Action _function = new Action() {
+          public void execute() {
+            ExpedientesView.this.close();
+          }
+        };
+        it.onClick(_function);
+      }
+    };
+    ObjectExtensions.<Button>operator_doubleArrow(_button_2, _function_4);
   }
 }

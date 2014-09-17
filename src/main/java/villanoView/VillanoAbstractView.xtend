@@ -6,20 +6,23 @@ import org.uqbar.arena.widgets.Label
 import org.uqbar.arena.widgets.List
 import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.widgets.TextBox
-import org.uqbar.arena.windows.MainWindow
+import org.uqbar.arena.windows.SimpleWindow
 import persona.Villano
 import persona.VillanoApplicationModel
+import org.uqbar.arena.windows.WindowOwner
+import Juego.Juego
 
-abstract class VillanoAbstractView extends MainWindow<Villano>{
+abstract class VillanoAbstractView extends SimpleWindow<Villano>{
 
 	
-	new() {
-		super(new Villano)
+	new(WindowOwner w,Villano v) {
+		super(w,v)
 		
 	}	
 
 
 	abstract override def String getTitle()
+	abstract def void procesar(Juego j,Villano v)
 	
 	override createContents(Panel mainPanel) {
 		
@@ -80,12 +83,9 @@ abstract class VillanoAbstractView extends MainWindow<Villano>{
 	
 	new Button(mainPanel) => [ 
 			caption = "Aceptar"
-			onClick [ | this.close()
-				        print(modelObject.nombre)
-				        print(modelObject)
-				        print(modelObject.señas)
-				        print(modelObject.hobbie)
-				        ]
+			onClick [ |	this.procesar(Juego.getInstance,modelObject)
+						this.close()
+				    ]
 				    bindEnabledToProperty("consistente")
 				    disableOnError
 			
