@@ -82,24 +82,31 @@ class MapamundiView extends SimpleWindow<JuegoAppModel> {
 	
 		new Label(paisCompletaPanel) => [
 			bindValueToProperty("paisSeleccionado.nombre")
-			]
+		]
 			
 		new Label(paisCompletaPanel).setText("Caracteristicas")
 		
 		new List(paisCompletaPanel)	=> [
-			bindValueToProperty("paisSeleccionado.caract")
+			bindItemsToProperty("paisSeleccionado.caract")
+			heigth = 100
+			width = 300
+			
 		]
 		
 		new Label(paisCompletaPanel).setText("Conexiones")
 		
 		new List(paisCompletaPanel)	=> [
-			bindValueToProperty("paisSeleccionado.conexiones")
+			bindItemsToProperty("paisSeleccionado.conexiones")
+			heigth = 100
+			width = 300
 		]
 		
 		new Label(paisCompletaPanel).setText("Lugares de interes")
 		
 		new List(paisCompletaPanel)	=> [
-			bindValueToProperty("paisSeleccionado.lugares")
+			bindItemsToProperty("paisSeleccionado.lugares")
+			heigth = 100
+			width = 300
 		]
 
 		

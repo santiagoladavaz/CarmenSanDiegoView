@@ -9,6 +9,7 @@ import org.uqbar.arena.widgets.Button
 import org.uqbar.arena.layout.ColumnLayout
 import org.uqbar.arena.layout.VerticalLayout
 import org.uqbar.arena.widgets.List
+import persona.DetectiveApplicationModel
 
 class ResolverMisterioView extends SimpleWindow<Juego> {
 	
@@ -88,10 +89,17 @@ class ResolverMisterioView extends SimpleWindow<Juego> {
 			]
 		]
 		
+		
+		new Label(botones) => [
+			text = "Orden ya emitida: "
+			bindValueToProperty("detective.ordenDeArresto")
+		]	
+		
+		
 		new Button(botones) => [
 			caption = "Viajar"
 			onClick = [ | 
-				//new ViajarView(this, )
+				new ViajarView(this,new DetectiveApplicationModel()).open
 			]
 		]
 		

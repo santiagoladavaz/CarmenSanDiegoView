@@ -144,7 +144,9 @@ public class MapamundiView extends SimpleWindow<JuegoAppModel> {
       List<Object> _list = new List<Object>(paisCompletaPanel);
       final Procedure1<List<Object>> _function_1 = new Procedure1<List<Object>>() {
         public void apply(final List<Object> it) {
-          it.<ControlBuilder>bindValueToProperty("paisSeleccionado.caract");
+          it.bindItemsToProperty("paisSeleccionado.caract");
+          it.setHeigth(100);
+          it.setWidth(300);
         }
       };
       ObjectExtensions.<List<Object>>operator_doubleArrow(_list, _function_1);
@@ -153,7 +155,9 @@ public class MapamundiView extends SimpleWindow<JuegoAppModel> {
       List<Object> _list_1 = new List<Object>(paisCompletaPanel);
       final Procedure1<List<Object>> _function_2 = new Procedure1<List<Object>>() {
         public void apply(final List<Object> it) {
-          it.<ControlBuilder>bindValueToProperty("paisSeleccionado.conexiones");
+          it.bindItemsToProperty("paisSeleccionado.conexiones");
+          it.setHeigth(100);
+          it.setWidth(300);
         }
       };
       ObjectExtensions.<List<Object>>operator_doubleArrow(_list_1, _function_2);
@@ -162,7 +166,9 @@ public class MapamundiView extends SimpleWindow<JuegoAppModel> {
       List<Object> _list_2 = new List<Object>(paisCompletaPanel);
       final Procedure1<List<Object>> _function_3 = new Procedure1<List<Object>>() {
         public void apply(final List<Object> it) {
-          it.<ControlBuilder>bindValueToProperty("paisSeleccionado.lugares");
+          it.bindItemsToProperty("paisSeleccionado.lugares");
+          it.setHeigth(100);
+          it.setWidth(300);
         }
       };
       _xblockexpression = ObjectExtensions.<List<Object>>operator_doubleArrow(_list_2, _function_3);
