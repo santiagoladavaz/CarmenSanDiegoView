@@ -2,6 +2,7 @@ package juegoView;
 
 import Juego.Juego;
 import Juego.JuegoAppModel;
+import juegoView.InicioJuegoView;
 import juegoView.MapamundiView;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
@@ -32,6 +33,9 @@ public class JuegoView extends MainWindow<Juego> {
         it.setCaption("Resolver Misterio");
         final Action _function = new Action() {
           public void execute() {
+            Juego _modelObject = JuegoView.this.getModelObject();
+            InicioJuegoView _inicioJuegoView = new InicioJuegoView(JuegoView.this, _modelObject);
+            _inicioJuegoView.open();
           }
         };
         it.onClick(_function);
