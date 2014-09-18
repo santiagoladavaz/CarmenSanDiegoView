@@ -2,6 +2,8 @@ package juegoView;
 
 import Juego.Caso;
 import Juego.Juego;
+import java.util.List;
+import juegoView.OrdenDeArrestoView;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.uqbar.arena.layout.ColumnLayout;
@@ -13,6 +15,9 @@ import org.uqbar.arena.windows.SimpleWindow;
 import org.uqbar.arena.windows.WindowOwner;
 import org.uqbar.lacar.ui.model.Action;
 import org.uqbar.lacar.ui.model.ControlBuilder;
+import pais.Lugar;
+import pais.Pais;
+import persona.Detective;
 
 @SuppressWarnings("all")
 public class ResolverMisterioView extends SimpleWindow<Juego> {
@@ -57,7 +62,13 @@ public class ResolverMisterioView extends SimpleWindow<Juego> {
       Button _button = new Button(listadoLugaresPanel);
       final Procedure1<Button> _function_1 = new Procedure1<Button>() {
         public void apply(final Button it) {
-          it.setCaption("sarasa");
+          Juego _modelObject = ResolverMisterioView.this.getModelObject();
+          Detective _detective = _modelObject.getDetective();
+          Pais _paisActual = _detective.getPaisActual();
+          List<Lugar> _lugares = _paisActual.getLugares();
+          Lugar _get = _lugares.get(0);
+          String _nombre = _get.getNombre();
+          it.setCaption(_nombre);
           final Action _function = new Action() {
             public void execute() {
             }
@@ -69,7 +80,13 @@ public class ResolverMisterioView extends SimpleWindow<Juego> {
       Button _button_1 = new Button(listadoLugaresPanel);
       final Procedure1<Button> _function_2 = new Procedure1<Button>() {
         public void apply(final Button it) {
-          it.setCaption("hola");
+          Juego _modelObject = ResolverMisterioView.this.getModelObject();
+          Detective _detective = _modelObject.getDetective();
+          Pais _paisActual = _detective.getPaisActual();
+          List<Lugar> _lugares = _paisActual.getLugares();
+          Lugar _get = _lugares.get(1);
+          String _nombre = _get.getNombre();
+          it.setCaption(_nombre);
           final Action _function = new Action() {
             public void execute() {
             }
@@ -81,7 +98,13 @@ public class ResolverMisterioView extends SimpleWindow<Juego> {
       Button _button_2 = new Button(listadoLugaresPanel);
       final Procedure1<Button> _function_3 = new Procedure1<Button>() {
         public void apply(final Button it) {
-          it.setCaption("gkgk");
+          Juego _modelObject = ResolverMisterioView.this.getModelObject();
+          Detective _detective = _modelObject.getDetective();
+          Pais _paisActual = _detective.getPaisActual();
+          List<Lugar> _lugares = _paisActual.getLugares();
+          Lugar _get = _lugares.get(2);
+          String _nombre = _get.getNombre();
+          it.setCaption(_nombre);
           final Action _function = new Action() {
             public void execute() {
             }
@@ -94,8 +117,8 @@ public class ResolverMisterioView extends SimpleWindow<Juego> {
     return _xblockexpression;
   }
   
-  public Button crearBotonesDetective(final Panel owner) {
-    Button _xblockexpression = null;
+  public org.uqbar.arena.widgets.List<Object> crearBotonesDetective(final Panel owner) {
+    org.uqbar.arena.widgets.List<Object> _xblockexpression = null;
     {
       Panel botones = new Panel(owner);
       VerticalLayout _verticalLayout = new VerticalLayout();
@@ -114,6 +137,9 @@ public class ResolverMisterioView extends SimpleWindow<Juego> {
           it.setCaption("Orden de arresto");
           final Action _function = new Action() {
             public void execute() {
+              Juego _modelObject = ResolverMisterioView.this.getModelObject();
+              OrdenDeArrestoView _ordenDeArrestoView = new OrdenDeArrestoView(ResolverMisterioView.this, _modelObject);
+              _ordenDeArrestoView.open();
             }
           };
           it.onClick(_function);
@@ -143,7 +169,39 @@ public class ResolverMisterioView extends SimpleWindow<Juego> {
           it.onClick(_function);
         }
       };
-      _xblockexpression = ObjectExtensions.<Button>operator_doubleArrow(_button_2, _function_3);
+      ObjectExtensions.<Button>operator_doubleArrow(_button_2, _function_3);
+      Label _label_1 = new Label(botones);
+      final Procedure1<Label> _function_4 = new Procedure1<Label>() {
+        public void apply(final Label it) {
+          it.setText("Recorrido Actual");
+        }
+      };
+      ObjectExtensions.<Label>operator_doubleArrow(_label_1, _function_4);
+      org.uqbar.arena.widgets.List<Object> _list = new org.uqbar.arena.widgets.List<Object>(botones);
+      final Procedure1<org.uqbar.arena.widgets.List<Object>> _function_5 = new Procedure1<org.uqbar.arena.widgets.List<Object>>() {
+        public void apply(final org.uqbar.arena.widgets.List<Object> it) {
+          it.bindItemsToProperty("detective.recorridoCriminal");
+          it.setHeigth(100);
+          it.setWidth(300);
+        }
+      };
+      ObjectExtensions.<org.uqbar.arena.widgets.List<Object>>operator_doubleArrow(_list, _function_5);
+      Label _label_2 = new Label(botones);
+      final Procedure1<Label> _function_6 = new Procedure1<Label>() {
+        public void apply(final Label it) {
+          it.setText("Destinos Fallidos");
+        }
+      };
+      ObjectExtensions.<Label>operator_doubleArrow(_label_2, _function_6);
+      org.uqbar.arena.widgets.List<Object> _list_1 = new org.uqbar.arena.widgets.List<Object>(botones);
+      final Procedure1<org.uqbar.arena.widgets.List<Object>> _function_7 = new Procedure1<org.uqbar.arena.widgets.List<Object>>() {
+        public void apply(final org.uqbar.arena.widgets.List<Object> it) {
+          it.bindItemsToProperty("detective.destinosFallidos");
+          it.setHeigth(100);
+          it.setWidth(300);
+        }
+      };
+      _xblockexpression = ObjectExtensions.<org.uqbar.arena.widgets.List<Object>>operator_doubleArrow(_list_1, _function_7);
     }
     return _xblockexpression;
   }

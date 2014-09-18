@@ -8,6 +8,7 @@ import org.uqbar.arena.widgets.Label
 import org.uqbar.arena.widgets.Button
 import org.uqbar.arena.layout.ColumnLayout
 import org.uqbar.arena.layout.VerticalLayout
+import org.uqbar.arena.widgets.List
 
 class ResolverMisterioView extends SimpleWindow<Juego> {
 	
@@ -23,6 +24,10 @@ class ResolverMisterioView extends SimpleWindow<Juego> {
 		throw new UnsupportedOperationException("TODO: auto-generated method stub")
 	}
 	
+	
+	
+	
+	
 	override createMainTemplate(Panel mainPanel){
 		this.setTitle("Resolviendo: "+ modelObject.casoSeleccionado.nombre)
 		
@@ -31,6 +36,7 @@ class ResolverMisterioView extends SimpleWindow<Juego> {
 		this.crearBotonesDetective(contentPanel)
 		this.crearListadoLugares(contentPanel)
 		}
+	
 	
 	def crearListadoLugares(Panel owner) {
 		
@@ -42,21 +48,21 @@ class ResolverMisterioView extends SimpleWindow<Juego> {
 		]
 		
 		new Button(listadoLugaresPanel) => [
-			caption = "sarasa"//modelObject.detective.paisActual.getLugares().get(0).getNombre()
+			caption = modelObject.detective.paisActual.getLugares().get(0).getNombre()
 			onClick = [ | 
 				//new dameLasPistasView(this, )
 			]
 		]
 		
 		new Button(listadoLugaresPanel) => [
-			caption = "hola"//modelObject.detective.paisActual.getLugares().get(1).getNombre()
+			caption = modelObject.detective.paisActual.getLugares().get(1).getNombre()
 			onClick = [ | 
 				//new dameLasPistasView(this, )
 			]
 		]
 		
 		new Button(listadoLugaresPanel) => [
-			caption = "gkgk" //modelObject.detective.paisActual.getLugares().get(2).getNombre()
+			caption = modelObject.detective.paisActual.getLugares().get(2).getNombre()
 			onClick = [ | 
 				//new dameLasPistasView(this, )
 			]
@@ -78,7 +84,7 @@ class ResolverMisterioView extends SimpleWindow<Juego> {
 		new Button(botones) => [
 			caption = "Orden de arresto"
 			onClick = [ | 
-				//new OrdenDeArrestoView(this, )
+				new OrdenDeArrestoView(this,modelObject).open
 			]
 		]
 		
@@ -95,7 +101,30 @@ class ResolverMisterioView extends SimpleWindow<Juego> {
 				//new newExpedienteSinBotonesView(this, )
 			]
 		]
-		}
+	
+	
+	new Label(botones) => [ 
+			text = "Recorrido Actual"
+		]
+		
+		new List(botones) => [
+			bindItemsToProperty("detective.recorridoCriminal")
+			heigth = 100
+			width = 300
+		]
+		
+	new Label(botones) => [ 
+			text = "Destinos Fallidos"
+		]
+		
+		new List(botones) => [
+			bindItemsToProperty("detective.destinosFallidos")
+			heigth = 100
+			width = 300
+		]
+		
+		
+	}
 		
 		
 
