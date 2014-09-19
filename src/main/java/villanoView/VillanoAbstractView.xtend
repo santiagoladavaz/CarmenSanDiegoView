@@ -11,6 +11,7 @@ import persona.Villano
 import persona.VillanoApplicationModel
 import org.uqbar.arena.windows.WindowOwner
 import Juego.Juego
+import components.Lista
 
 abstract class VillanoAbstractView extends SimpleWindow<Villano>{
 
@@ -30,7 +31,6 @@ abstract class VillanoAbstractView extends SimpleWindow<Villano>{
 		mainPanel.setLayout(new VerticalLayout)	
 		
 	
-	
 		new Label(mainPanel).setText("Nombre:")
 	
 		new TextBox(mainPanel).bindValueToProperty("nombre")
@@ -47,48 +47,32 @@ abstract class VillanoAbstractView extends SimpleWindow<Villano>{
 			
 		]
 
-		new Label(mainPanel) => [ 
-			text = "Seña"
-		]
-		new List(mainPanel) => [
-			bindItemsToProperty("señas")
-			heigth = 100
-			width = 500
-		]
+		
+		new Lista(mainPanel,"Seña","señas")
+		
 
 	
-	new Label(mainPanel).setText("Hobbie:")
+		new Label(mainPanel).setText("Hobbie:")
 	
 	
 	
-	new Button(mainPanel) => [ 
+		new Button(mainPanel) => [ 
 			caption = "Editar Hobbies"
 			onClick [ | new EditarHobbiesView(this,new VillanoApplicationModel(modelObject)).open ]
 		]	
 	
 
 
-		new Label(mainPanel) => [ 
-			text = "Hobbies"
-		]
-		new List(mainPanel) => [
-			bindItemsToProperty("hobbie")
-			heigth = 100
-			width = 500
-		]
-
-
-
+		new Lista(mainPanel,"Hobbies","hobbie")	
 	
-	
-	new Button(mainPanel) => [ 
+		
+		new Button(mainPanel) => [ 
 			caption = "Aceptar"
 			onClick [ |	this.procesar(Juego.getInstance,modelObject)
 						this.close()
 				    ]
 				    bindEnabledToProperty("consistente")
 				    disableOnError
-			
 		]	
 		
 	}

@@ -1,12 +1,12 @@
 package villanoView;
 
 import Juego.Juego;
+import components.Lista;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.uqbar.arena.layout.VerticalLayout;
 import org.uqbar.arena.widgets.Button;
 import org.uqbar.arena.widgets.Label;
-import org.uqbar.arena.widgets.List;
 import org.uqbar.arena.widgets.Panel;
 import org.uqbar.arena.widgets.TextBox;
 import org.uqbar.arena.windows.SimpleWindow;
@@ -59,26 +59,11 @@ public abstract class VillanoAbstractView extends SimpleWindow<Villano> {
       }
     };
     ObjectExtensions.<Button>operator_doubleArrow(_button, _function);
+    new Lista(mainPanel, "Seña", "señas");
     Label _label_3 = new Label(mainPanel);
-    final Procedure1<Label> _function_1 = new Procedure1<Label>() {
-      public void apply(final Label it) {
-        it.setText("Seña");
-      }
-    };
-    ObjectExtensions.<Label>operator_doubleArrow(_label_3, _function_1);
-    List<Object> _list = new List<Object>(mainPanel);
-    final Procedure1<List<Object>> _function_2 = new Procedure1<List<Object>>() {
-      public void apply(final List<Object> it) {
-        it.bindItemsToProperty("señas");
-        it.setHeigth(100);
-        it.setWidth(500);
-      }
-    };
-    ObjectExtensions.<List<Object>>operator_doubleArrow(_list, _function_2);
-    Label _label_4 = new Label(mainPanel);
-    _label_4.setText("Hobbie:");
+    _label_3.setText("Hobbie:");
     Button _button_1 = new Button(mainPanel);
-    final Procedure1<Button> _function_3 = new Procedure1<Button>() {
+    final Procedure1<Button> _function_1 = new Procedure1<Button>() {
       public void apply(final Button it) {
         it.setCaption("Editar Hobbies");
         final Action _function = new Action() {
@@ -92,25 +77,10 @@ public abstract class VillanoAbstractView extends SimpleWindow<Villano> {
         it.onClick(_function);
       }
     };
-    ObjectExtensions.<Button>operator_doubleArrow(_button_1, _function_3);
-    Label _label_5 = new Label(mainPanel);
-    final Procedure1<Label> _function_4 = new Procedure1<Label>() {
-      public void apply(final Label it) {
-        it.setText("Hobbies");
-      }
-    };
-    ObjectExtensions.<Label>operator_doubleArrow(_label_5, _function_4);
-    List<Object> _list_1 = new List<Object>(mainPanel);
-    final Procedure1<List<Object>> _function_5 = new Procedure1<List<Object>>() {
-      public void apply(final List<Object> it) {
-        it.bindItemsToProperty("hobbie");
-        it.setHeigth(100);
-        it.setWidth(500);
-      }
-    };
-    ObjectExtensions.<List<Object>>operator_doubleArrow(_list_1, _function_5);
+    ObjectExtensions.<Button>operator_doubleArrow(_button_1, _function_1);
+    new Lista(mainPanel, "Hobbies", "hobbie");
     Button _button_2 = new Button(mainPanel);
-    final Procedure1<Button> _function_6 = new Procedure1<Button>() {
+    final Procedure1<Button> _function_2 = new Procedure1<Button>() {
       public void apply(final Button it) {
         it.setCaption("Aceptar");
         final Action _function = new Action() {
@@ -126,6 +96,6 @@ public abstract class VillanoAbstractView extends SimpleWindow<Villano> {
         it.disableOnError();
       }
     };
-    ObjectExtensions.<Button>operator_doubleArrow(_button_2, _function_6);
+    ObjectExtensions.<Button>operator_doubleArrow(_button_2, _function_2);
   }
 }

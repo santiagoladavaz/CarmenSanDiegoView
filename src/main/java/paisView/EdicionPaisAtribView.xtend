@@ -1,11 +1,10 @@
 package paisView
 
 import Juego.Juego
+import components.Lista
 import org.uqbar.arena.bindings.ObservableProperty
 import org.uqbar.arena.layout.VerticalLayout
 import org.uqbar.arena.widgets.Button
-import org.uqbar.arena.widgets.Label
-import org.uqbar.arena.widgets.List
 import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.widgets.Selector
 import org.uqbar.arena.windows.Dialog
@@ -16,6 +15,15 @@ abstract class EdicionPaisAtribView extends Dialog<PaisApplicationModel>{
 	
 	@Property Juego juego = Juego.getInstance()
 	
+	abstract def String getGetJuegoEditableProperty()
+	abstract def String getEditableProperty()
+	abstract def String propertyToAdd()
+	abstract override String getTitle()
+	abstract def void agregarLugarOConexion()
+	abstract def void eliminarLugarOConexion()
+	abstract def String getTitleTable()
+	
+
 	//Clase abstracta de las ediciones de Lugares y Conexiones
 	
 	new(WindowOwner owner, PaisApplicationModel model) {
@@ -26,14 +34,9 @@ abstract class EdicionPaisAtribView extends Dialog<PaisApplicationModel>{
 		this.setTitle(this.getTitle())
 		mainPanel.setLayout(new VerticalLayout)	
 		
-		new Label(mainPanel) => [ 
-			text = getTitleTable()
-		]
-		new List(mainPanel) => [
-			bindItemsToProperty(this.getEditableProperty)
-			heigth = 100
-			width = 500
-		]
+		
+		new Lista(mainPanel,getTitleTable,getEditableProperty)
+		
 	
 		new Button(mainPanel) => [ 
 			caption = "Eliminar"
@@ -62,12 +65,5 @@ abstract class EdicionPaisAtribView extends Dialog<PaisApplicationModel>{
 	
 	}
 	
-	abstract def String getGetJuegoEditableProperty()
-	abstract def String getEditableProperty()
-	abstract def String propertyToAdd()
-	abstract override String getTitle()
-	abstract def void agregarLugarOConexion()
-	abstract def void eliminarLugarOConexion()
-	abstract def String getTitleTable()
 	
 }

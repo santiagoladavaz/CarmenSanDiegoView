@@ -1,6 +1,7 @@
 package juegoView;
 
 import Juego.JuegoAppModel;
+import components.Lista;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.uqbar.arena.bindings.PropertyAdapter;
@@ -124,8 +125,8 @@ public class MapamundiView extends SimpleWindow<JuegoAppModel> {
     return _xblockexpression;
   }
   
-  public List<Object> crearPanelPaisSeleccionado(final Panel owner) {
-    List<Object> _xblockexpression = null;
+  public Lista crearPanelPaisSeleccionado(final Panel owner) {
+    Lista _xblockexpression = null;
     {
       Panel paisCompletaPanel = new Panel(owner);
       VerticalLayout _verticalLayout = new VerticalLayout();
@@ -139,39 +140,9 @@ public class MapamundiView extends SimpleWindow<JuegoAppModel> {
         }
       };
       ObjectExtensions.<Label>operator_doubleArrow(_label_1, _function);
-      Label _label_2 = new Label(paisCompletaPanel);
-      _label_2.setText("Caracteristicas");
-      List<Object> _list = new List<Object>(paisCompletaPanel);
-      final Procedure1<List<Object>> _function_1 = new Procedure1<List<Object>>() {
-        public void apply(final List<Object> it) {
-          it.bindItemsToProperty("paisSeleccionado.caract");
-          it.setHeigth(100);
-          it.setWidth(300);
-        }
-      };
-      ObjectExtensions.<List<Object>>operator_doubleArrow(_list, _function_1);
-      Label _label_3 = new Label(paisCompletaPanel);
-      _label_3.setText("Conexiones");
-      List<Object> _list_1 = new List<Object>(paisCompletaPanel);
-      final Procedure1<List<Object>> _function_2 = new Procedure1<List<Object>>() {
-        public void apply(final List<Object> it) {
-          it.bindItemsToProperty("paisSeleccionado.conexiones");
-          it.setHeigth(100);
-          it.setWidth(300);
-        }
-      };
-      ObjectExtensions.<List<Object>>operator_doubleArrow(_list_1, _function_2);
-      Label _label_4 = new Label(paisCompletaPanel);
-      _label_4.setText("Lugares de interes");
-      List<Object> _list_2 = new List<Object>(paisCompletaPanel);
-      final Procedure1<List<Object>> _function_3 = new Procedure1<List<Object>>() {
-        public void apply(final List<Object> it) {
-          it.bindItemsToProperty("paisSeleccionado.lugares");
-          it.setHeigth(100);
-          it.setWidth(300);
-        }
-      };
-      _xblockexpression = ObjectExtensions.<List<Object>>operator_doubleArrow(_list_2, _function_3);
+      new Lista(paisCompletaPanel, "Caracteristicas", "paisSeleccionado.caract");
+      new Lista(paisCompletaPanel, "Conexiones", "paisSeleccionado.conexiones");
+      _xblockexpression = new Lista(paisCompletaPanel, "Lugares de interes", "paisSeleccionado.lugares");
     }
     return _xblockexpression;
   }

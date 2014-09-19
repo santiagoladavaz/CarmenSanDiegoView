@@ -1,26 +1,19 @@
 package villanoView
 
+import components.Lista
 import org.uqbar.arena.layout.VerticalLayout
 import org.uqbar.arena.widgets.Button
 import org.uqbar.arena.widgets.Label
-import org.uqbar.arena.widgets.List
 import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.windows.SimpleWindow
 import org.uqbar.arena.windows.WindowOwner
-import persona.VillanoApplicationModel
 import persona.Villano
+import persona.VillanoApplicationModel
+import org.uqbar.arena.widgets.List
+import org.uqbar.arena.bindings.PropertyAdapter
 
 class ExpedientesView extends SimpleWindow<VillanoApplicationModel>{
 	
-	
-	def crearLista(Panel panel,String label, String lista){
-		new Label(panel).setText(label)
-		new List(panel) => [
-			bindItemsToProperty(lista)
-			heigth = 100
-			width = 500
-		]
-	}
 	
 	new(WindowOwner parent, VillanoApplicationModel model) {
 		super(parent, model)
@@ -36,6 +29,8 @@ class ExpedientesView extends SimpleWindow<VillanoApplicationModel>{
 	
 	
 	override createMainTemplate(Panel mainPanel) {
+		
+		
 		title = "Expedientes"
 		mainPanel.setLayout(new VerticalLayout)
 		
@@ -44,24 +39,29 @@ class ExpedientesView extends SimpleWindow<VillanoApplicationModel>{
 			text = "Villano"
 		]
 		
-		new List(mainPanel) => [
-			bindItemsToProperty("juego.villanos")
-			bindValueToProperty("villano")
-			heigth = 100
-			width = 500
-		]
-		
-		
-		new Label(mainPanel).setText("Nombre:")
-		new Label(mainPanel).bindValueToProperty("villano.nombre")
-		new Label(mainPanel).setText("Sexo:")
-		new Label(mainPanel).bindValueToProperty("villano.sexo")
-		
-		
-		
-		this.crearLista(mainPanel,"Señas Particulares:","villano.señas")
+		new List<Villano>(mainPanel) => [
+				bindItemsToProperty("juego.villanos").adapter = new PropertyAdapter(Villano, "nombre")
+				heigth = 150
+				width = 130
+				bindValueToProperty("villano")
+			]
 	
-		this.crearLista(mainPanel,"Hobbies:","villano.hobbie")
+		
+		new Label(mainPanel)=>[
+			setText("Nombre:")
+			bindValueToProperty("villano.nombre")
+		]
+
+		new Label(mainPanel)=>[
+			setText("Sexo:")
+			bindValueToProperty("villano.sexo")
+		]
+	
+		
+		new Lista(mainPanel,"Señas Particulares:","villano.señas")
+	
+		new Lista(mainPanel,"Hobbies:","villano.hobbie")
+		
 		
 		new Button(mainPanel) => [
 			caption = "Nuevo"

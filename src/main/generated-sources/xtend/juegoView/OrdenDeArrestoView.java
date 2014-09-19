@@ -2,12 +2,12 @@ package juegoView;
 
 import Juego.Caso;
 import Juego.Juego;
+import components.SelectorComp;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.uqbar.arena.widgets.Button;
 import org.uqbar.arena.widgets.Label;
 import org.uqbar.arena.widgets.Panel;
-import org.uqbar.arena.widgets.Selector;
 import org.uqbar.arena.windows.SimpleWindow;
 import org.uqbar.arena.windows.WindowOwner;
 import org.uqbar.lacar.ui.model.Action;
@@ -33,18 +33,12 @@ public class OrdenDeArrestoView extends SimpleWindow<Juego> {
     String _nombre = _casoSeleccionado.getNombre();
     this.setTitle(_nombre);
     Label _label = new Label(mainPanel);
-    _label.setText("Villano:");
-    Selector<Object> _selector = new Selector<Object>(mainPanel);
-    final Procedure1<Selector<Object>> _function = new Procedure1<Selector<Object>>() {
-      public void apply(final Selector<Object> it) {
-        it.allowNull(false);
-        it.bindItemsToProperty("villanos");
-        it.<ControlBuilder>bindValueToProperty("detective.ordenDeArresto");
-      }
-    };
-    ObjectExtensions.<Selector<Object>>operator_doubleArrow(_selector, _function);
+    _label.setText("Orden emitida contra: ");
+    Label _label_1 = new Label(mainPanel);
+    _label_1.<ControlBuilder>bindValueToProperty("detective.ordenDeArresto");
+    new SelectorComp(mainPanel, "Villano:", "villanos", "detective.ordenDeArresto");
     Button _button = new Button(mainPanel);
-    final Procedure1<Button> _function_1 = new Procedure1<Button>() {
+    final Procedure1<Button> _function = new Procedure1<Button>() {
       public void apply(final Button it) {
         it.setCaption("Generar Orden De Arresto");
         final Action _function = new Action() {
@@ -55,6 +49,6 @@ public class OrdenDeArrestoView extends SimpleWindow<Juego> {
         it.onClick(_function);
       }
     };
-    ObjectExtensions.<Button>operator_doubleArrow(_button, _function_1);
+    ObjectExtensions.<Button>operator_doubleArrow(_button, _function);
   }
 }

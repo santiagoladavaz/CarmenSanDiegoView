@@ -11,6 +11,7 @@ import pais.Pais
 import pais.PaisApplicationModel
 import org.uqbar.arena.windows.WindowOwner
 import Juego.Juego
+import components.Lista
 
 abstract class VentanaPaisView extends SimpleWindow<Pais> {
 	
@@ -38,14 +39,9 @@ abstract class VentanaPaisView extends SimpleWindow<Pais> {
 			onClick [ | new EditarCaractPaisView(this,modelObject).open]
 		]	
 		
-		new Label(mainPanel) => [ 
-				text = "Caracteristicas" 
-			]
-		new List(mainPanel) => [
-			bindItemsToProperty("caract")
-			heigth = 100
-			width = 500
-		]
+		
+	new Lista(mainPanel,"Caracteristicas","caract")
+		
 	
 	
 	new Label(mainPanel).setText("Conexiones:")
@@ -56,12 +52,9 @@ abstract class VentanaPaisView extends SimpleWindow<Pais> {
 	]
 			
 		
-	new List(mainPanel) => [
-			bindItemsToProperty("conexiones")
-			heigth = 100
-			width = 500
-		]
-
+	
+	new Lista(mainPanel,"conexiones")
+	
 	new Label(mainPanel).setText("Lugares:")
 	
 	new Button(mainPanel) => [ 
@@ -70,13 +63,9 @@ abstract class VentanaPaisView extends SimpleWindow<Pais> {
 			
 		]
 	
-	new List(mainPanel) => [
-			bindItemsToProperty("lugares")
-			heigth = 100
-			width = 500
-		]
+	new Lista(mainPanel,"lugares") 
 	
-		new Button(mainPanel) => [ 
+	new Button(mainPanel) => [ 
 			caption = "Aceptar"
 			onClick [ | this.procesar(Juego.getInstance,modelObject)
 						this.close()

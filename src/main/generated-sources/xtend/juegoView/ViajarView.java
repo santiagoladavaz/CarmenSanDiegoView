@@ -32,31 +32,27 @@ public class ViajarView extends SimpleWindow<DetectiveApplicationModel> {
     VerticalLayout _verticalLayout = new VerticalLayout();
     mainPanel.setLayout(_verticalLayout);
     Label _label = new Label(mainPanel);
-    final Procedure1<Label> _function = new Procedure1<Label>() {
-      public void apply(final Label it) {
-        it.setText("Estas en: ");
-        it.<ControlBuilder>bindValueToProperty("juego.detective.paisActual");
-      }
-    };
-    ObjectExtensions.<Label>operator_doubleArrow(_label, _function);
+    _label.setText("Estas en:");
     Label _label_1 = new Label(mainPanel);
-    final Procedure1<Label> _function_1 = new Procedure1<Label>() {
+    _label_1.<ControlBuilder>bindValueToProperty("juego.detective.paisActual");
+    Label _label_2 = new Label(mainPanel);
+    final Procedure1<Label> _function = new Procedure1<Label>() {
       public void apply(final Label it) {
         it.setText("Recorrido Actual");
       }
     };
-    ObjectExtensions.<Label>operator_doubleArrow(_label_1, _function_1);
+    ObjectExtensions.<Label>operator_doubleArrow(_label_2, _function);
     List<Object> _list = new List<Object>(mainPanel);
-    final Procedure1<List<Object>> _function_2 = new Procedure1<List<Object>>() {
+    final Procedure1<List<Object>> _function_1 = new Procedure1<List<Object>>() {
       public void apply(final List<Object> it) {
         it.bindItemsToProperty("juego.detective.paisActual.conexiones");
         it.setHeigth(100);
         it.setWidth(300);
       }
     };
-    ObjectExtensions.<List<Object>>operator_doubleArrow(_list, _function_2);
+    ObjectExtensions.<List<Object>>operator_doubleArrow(_list, _function_1);
     Button _button = new Button(mainPanel);
-    final Procedure1<Button> _function_3 = new Procedure1<Button>() {
+    final Procedure1<Button> _function_2 = new Procedure1<Button>() {
       public void apply(final Button it) {
         it.setCaption("Volver al pais anterior");
         final Action _function = new Action() {
@@ -66,9 +62,9 @@ public class ViajarView extends SimpleWindow<DetectiveApplicationModel> {
         it.onClick(_function);
       }
     };
-    ObjectExtensions.<Button>operator_doubleArrow(_button, _function_3);
+    ObjectExtensions.<Button>operator_doubleArrow(_button, _function_2);
     Button _button_1 = new Button(mainPanel);
-    final Procedure1<Button> _function_4 = new Procedure1<Button>() {
+    final Procedure1<Button> _function_3 = new Procedure1<Button>() {
       public void apply(final Button it) {
         it.setCaption("Viajar");
         final Action _function = new Action() {
@@ -79,6 +75,6 @@ public class ViajarView extends SimpleWindow<DetectiveApplicationModel> {
         it.onClick(_function);
       }
     };
-    ObjectExtensions.<Button>operator_doubleArrow(_button_1, _function_4);
+    ObjectExtensions.<Button>operator_doubleArrow(_button_1, _function_3);
   }
 }

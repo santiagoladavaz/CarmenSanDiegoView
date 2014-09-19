@@ -1,18 +1,19 @@
 package juegoView
 
-import org.uqbar.arena.windows.SimpleWindow
-import org.uqbar.arena.widgets.Panel
-import org.uqbar.arena.windows.WindowOwner
-import org.uqbar.arena.layout.VerticalLayout
-import org.uqbar.arena.widgets.Label
-import org.uqbar.arena.widgets.List
-import org.uqbar.arena.bindings.PropertyAdapter
-import pais.Pais
+import Juego.JuegoAppModel
+import components.Lista
 import org.uqbar.arena.layout.ColumnLayout
+import org.uqbar.arena.layout.VerticalLayout
 import org.uqbar.arena.widgets.Button
+import org.uqbar.arena.widgets.Label
+import org.uqbar.arena.widgets.Panel
+import org.uqbar.arena.windows.SimpleWindow
+import org.uqbar.arena.windows.WindowOwner
 import paisView.EditarPaisView
 import paisView.NewPaisView
-import Juego.JuegoAppModel
+import org.uqbar.arena.widgets.List
+import pais.Pais
+import org.uqbar.arena.bindings.PropertyAdapter
 
 class MapamundiView extends SimpleWindow<JuegoAppModel> {
 
@@ -42,6 +43,8 @@ class MapamundiView extends SimpleWindow<JuegoAppModel> {
 		var Panel panelDeListadoDePaises = new Panel(owner)
 		panelDeListadoDePaises.layout = new VerticalLayout
 
+		
+		//Este list dejarlo !
 		new Label(panelDeListadoDePaises).text = "Paises"
 		new List<Pais>(panelDeListadoDePaises) => [
 				bindItemsToProperty("juego.conexiones").adapter = new PropertyAdapter(Pais, "nombre")
@@ -49,6 +52,7 @@ class MapamundiView extends SimpleWindow<JuegoAppModel> {
 				width = 130
 				bindValueToProperty("paisSeleccionado")
 			]
+	
 		
 		new Button(panelDeListadoDePaises) =>[
 			caption = "Eliminar"
@@ -84,32 +88,15 @@ class MapamundiView extends SimpleWindow<JuegoAppModel> {
 			bindValueToProperty("paisSeleccionado.nombre")
 		]
 			
-		new Label(paisCompletaPanel).setText("Caracteristicas")
 		
-		new List(paisCompletaPanel)	=> [
-			bindItemsToProperty("paisSeleccionado.caract")
-			heigth = 100
-			width = 300
-			
-		]
 		
-		new Label(paisCompletaPanel).setText("Conexiones")
+		new Lista(paisCompletaPanel,"Caracteristicas","paisSeleccionado.caract")
 		
-		new List(paisCompletaPanel)	=> [
-			bindItemsToProperty("paisSeleccionado.conexiones")
-			heigth = 100
-			width = 300
-		]
+		new Lista(paisCompletaPanel,"Conexiones","paisSeleccionado.conexiones")
 		
-		new Label(paisCompletaPanel).setText("Lugares de interes")
+		new Lista(paisCompletaPanel,"Lugares de interes","paisSeleccionado.lugares")
 		
-		new List(paisCompletaPanel)	=> [
-			bindItemsToProperty("paisSeleccionado.lugares")
-			heigth = 100
-			width = 300
-		]
 
-		
 		}
 		
 }

@@ -30,10 +30,11 @@ class ViajarView extends SimpleWindow<DetectiveApplicationModel>{
 		title = "Viajar"
 		mainPanel.setLayout(new VerticalLayout)
 		
-			new Label(mainPanel) => [
-				text = "Estas en: "
-				bindValueToProperty("juego.detective.paisActual")
-			]
+			new Label(mainPanel).setText("Estas en:")
+			new Label(mainPanel).bindValueToProperty("juego.detective.paisActual")
+			
+			
+			
 			
 			
 			new Label(mainPanel) => [ 
@@ -60,9 +61,8 @@ class ViajarView extends SimpleWindow<DetectiveApplicationModel>{
 				onClick = [ | this.close ]
 			]
 			
-			
-		}
-
 		
+	}
+	
 		
 }

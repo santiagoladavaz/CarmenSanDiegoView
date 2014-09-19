@@ -10,6 +10,8 @@ import org.uqbar.arena.layout.ColumnLayout
 import org.uqbar.arena.layout.VerticalLayout
 import org.uqbar.arena.widgets.List
 import persona.DetectiveApplicationModel
+import components.Lista
+import org.uqbar.arena.widgets.TextBox
 
 class ResolverMisterioView extends SimpleWindow<Juego> {
 	
@@ -36,7 +38,7 @@ class ResolverMisterioView extends SimpleWindow<Juego> {
 		contentPanel.layout = new ColumnLayout(2)
 		this.crearBotonesDetective(contentPanel)
 		this.crearListadoLugares(contentPanel)
-		}
+	}
 	
 	
 	def crearListadoLugares(Panel owner) {
@@ -77,23 +79,26 @@ class ResolverMisterioView extends SimpleWindow<Juego> {
 		var Panel botones = new Panel(owner)
 		botones.layout = new VerticalLayout
 		
+		
+		new Label(botones).setText("Estas en:")
+	
 		new Label(botones) => [
-			text = "Estas en: "
 			bindValueToProperty("detective.paisActual")
 		]
 		
+		
 		new Button(botones) => [
-			caption = "Orden de arresto"
+			caption = "Emitir orden de arresto"
 			onClick = [ | 
 				new OrdenDeArrestoView(this,modelObject).open
 			]
 		]
 		
 		
-		new Label(botones) => [
-			text = "Orden ya emitida: "
-			bindValueToProperty("detective.ordenDeArresto")
-		]	
+		new Label(botones).setText("Orden emitida contra: ")
+		new Label(botones).bindValueToProperty("detective.ordenDeArresto")
+			
+		
 		
 		
 		new Button(botones) => [
@@ -111,25 +116,12 @@ class ResolverMisterioView extends SimpleWindow<Juego> {
 		]
 	
 	
-	new Label(botones) => [ 
-			text = "Recorrido Actual"
-		]
-		
-		new List(botones) => [
-			bindItemsToProperty("detective.recorridoCriminal")
-			heigth = 100
-			width = 300
-		]
-		
-	new Label(botones) => [ 
-			text = "Destinos Fallidos"
-		]
-		
-		new List(botones) => [
-			bindItemsToProperty("detective.destinosFallidos")
-			heigth = 100
-			width = 300
-		]
+	new Lista(botones,"Recorrido Actual","detective.recorridoCriminal")
+	
+	
+	new Lista(botones,"Destinos Fallidos","detective.destinosFallidos")
+	
+	
 		
 		
 	}

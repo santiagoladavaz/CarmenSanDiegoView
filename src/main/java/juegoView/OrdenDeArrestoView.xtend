@@ -7,6 +7,7 @@ import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.widgets.Selector
 import org.uqbar.arena.widgets.Label
 import org.uqbar.arena.widgets.Button
+import components.SelectorComp
 
 class OrdenDeArrestoView extends SimpleWindow<Juego> {
 	
@@ -27,18 +28,16 @@ class OrdenDeArrestoView extends SimpleWindow<Juego> {
 		
 		this.setTitle(modelObject.casoSeleccionado.nombre)
 		
-		new Label(mainPanel).setText("Villano:")
-		new Selector(mainPanel) => [
-			allowNull = false
-			bindItemsToProperty("villanos")
-			bindValueToProperty("detective.ordenDeArresto")
-		]
+		new Label(mainPanel).setText("Orden emitida contra: ")
+		new Label(mainPanel).bindValueToProperty("detective.ordenDeArresto")
 		
 		
-			new Button(mainPanel) => [
+		new SelectorComp(mainPanel,"Villano:","villanos","detective.ordenDeArresto")
+		
+		
+		new Button(mainPanel) => [
 			caption = "Generar Orden De Arresto"
 			onClick [ |this.close]
-		
 		]
 	
 	}
