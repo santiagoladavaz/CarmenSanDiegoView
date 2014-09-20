@@ -12,6 +12,8 @@ import org.uqbar.arena.widgets.List
 import persona.DetectiveApplicationModel
 import components.Lista
 import org.uqbar.arena.widgets.TextBox
+import villanoView.ExpedienteSinBotonesView
+import persona.VillanoApplicationModel
 
 class ResolverMisterioView extends SimpleWindow<Juego> {
 	
@@ -111,7 +113,7 @@ class ResolverMisterioView extends SimpleWindow<Juego> {
 		new Button(botones) => [
 			caption = "Expedientes"
 			onClick = [ | 
-				//new newExpedienteSinBotonesView(this, )
+				new ExpedienteSinBotonesView(this, new VillanoApplicationModel()).open
 			]
 		]
 	

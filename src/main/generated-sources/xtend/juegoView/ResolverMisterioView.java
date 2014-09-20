@@ -21,6 +21,8 @@ import pais.Lugar;
 import pais.Pais;
 import persona.Detective;
 import persona.DetectiveApplicationModel;
+import persona.VillanoApplicationModel;
+import villanoView.ExpedienteSinBotonesView;
 
 @SuppressWarnings("all")
 public class ResolverMisterioView extends SimpleWindow<Juego> {
@@ -175,6 +177,9 @@ public class ResolverMisterioView extends SimpleWindow<Juego> {
           it.setCaption("Expedientes");
           final Action _function = new Action() {
             public void execute() {
+              VillanoApplicationModel _villanoApplicationModel = new VillanoApplicationModel();
+              ExpedienteSinBotonesView _expedienteSinBotonesView = new ExpedienteSinBotonesView(ResolverMisterioView.this, _villanoApplicationModel);
+              _expedienteSinBotonesView.open();
             }
           };
           it.onClick(_function);

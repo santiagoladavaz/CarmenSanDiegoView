@@ -38,15 +38,15 @@ class ViajarView extends SimpleWindow<DetectiveApplicationModel>{
 			
 			
 			new Label(mainPanel) => [ 
-				text = "Recorrido Actual"
+				text = "Posibles destinos"
 			]
 		
 			
 			new List(mainPanel) => [
 				bindItemsToProperty("juego.detective.paisActual.conexiones")
-				//bindValueToProperty("nuevoDestino")
 				heigth = 100
 				width = 300
+				//bindValueToProperty("nuevoDestino")
 			]
 			
 			

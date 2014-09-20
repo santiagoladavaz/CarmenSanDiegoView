@@ -38,7 +38,7 @@ public class ViajarView extends SimpleWindow<DetectiveApplicationModel> {
     Label _label_2 = new Label(mainPanel);
     final Procedure1<Label> _function = new Procedure1<Label>() {
       public void apply(final Label it) {
-        it.setText("Recorrido Actual");
+        it.setText("Posibles destinos");
       }
     };
     ObjectExtensions.<Label>operator_doubleArrow(_label_2, _function);
