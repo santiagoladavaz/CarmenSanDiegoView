@@ -56,26 +56,23 @@ class ResolverMisterioView extends SimpleWindow<Juego> {
 	
 		
 		new Button(listadoLugaresPanel) => [
-			bindCaptionToProperty("detective.paisActual.primerLugar.nombre")
+			bindCaptionToProperty("detective.paisActual.primerLugar")
 			val lugar = modelObject.detective.paisActual.getLugares().get(0)
-			caption = lugar.getNombre()
 			onClick = [ | new VentanaPistasView
-				(this,modelObject.detective.paisActual.getLugares().get(0)).open()
+				(this,lugar).open()
 			]
 		]
 		
 		new Button(listadoLugaresPanel) => [
-			bindCaptionToProperty("detective.paisActual.segundoLugar.nombre")
+			bindCaptionToProperty("detective.paisActual.segundoLugar")
 			val lugar = modelObject.detective.paisActual.getLugares().get(1)
-			caption = lugar.getNombre()
 			onClick = [ | new VentanaPistasView(this,lugar).open()
 			]
 		]
 		
 		new Button(listadoLugaresPanel) => [
-			bindCaptionToProperty("detective.paisActual.tercerLugar.nombre")
+			bindCaptionToProperty("detective.paisActual.tercerLugar")
 			val lugar = modelObject.detective.paisActual.getLugares().get(2)
-			caption = lugar.getNombre()
 			onClick = [ | new VentanaPistasView(this,lugar).open()
 			]
 		]
