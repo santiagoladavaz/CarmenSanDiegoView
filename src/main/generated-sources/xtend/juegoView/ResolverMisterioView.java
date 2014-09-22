@@ -68,7 +68,7 @@ public class ResolverMisterioView extends SimpleWindow<Juego> {
       Button _button = new Button(listadoLugaresPanel);
       final Procedure1<Button> _function_1 = new Procedure1<Button>() {
         public void apply(final Button it) {
-          it.bindCaptionToProperty("detective.paisActual");
+          it.bindCaptionToProperty("detective.paisActual.primerLugar.nombre");
           Juego _modelObject = ResolverMisterioView.this.getModelObject();
           Detective _detective = _modelObject.getDetective();
           Pais _paisActual = _detective.getPaisActual();
@@ -78,7 +78,12 @@ public class ResolverMisterioView extends SimpleWindow<Juego> {
           it.setCaption(_nombre);
           final Action _function = new Action() {
             public void execute() {
-              VentanaPistasView _ventanaPistasView = new VentanaPistasView(ResolverMisterioView.this, lugar);
+              Juego _modelObject = ResolverMisterioView.this.getModelObject();
+              Detective _detective = _modelObject.getDetective();
+              Pais _paisActual = _detective.getPaisActual();
+              List<Lugar> _lugares = _paisActual.getLugares();
+              Lugar _get = _lugares.get(0);
+              VentanaPistasView _ventanaPistasView = new VentanaPistasView(ResolverMisterioView.this, _get);
               _ventanaPistasView.open();
             }
           };
@@ -89,7 +94,7 @@ public class ResolverMisterioView extends SimpleWindow<Juego> {
       Button _button_1 = new Button(listadoLugaresPanel);
       final Procedure1<Button> _function_2 = new Procedure1<Button>() {
         public void apply(final Button it) {
-          it.bindCaptionToProperty("detective.paisActual.lugares.get(1)");
+          it.bindCaptionToProperty("detective.paisActual.segundoLugar.nombre");
           Juego _modelObject = ResolverMisterioView.this.getModelObject();
           Detective _detective = _modelObject.getDetective();
           Pais _paisActual = _detective.getPaisActual();
@@ -110,6 +115,7 @@ public class ResolverMisterioView extends SimpleWindow<Juego> {
       Button _button_2 = new Button(listadoLugaresPanel);
       final Procedure1<Button> _function_3 = new Procedure1<Button>() {
         public void apply(final Button it) {
+          it.bindCaptionToProperty("detective.paisActual.tercerLugar.nombre");
           Juego _modelObject = ResolverMisterioView.this.getModelObject();
           Detective _detective = _modelObject.getDetective();
           Pais _paisActual = _detective.getPaisActual();
