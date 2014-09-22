@@ -52,7 +52,9 @@ class ViajarView extends SimpleWindow<DetectiveApplicationModel>{
 			
 			new Button(mainPanel) => [
 				caption = "Volver al pais anterior"
-				onClick = [ |  ]
+				onClick = [ | modelObject.volver
+							  this.close
+				]
 			]
 			
 			

@@ -58,6 +58,9 @@ public class ViajarView extends SimpleWindow<DetectiveApplicationModel> {
         it.setCaption("Volver al pais anterior");
         final Action _function = new Action() {
           public void execute() {
+            DetectiveApplicationModel _modelObject = ViajarView.this.getModelObject();
+            _modelObject.volver();
+            ViajarView.this.close();
           }
         };
         it.onClick(_function);
