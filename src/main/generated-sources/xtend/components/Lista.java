@@ -21,6 +21,21 @@ public class Lista {
     ObjectExtensions.<List<Object>>operator_doubleArrow(_list, _function);
   }
   
+  public Lista(final String value, final Panel panel, final String label, final String lista) {
+    Label _label = new Label(panel);
+    _label.setText(label);
+    List<Object> _list = new List<Object>(panel);
+    final Procedure1<List<Object>> _function = new Procedure1<List<Object>>() {
+      public void apply(final List<Object> it) {
+        it.bindItemsToProperty(lista);
+        it.<ControlBuilder>bindValueToProperty(value);
+        it.setHeigth(100);
+        it.setWidth(500);
+      }
+    };
+    ObjectExtensions.<List<Object>>operator_doubleArrow(_list, _function);
+  }
+  
   public Lista(final Panel panel, final String label, final String lista) {
     Label _label = new Label(panel);
     _label.setText(label);

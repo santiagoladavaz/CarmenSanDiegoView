@@ -50,9 +50,10 @@ public abstract class EdicionPaisAtribView extends Dialog<PaisApplicationModel> 
     this.setTitle(_title);
     VerticalLayout _verticalLayout = new VerticalLayout();
     mainPanel.setLayout(_verticalLayout);
+    String _propertyToAdd = this.propertyToAdd();
     String _titleTable = this.getTitleTable();
     String _editableProperty = this.getEditableProperty();
-    new Lista(mainPanel, _titleTable, _editableProperty);
+    new Lista(_propertyToAdd, mainPanel, _titleTable, _editableProperty);
     Button _button = new Button(mainPanel);
     final Procedure1<Button> _function = new Procedure1<Button>() {
       public void apply(final Button it) {

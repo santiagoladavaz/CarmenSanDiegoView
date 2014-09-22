@@ -48,6 +48,7 @@ public class ViajarView extends SimpleWindow<DetectiveApplicationModel> {
         it.bindItemsToProperty("juego.detective.paisActual.conexiones");
         it.setHeigth(100);
         it.setWidth(300);
+        it.<ControlBuilder>bindValueToProperty("nuevoDestino");
       }
     };
     ObjectExtensions.<List<Object>>operator_doubleArrow(_list, _function_1);
@@ -69,6 +70,8 @@ public class ViajarView extends SimpleWindow<DetectiveApplicationModel> {
         it.setCaption("Viajar");
         final Action _function = new Action() {
           public void execute() {
+            DetectiveApplicationModel _modelObject = ViajarView.this.getModelObject();
+            _modelObject.viajar();
             ViajarView.this.close();
           }
         };

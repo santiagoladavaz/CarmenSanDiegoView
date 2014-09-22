@@ -46,7 +46,7 @@ class ViajarView extends SimpleWindow<DetectiveApplicationModel>{
 				bindItemsToProperty("juego.detective.paisActual.conexiones")
 				heigth = 100
 				width = 300
-				//bindValueToProperty("nuevoDestino")
+				bindValueToProperty("nuevoDestino")
 			]
 			
 			
@@ -58,7 +58,9 @@ class ViajarView extends SimpleWindow<DetectiveApplicationModel>{
 			
 			new Button(mainPanel) => [
 				caption = "Viajar"
-				onClick = [ | this.close ]
+				onClick = [ |	modelObject.viajar()
+								this.close
+				]
 			]
 			
 		

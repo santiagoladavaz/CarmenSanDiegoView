@@ -14,8 +14,19 @@ class Lista {
 			width = 500
 		]
 		
-	}
+	}	
 	
+	
+	// parche momentaneo para solucinar el problema de eliminar	
+	new(String value,Panel panel,String label, String lista){
+		new Label(panel).setText(label)
+		new List(panel) => [
+			bindItemsToProperty(lista)
+			bindValueToProperty(value)
+			heigth = 100
+			width = 500
+		]
+	}
 	
 	//Usado cuando tengo que ponerle un label
 	new(Panel panel,String label, String lista){
@@ -37,6 +48,7 @@ class Lista {
 			width = 500
 		]
 	}
+	
 	
 	
 	new(Panel panel,String text,String bindItem,String bindValue,Integer h,Integer w){

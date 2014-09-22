@@ -35,7 +35,8 @@ abstract class EdicionPaisAtribView extends Dialog<PaisApplicationModel>{
 		mainPanel.setLayout(new VerticalLayout)	
 		
 		
-		new Lista(mainPanel,getTitleTable,getEditableProperty)
+		new Lista(propertyToAdd,mainPanel,getTitleTable,getEditableProperty)
+		
 		
 	
 		new Button(mainPanel) => [ 
