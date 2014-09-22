@@ -7,37 +7,49 @@ import org.uqbar.arena.widgets.tables.Column
 import org.uqbar.arena.widgets.Button
 import org.uqbar.arena.widgets.TextBox
 import pais.Pais
+import pais.PaisApplicationModel
+import org.uqbar.arena.widgets.List
 
-class EditarCaractPaisView extends Dialog<Pais> {
+class EditarCaractPaisView extends Dialog<PaisApplicationModel> {
 	
-	new(WindowOwner owner, Pais model) {
+	
+	
+	new(WindowOwner owner, PaisApplicationModel model) {
 		super(owner, model)
-		
 	}
 	
 	override protected createFormPanel(Panel mainPanel) {
 		this.setTitle("Editar Caracteristicas") 
 		mainPanel.setLayout(new VerticalLayout)
 		
-		var Table<String> y = new Table<String>(mainPanel,String)
-		y.bindItemsToProperty("caract")
-		y.bindValueToProperty("caracteristica")
-		y.heigth = 100
-		y.setWidth(500)
 		
-		new Column<String>(y)=>[
- 		title='''Caracteristicas'''
- 		bindContentsToTransformer([caract|caract])
-	]
+		
+		new List(mainPanel) => [
+			bindItemsToProperty("paisModel.caract")
+			bindValueToProperty("caracteristicaAEliminar")
+			heigth = 100
+			width = 500
+		]		
+		
+		
+//		var Table<String> y = new Table<String>(mainPanel,String)
+//		y.bindItemsToProperty("paisModel.caract")
+//		y.bindValueToProperty("caracteristica")
+//		y.heigth = 100
+//		y.setWidth(500)
+//		
+//		new Column<String>(y)=>[
+// 			title='''Caracteristicas'''
+// 			bindContentsToTransformer([caract|caract])
+//		]
 	
 		new Button(mainPanel) => [ 
 			caption = "Eliminar"
-			onClick [ | modelObject.eliminarCaract
-			]
+			onClick [ | modelObject.eliminarCaract ]
 			
 		]	
 		
-		new TextBox(mainPanel).bindValueToProperty("caracteristica")
+		new TextBox(mainPanel).bindValueToProperty("caracteristicaAAgregar")
 	
 		new Button(mainPanel) => [ 
 			caption = "Agregar"

@@ -36,7 +36,7 @@ abstract class VentanaPaisView extends SimpleWindow<Pais> {
 	
 	new Button(mainPanel) => [ 
 			caption = "Editar Caracteristicas"
-			onClick [ | new EditarCaractPaisView(this,modelObject).open]
+			onClick [ | new EditarCaractPaisView(this,new PaisApplicationModel(modelObject)).open]
 		]	
 		
 		

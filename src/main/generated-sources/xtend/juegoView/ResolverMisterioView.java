@@ -68,6 +68,7 @@ public class ResolverMisterioView extends SimpleWindow<Juego> {
       Button _button = new Button(listadoLugaresPanel);
       final Procedure1<Button> _function_1 = new Procedure1<Button>() {
         public void apply(final Button it) {
+          it.bindCaptionToProperty("detective.paisActual");
           Juego _modelObject = ResolverMisterioView.this.getModelObject();
           Detective _detective = _modelObject.getDetective();
           Pais _paisActual = _detective.getPaisActual();
@@ -88,6 +89,7 @@ public class ResolverMisterioView extends SimpleWindow<Juego> {
       Button _button_1 = new Button(listadoLugaresPanel);
       final Procedure1<Button> _function_2 = new Procedure1<Button>() {
         public void apply(final Button it) {
+          it.bindCaptionToProperty("detective.paisActual.lugares.get(1)");
           Juego _modelObject = ResolverMisterioView.this.getModelObject();
           Detective _detective = _modelObject.getDetective();
           Pais _paisActual = _detective.getPaisActual();

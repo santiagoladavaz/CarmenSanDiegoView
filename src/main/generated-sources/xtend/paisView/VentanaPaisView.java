@@ -47,7 +47,8 @@ public abstract class VentanaPaisView extends SimpleWindow<Pais> {
         final Action _function = new Action() {
           public void execute() {
             Pais _modelObject = VentanaPaisView.this.getModelObject();
-            EditarCaractPaisView _editarCaractPaisView = new EditarCaractPaisView(VentanaPaisView.this, _modelObject);
+            PaisApplicationModel _paisApplicationModel = new PaisApplicationModel(_modelObject);
+            EditarCaractPaisView _editarCaractPaisView = new EditarCaractPaisView(VentanaPaisView.this, _paisApplicationModel);
             _editarCaractPaisView.open();
           }
         };

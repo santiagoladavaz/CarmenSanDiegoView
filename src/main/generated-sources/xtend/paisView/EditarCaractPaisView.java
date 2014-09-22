@@ -1,24 +1,21 @@
 package paisView;
 
-import com.uqbar.commons.collections.Transformer;
-import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.uqbar.arena.layout.VerticalLayout;
 import org.uqbar.arena.widgets.Button;
+import org.uqbar.arena.widgets.List;
 import org.uqbar.arena.widgets.Panel;
 import org.uqbar.arena.widgets.TextBox;
-import org.uqbar.arena.widgets.tables.Column;
-import org.uqbar.arena.widgets.tables.Table;
 import org.uqbar.arena.windows.Dialog;
 import org.uqbar.arena.windows.WindowOwner;
 import org.uqbar.lacar.ui.model.Action;
 import org.uqbar.lacar.ui.model.ControlBuilder;
-import pais.Pais;
+import pais.PaisApplicationModel;
 
 @SuppressWarnings("all")
-public class EditarCaractPaisView extends Dialog<Pais> {
-  public EditarCaractPaisView(final WindowOwner owner, final Pais model) {
+public class EditarCaractPaisView extends Dialog<PaisApplicationModel> {
+  public EditarCaractPaisView(final WindowOwner owner, final PaisApplicationModel model) {
     super(owner, model);
   }
   
@@ -26,33 +23,23 @@ public class EditarCaractPaisView extends Dialog<Pais> {
     this.setTitle("Editar Caracteristicas");
     VerticalLayout _verticalLayout = new VerticalLayout();
     mainPanel.setLayout(_verticalLayout);
-    Table<String> y = new Table<String>(mainPanel, String.class);
-    y.bindItemsToProperty("caract");
-    y.<ControlBuilder>bindValueToProperty("caracteristica");
-    y.setHeigth(100);
-    y.setWidth(500);
-    Column<String> _column = new Column<String>(y);
-    final Procedure1<Column<String>> _function = new Procedure1<Column<String>>() {
-      public void apply(final Column<String> it) {
-        StringConcatenation _builder = new StringConcatenation();
-        _builder.append("Caracteristicas");
-        it.setTitle(_builder.toString());
-        final Transformer<String, String> _function = new Transformer<String, String>() {
-          public String transform(final String caract) {
-            return caract;
-          }
-        };
-        it.<String>bindContentsToTransformer(_function);
+    List<Object> _list = new List<Object>(mainPanel);
+    final Procedure1<List<Object>> _function = new Procedure1<List<Object>>() {
+      public void apply(final List<Object> it) {
+        it.bindItemsToProperty("paisModel.caract");
+        it.<ControlBuilder>bindValueToProperty("caracteristicaAEliminar");
+        it.setHeigth(100);
+        it.setWidth(500);
       }
     };
-    ObjectExtensions.<Column<String>>operator_doubleArrow(_column, _function);
+    ObjectExtensions.<List<Object>>operator_doubleArrow(_list, _function);
     Button _button = new Button(mainPanel);
     final Procedure1<Button> _function_1 = new Procedure1<Button>() {
       public void apply(final Button it) {
         it.setCaption("Eliminar");
         final Action _function = new Action() {
           public void execute() {
-            Pais _modelObject = EditarCaractPaisView.this.getModelObject();
+            PaisApplicationModel _modelObject = EditarCaractPaisView.this.getModelObject();
             _modelObject.eliminarCaract();
           }
         };
@@ -61,14 +48,14 @@ public class EditarCaractPaisView extends Dialog<Pais> {
     };
     ObjectExtensions.<Button>operator_doubleArrow(_button, _function_1);
     TextBox _textBox = new TextBox(mainPanel);
-    _textBox.<ControlBuilder>bindValueToProperty("caracteristica");
+    _textBox.<ControlBuilder>bindValueToProperty("caracteristicaAAgregar");
     Button _button_1 = new Button(mainPanel);
     final Procedure1<Button> _function_2 = new Procedure1<Button>() {
       public void apply(final Button it) {
         it.setCaption("Agregar");
         final Action _function = new Action() {
           public void execute() {
-            Pais _modelObject = EditarCaractPaisView.this.getModelObject();
+            PaisApplicationModel _modelObject = EditarCaractPaisView.this.getModelObject();
             _modelObject.agregarCaract();
           }
         };
