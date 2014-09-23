@@ -3,10 +3,10 @@ package juegoView;
 import Juego.Caso;
 import Juego.Juego;
 import components.Lista;
-import java.util.List;
 import juegoView.OrdenDeArrestoView;
 import juegoView.VentanaPistasView;
 import juegoView.ViajarView;
+import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.uqbar.arena.layout.ColumnLayout;
@@ -29,14 +29,6 @@ import villanoView.ExpedienteSinBotonesView;
 public class ResolverMisterioView extends SimpleWindow<Juego> {
   public ResolverMisterioView(final WindowOwner parent, final Juego model) {
     super(parent, model);
-  }
-  
-  protected void addActions(final Panel arg0) {
-    throw new UnsupportedOperationException("TODO: auto-generated method stub");
-  }
-  
-  protected void createFormPanel(final Panel arg0) {
-    throw new UnsupportedOperationException("TODO: auto-generated method stub");
   }
   
   public void createMainTemplate(final Panel mainPanel) {
@@ -69,14 +61,13 @@ public class ResolverMisterioView extends SimpleWindow<Juego> {
       final Procedure1<Button> _function_1 = new Procedure1<Button>() {
         public void apply(final Button it) {
           it.bindCaptionToProperty("detective.paisActual.primerLugar");
-          Juego _modelObject = ResolverMisterioView.this.getModelObject();
-          Detective _detective = _modelObject.getDetective();
-          Pais _paisActual = _detective.getPaisActual();
-          List<Lugar> _lugares = _paisActual.getLugares();
-          final Lugar lugar = _lugares.get(0);
           final Action _function = new Action() {
             public void execute() {
-              VentanaPistasView _ventanaPistasView = new VentanaPistasView(ResolverMisterioView.this, lugar);
+              Juego _modelObject = ResolverMisterioView.this.getModelObject();
+              Detective _detective = _modelObject.getDetective();
+              Pais _paisActual = _detective.getPaisActual();
+              Lugar _primerLugar = _paisActual.getPrimerLugar();
+              VentanaPistasView _ventanaPistasView = new VentanaPistasView(ResolverMisterioView.this, _primerLugar);
               _ventanaPistasView.open();
             }
           };
@@ -88,14 +79,13 @@ public class ResolverMisterioView extends SimpleWindow<Juego> {
       final Procedure1<Button> _function_2 = new Procedure1<Button>() {
         public void apply(final Button it) {
           it.bindCaptionToProperty("detective.paisActual.segundoLugar");
-          Juego _modelObject = ResolverMisterioView.this.getModelObject();
-          Detective _detective = _modelObject.getDetective();
-          Pais _paisActual = _detective.getPaisActual();
-          List<Lugar> _lugares = _paisActual.getLugares();
-          final Lugar lugar = _lugares.get(1);
           final Action _function = new Action() {
             public void execute() {
-              VentanaPistasView _ventanaPistasView = new VentanaPistasView(ResolverMisterioView.this, lugar);
+              Juego _modelObject = ResolverMisterioView.this.getModelObject();
+              Detective _detective = _modelObject.getDetective();
+              Pais _paisActual = _detective.getPaisActual();
+              Lugar _segundoLugar = _paisActual.getSegundoLugar();
+              VentanaPistasView _ventanaPistasView = new VentanaPistasView(ResolverMisterioView.this, _segundoLugar);
               _ventanaPistasView.open();
             }
           };
@@ -107,14 +97,13 @@ public class ResolverMisterioView extends SimpleWindow<Juego> {
       final Procedure1<Button> _function_3 = new Procedure1<Button>() {
         public void apply(final Button it) {
           it.bindCaptionToProperty("detective.paisActual.tercerLugar");
-          Juego _modelObject = ResolverMisterioView.this.getModelObject();
-          Detective _detective = _modelObject.getDetective();
-          Pais _paisActual = _detective.getPaisActual();
-          List<Lugar> _lugares = _paisActual.getLugares();
-          final Lugar lugar = _lugares.get(2);
           final Action _function = new Action() {
             public void execute() {
-              VentanaPistasView _ventanaPistasView = new VentanaPistasView(ResolverMisterioView.this, lugar);
+              Juego _modelObject = ResolverMisterioView.this.getModelObject();
+              Detective _detective = _modelObject.getDetective();
+              Pais _paisActual = _detective.getPaisActual();
+              Lugar _tercerLugar = _paisActual.getTercerLugar();
+              VentanaPistasView _ventanaPistasView = new VentanaPistasView(ResolverMisterioView.this, _tercerLugar);
               _ventanaPistasView.open();
             }
           };
@@ -167,7 +156,15 @@ public class ResolverMisterioView extends SimpleWindow<Juego> {
           final Action _function = new Action() {
             public void execute() {
               Juego _modelObject = ResolverMisterioView.this.getModelObject();
-              DetectiveApplicationModel _detectiveApplicationModel = new DetectiveApplicationModel(_modelObject);
+              Detective _detective = _modelObject.getDetective();
+              Pais _paisActual = _detective.getPaisActual();
+              InputOutput.<Pais>print(_paisActual);
+              Juego _modelObject_1 = ResolverMisterioView.this.getModelObject();
+              Detective _detective_1 = _modelObject_1.getDetective();
+              Pais _paisAnterior = _detective_1.getPaisAnterior();
+              InputOutput.<Pais>print(_paisAnterior);
+              Juego _modelObject_2 = ResolverMisterioView.this.getModelObject();
+              DetectiveApplicationModel _detectiveApplicationModel = new DetectiveApplicationModel(_modelObject_2);
               ViajarView _viajarView = new ViajarView(ResolverMisterioView.this, _detectiveApplicationModel);
               _viajarView.open();
             }
@@ -195,5 +192,13 @@ public class ResolverMisterioView extends SimpleWindow<Juego> {
       _xblockexpression = new Lista(botones, "Destinos Fallidos", "detective.destinosFallidos");
     }
     return _xblockexpression;
+  }
+  
+  protected void addActions(final Panel arg0) {
+    throw new UnsupportedOperationException("TODO: auto-generated method stub");
+  }
+  
+  protected void createFormPanel(final Panel arg0) {
+    throw new UnsupportedOperationException("TODO: auto-generated method stub");
   }
 }

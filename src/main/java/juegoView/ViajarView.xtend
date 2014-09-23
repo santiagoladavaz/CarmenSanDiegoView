@@ -32,11 +32,6 @@ class ViajarView extends SimpleWindow<DetectiveApplicationModel>{
 		
 			new Label(mainPanel).setText("Estas en:")
 			new Label(mainPanel).bindValueToProperty("juego.detective.paisActual")
-			
-			
-			
-			
-			
 			new Label(mainPanel) => [ 
 				text = "Posibles destinos"
 			]

@@ -21,17 +21,6 @@ class ResolverMisterioView extends SimpleWindow<Juego> {
 		super(parent, model)
 	}
 	
-	override protected addActions(Panel arg0) {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
-	}
-	
-	override protected createFormPanel(Panel arg0) {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
-	}
-	
-	
-	
-	
 	
 	override createMainTemplate(Panel mainPanel){
 		this.setTitle("Resolviendo: "+ modelObject.casoSeleccionado.nombre)
@@ -52,28 +41,21 @@ class ResolverMisterioView extends SimpleWindow<Juego> {
 			text = "Lugares"
 		]
 		
-		
-	
-		
 		new Button(listadoLugaresPanel) => [
 			bindCaptionToProperty("detective.paisActual.primerLugar")
-			val lugar = modelObject.detective.paisActual.getLugares().get(0)
-			onClick = [ | new VentanaPistasView
-				(this,lugar).open()
-			]
+			onClick = [ | new VentanaPistasView(this,modelObject.detective.paisActual.primerLugar).open()]
 		]
 		
 		new Button(listadoLugaresPanel) => [
 			bindCaptionToProperty("detective.paisActual.segundoLugar")
-			val lugar = modelObject.detective.paisActual.getLugares().get(1)
-			onClick = [ | new VentanaPistasView(this,lugar).open()
+			
+			onClick = [ | new VentanaPistasView(this,modelObject.detective.paisActual.segundoLugar).open()
 			]
 		]
 		
 		new Button(listadoLugaresPanel) => [
 			bindCaptionToProperty("detective.paisActual.tercerLugar")
-			val lugar = modelObject.detective.paisActual.getLugares().get(2)
-			onClick = [ | new VentanaPistasView(this,lugar).open()
+			onClick = [ | new VentanaPistasView(this,modelObject.detective.paisActual.tercerLugar).open()
 			]
 		]
 
@@ -110,6 +92,8 @@ class ResolverMisterioView extends SimpleWindow<Juego> {
 		new Button(botones) => [
 			caption = "Viajar"
 			onClick = [ | 
+				print(modelObject.detective.paisActual)
+				print(modelObject.detective.paisAnterior)
 				new ViajarView(this,new DetectiveApplicationModel(modelObject)).open
 			]
 		]
@@ -122,17 +106,22 @@ class ResolverMisterioView extends SimpleWindow<Juego> {
 		]
 	
 	
-	new Lista(botones,"Recorrido Actual","detective.recorridoCriminal")
+		new Lista(botones,"Recorrido Actual","detective.recorridoCriminal")
+		new Lista(botones,"Destinos Fallidos","detective.destinosFallidos")
 	
 	
-	new Lista(botones,"Destinos Fallidos","detective.destinosFallidos")
+	}
 	
 	
-		
-		
+	override protected addActions(Panel arg0) {
+		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+	}
+	
+	override protected createFormPanel(Panel arg0) {
+		throw new UnsupportedOperationException("TODO: auto-generated method stub")
 	}
 		
 		
 
-	}
+}
 	
