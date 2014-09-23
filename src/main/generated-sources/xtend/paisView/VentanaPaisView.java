@@ -108,6 +108,7 @@ public abstract class VentanaPaisView extends SimpleWindow<Pais> {
           }
         };
         it.onClick(_function);
+        it.<ControlBuilder>bindEnabledToProperty("consistente");
         it.disableOnError();
       }
     };

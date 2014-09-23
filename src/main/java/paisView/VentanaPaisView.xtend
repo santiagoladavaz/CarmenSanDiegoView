@@ -70,6 +70,7 @@ abstract class VentanaPaisView extends SimpleWindow<Pais> {
 			onClick [ | this.procesar(Juego.getInstance,modelObject)
 						this.close()
 			]
+			bindEnabledToProperty("consistente")
 			disableOnError
 		]
    }

@@ -21,13 +21,7 @@ class MapamundiView extends SimpleWindow<JuegoAppModel> {
 		super(parent, model)
 	}
 
-	override protected addActions(Panel actionsPanel) {
-		
-	}
-
-	override protected createFormPanel(Panel mainPanel) {
-		
-	} 
+	
 
 	override createMainTemplate(Panel mainPanel) {
 		this.title = "Mapamundi"
@@ -98,6 +92,14 @@ class MapamundiView extends SimpleWindow<JuegoAppModel> {
 		
 
 		}
+	
+	
+	override protected addActions(Panel actionsPanel) {
 		
+	}
+
+	override protected createFormPanel(Panel mainPanel) {
+		
+	} 	
 }
 		

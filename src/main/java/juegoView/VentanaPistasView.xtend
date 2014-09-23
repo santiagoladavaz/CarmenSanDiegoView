@@ -20,6 +20,8 @@ class VentanaPistasView extends SimpleWindow<Lugar>{
 		mainPanel.setLayout(new VerticalLayout)	
 		mainPanel.width = 300
 		
+		new Label(mainPanel).setText("Estas visitando: ")
+		//new Label(mainPanel).bindValueToProperty(modelObject.nombre)
 		
 		//hay que corregir esto que se ve horrible!! - Buscar una manera de agrandar el label,
 		// si hay que bindearlo a una propiedad entonces hay que cambiar cosas del modelo!

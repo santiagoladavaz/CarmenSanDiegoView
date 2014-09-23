@@ -27,12 +27,6 @@ public class MapamundiView extends SimpleWindow<JuegoAppModel> {
     super(parent, model);
   }
   
-  protected void addActions(final Panel actionsPanel) {
-  }
-  
-  protected void createFormPanel(final Panel mainPanel) {
-  }
-  
   public void createMainTemplate(final Panel mainPanel) {
     this.setTitle("Mapamundi");
     VerticalLayout _verticalLayout = new VerticalLayout();
@@ -145,5 +139,11 @@ public class MapamundiView extends SimpleWindow<JuegoAppModel> {
       _xblockexpression = new Lista(paisCompletaPanel, "Lugares de interes", "paisSeleccionado.lugares");
     }
     return _xblockexpression;
+  }
+  
+  protected void addActions(final Panel actionsPanel) {
+  }
+  
+  protected void createFormPanel(final Panel mainPanel) {
   }
 }
