@@ -1,7 +1,9 @@
 package juegoView;
 
+import Juego.Juego;
 import Juego.JuegoAppModel;
 import components.Lista;
+import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.uqbar.arena.bindings.PropertyAdapter;
@@ -109,6 +111,10 @@ public class MapamundiView extends SimpleWindow<JuegoAppModel> {
           final Action _function = new Action() {
             public void execute() {
               MapamundiView.this.close();
+              JuegoAppModel _modelObject = MapamundiView.this.getModelObject();
+              Juego _juego = _modelObject.getJuego();
+              java.util.List<Pais> _conexiones = _juego.getConexiones();
+              InputOutput.<java.util.List<Pais>>print(_conexiones);
             }
           };
           it.onClick(_function);

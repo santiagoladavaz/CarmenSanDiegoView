@@ -68,7 +68,10 @@ class MapamundiView extends SimpleWindow<JuegoAppModel> {
 		
 		new Button(panelDeListadoDePaises)=> [
 			caption = "Aceptar"
-			onClick = [ | this.close]
+			onClick = [ | 
+				this.close
+				print(modelObject.juego.conexiones)
+			]
 		]
 	}
 

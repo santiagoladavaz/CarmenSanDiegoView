@@ -33,8 +33,7 @@ public class JuegoView extends MainWindow<Juego> {
         it.setCaption("Resolver Misterio");
         final Action _function = new Action() {
           public void execute() {
-            Juego _modelObject = JuegoView.this.getModelObject();
-            InicioJuegoView _inicioJuegoView = new InicioJuegoView(JuegoView.this, _modelObject);
+            InicioJuegoView _inicioJuegoView = new InicioJuegoView(JuegoView.this);
             _inicioJuegoView.open();
           }
         };

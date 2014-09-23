@@ -26,7 +26,7 @@ class JuegoView extends MainWindow<Juego> {
 		
 		new Button(mainPanel) => [ 
 			caption = "Resolver Misterio"
-			onClick [ | new InicioJuegoView(this, modelObject).open
+			onClick [ | new InicioJuegoView(this).open
 			]
 		]
 		

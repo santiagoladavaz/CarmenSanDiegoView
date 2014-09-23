@@ -15,8 +15,8 @@ import org.uqbar.lacar.ui.model.ControlBuilder;
 
 @SuppressWarnings("all")
 public class InicioJuegoView extends SimpleWindow<Juego> {
-  public InicioJuegoView(final WindowOwner parent, final Juego model) {
-    super(parent, model);
+  public InicioJuegoView(final WindowOwner parent) {
+    super(parent, Juego.getInstance());
   }
   
   protected void addActions(final Panel arg0) {

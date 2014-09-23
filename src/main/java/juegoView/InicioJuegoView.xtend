@@ -9,8 +9,9 @@ import org.uqbar.arena.widgets.Button
 
 class InicioJuegoView extends SimpleWindow<Juego>{
 	
-	new(WindowOwner parent, Juego model) {
-		super(parent, model)
+	
+	new(WindowOwner parent) {
+		super(parent, Juego.getInstance)
 	}
 	
 	override protected addActions(Panel arg0) {

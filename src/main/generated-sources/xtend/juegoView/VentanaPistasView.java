@@ -28,8 +28,12 @@ public class VentanaPistasView extends SimpleWindow<Lugar> {
     _label.setText("Estas visitando: ");
     Label _label_1 = new Label(mainPanel);
     Lugar _modelObject_1 = this.getModelObject();
-    String _ocupanteInforma = _modelObject_1.ocupanteInforma();
-    _label_1.setText(_ocupanteInforma);
+    String _string_1 = _modelObject_1.toString();
+    _label_1.setText(_string_1);
+    Label _label_2 = new Label(mainPanel);
+    Lugar _modelObject_2 = this.getModelObject();
+    String _ocupanteInforma = _modelObject_2.ocupanteInforma();
+    _label_2.setText(_ocupanteInforma);
     Button _button = new Button(mainPanel);
     final Procedure1<Button> _function = new Procedure1<Button>() {
       public void apply(final Button it) {
