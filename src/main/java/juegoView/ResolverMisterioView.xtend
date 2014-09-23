@@ -14,6 +14,7 @@ import components.Lista
 import org.uqbar.arena.widgets.TextBox
 import villanoView.ExpedienteSinBotonesView
 import persona.VillanoApplicationModel
+import pais.LugarApplicationModel
 
 class ResolverMisterioView extends SimpleWindow<Juego> {
 	
@@ -43,19 +44,29 @@ class ResolverMisterioView extends SimpleWindow<Juego> {
 		
 		new Button(listadoLugaresPanel) => [
 			bindCaptionToProperty("detective.paisActual.primerLugar")
-			onClick = [ | new VentanaPistasView(this,modelObject.detective.paisActual.primerLugar).open()]
+			onClick = [ | new VentanaPistasView(this,
+							new LugarApplicationModel
+							(modelObject.detective.paisActual.primerLugar)).
+					open()
+					]
 		]
+		
 		
 		new Button(listadoLugaresPanel) => [
 			bindCaptionToProperty("detective.paisActual.segundoLugar")
 			
-			onClick = [ | new VentanaPistasView(this,modelObject.detective.paisActual.segundoLugar).open()
+			onClick = [ | new VentanaPistasView(this,
+							new LugarApplicationModel
+							(modelObject.detective.paisActual.segundoLugar)).
+					open()
 			]
 		]
 		
 		new Button(listadoLugaresPanel) => [
 			bindCaptionToProperty("detective.paisActual.tercerLugar")
-			onClick = [ | new VentanaPistasView(this,modelObject.detective.paisActual.tercerLugar).open()
+			onClick = [ | new VentanaPistasView(this,new LugarApplicationModel
+							(modelObject.detective.paisActual.tercerLugar)).
+					open()
 			]
 		]
 
@@ -92,10 +103,7 @@ class ResolverMisterioView extends SimpleWindow<Juego> {
 		new Button(botones) => [
 			caption = "Viajar"
 			onClick = [ | 
-				print(modelObject.detective.paisActual)
-				print(modelObject.detective.paisAnterior)
-				new ViajarView(this,new DetectiveApplicationModel(modelObject)).open
-			]
+				new ViajarView(this,new DetectiveApplicationModel(modelObject)).open ]
 		]
 		
 		new Button(botones) => [

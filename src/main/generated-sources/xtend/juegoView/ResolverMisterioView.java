@@ -6,7 +6,6 @@ import components.Lista;
 import juegoView.OrdenDeArrestoView;
 import juegoView.VentanaPistasView;
 import juegoView.ViajarView;
-import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.uqbar.arena.layout.ColumnLayout;
@@ -19,6 +18,7 @@ import org.uqbar.arena.windows.WindowOwner;
 import org.uqbar.lacar.ui.model.Action;
 import org.uqbar.lacar.ui.model.ControlBuilder;
 import pais.Lugar;
+import pais.LugarApplicationModel;
 import pais.Pais;
 import persona.Detective;
 import persona.DetectiveApplicationModel;
@@ -67,7 +67,8 @@ public class ResolverMisterioView extends SimpleWindow<Juego> {
               Detective _detective = _modelObject.getDetective();
               Pais _paisActual = _detective.getPaisActual();
               Lugar _primerLugar = _paisActual.getPrimerLugar();
-              VentanaPistasView _ventanaPistasView = new VentanaPistasView(ResolverMisterioView.this, _primerLugar);
+              LugarApplicationModel _lugarApplicationModel = new LugarApplicationModel(_primerLugar);
+              VentanaPistasView _ventanaPistasView = new VentanaPistasView(ResolverMisterioView.this, _lugarApplicationModel);
               _ventanaPistasView.open();
             }
           };
@@ -85,7 +86,8 @@ public class ResolverMisterioView extends SimpleWindow<Juego> {
               Detective _detective = _modelObject.getDetective();
               Pais _paisActual = _detective.getPaisActual();
               Lugar _segundoLugar = _paisActual.getSegundoLugar();
-              VentanaPistasView _ventanaPistasView = new VentanaPistasView(ResolverMisterioView.this, _segundoLugar);
+              LugarApplicationModel _lugarApplicationModel = new LugarApplicationModel(_segundoLugar);
+              VentanaPistasView _ventanaPistasView = new VentanaPistasView(ResolverMisterioView.this, _lugarApplicationModel);
               _ventanaPistasView.open();
             }
           };
@@ -103,7 +105,8 @@ public class ResolverMisterioView extends SimpleWindow<Juego> {
               Detective _detective = _modelObject.getDetective();
               Pais _paisActual = _detective.getPaisActual();
               Lugar _tercerLugar = _paisActual.getTercerLugar();
-              VentanaPistasView _ventanaPistasView = new VentanaPistasView(ResolverMisterioView.this, _tercerLugar);
+              LugarApplicationModel _lugarApplicationModel = new LugarApplicationModel(_tercerLugar);
+              VentanaPistasView _ventanaPistasView = new VentanaPistasView(ResolverMisterioView.this, _lugarApplicationModel);
               _ventanaPistasView.open();
             }
           };
@@ -156,15 +159,7 @@ public class ResolverMisterioView extends SimpleWindow<Juego> {
           final Action _function = new Action() {
             public void execute() {
               Juego _modelObject = ResolverMisterioView.this.getModelObject();
-              Detective _detective = _modelObject.getDetective();
-              Pais _paisActual = _detective.getPaisActual();
-              InputOutput.<Pais>print(_paisActual);
-              Juego _modelObject_1 = ResolverMisterioView.this.getModelObject();
-              Detective _detective_1 = _modelObject_1.getDetective();
-              Pais _paisAnterior = _detective_1.getPaisAnterior();
-              InputOutput.<Pais>print(_paisAnterior);
-              Juego _modelObject_2 = ResolverMisterioView.this.getModelObject();
-              DetectiveApplicationModel _detectiveApplicationModel = new DetectiveApplicationModel(_modelObject_2);
+              DetectiveApplicationModel _detectiveApplicationModel = new DetectiveApplicationModel(_modelObject);
               ViajarView _viajarView = new ViajarView(ResolverMisterioView.this, _detectiveApplicationModel);
               _viajarView.open();
             }
