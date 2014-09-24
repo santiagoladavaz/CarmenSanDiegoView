@@ -1,20 +1,18 @@
 package juegoView
 
 import Juego.Juego
-import org.uqbar.arena.windows.SimpleWindow
-import org.uqbar.arena.windows.WindowOwner
-import org.uqbar.arena.widgets.Panel
-import org.uqbar.arena.widgets.Label
-import org.uqbar.arena.widgets.Button
+import components.Lista
 import org.uqbar.arena.layout.ColumnLayout
 import org.uqbar.arena.layout.VerticalLayout
-import org.uqbar.arena.widgets.List
-import persona.DetectiveApplicationModel
-import components.Lista
-import org.uqbar.arena.widgets.TextBox
-import villanoView.ExpedienteSinBotonesView
-import persona.VillanoApplicationModel
+import org.uqbar.arena.widgets.Button
+import org.uqbar.arena.widgets.Label
+import org.uqbar.arena.widgets.Panel
+import org.uqbar.arena.windows.SimpleWindow
+import org.uqbar.arena.windows.WindowOwner
 import pais.LugarApplicationModel
+import persona.DetectiveApplicationModel
+import persona.VillanoApplicationModel
+import villanoView.ExpedienteSinBotonesView
 
 class ResolverMisterioView extends SimpleWindow<Juego> {
 	

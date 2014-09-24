@@ -13,7 +13,7 @@ class PerdioJuegoView extends FinPartidaView {
 	}
 	
 	override crearMensaje(String villanoAtrapado, String orden) {
-		"Malas Noticias ! Ha detenido a " + villanoAtrapado + "pero usted tenia una orden contra" + orden
+		"Malas Noticias ! Ha detenido a " + villanoAtrapado + " pero usted tenia una orden contra " + orden
 	}
 	
 	override crearCaptionBoton() {

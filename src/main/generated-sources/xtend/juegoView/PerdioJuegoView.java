@@ -12,7 +12,7 @@ public class PerdioJuegoView extends FinPartidaView {
   }
   
   public String crearMensaje(final String villanoAtrapado, final String orden) {
-    return ((("Malas Noticias ! Ha detenido a " + villanoAtrapado) + "pero usted tenia una orden contra") + orden);
+    return ((("Malas Noticias ! Ha detenido a " + villanoAtrapado) + " pero usted tenia una orden contra ") + orden);
   }
   
   public String crearCaptionBoton() {

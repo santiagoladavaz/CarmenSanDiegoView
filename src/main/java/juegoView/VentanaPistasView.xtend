@@ -43,18 +43,15 @@ class VentanaPistasView extends SimpleWindow<LugarApplicationModel>{
 		new Button(mainPanel) => [
 			caption = "Continuar"
 			onClick = [|
-				if(modelObject.juego.villano.planDeEscape.last.equals(modelObject.juego.detective.paisActual)
-					&&
-					modelObject.juego.villanoCorrecto
-					&&
-					estaVillanoEnLugar(modelObject.lugar,modelObject.juego.detective.ordenDeArresto)
-				){
-					new GanoJuegoView(this,modelObject.juego).open
+				if(modelObject.juego.gano
+					(modelObject.juego.detective.paisActual,modelObject.lugar)){
+						new GanoJuegoView(this,modelObject.juego).open
+					}
 				
+				if(modelObject.juego.perdio(modelObject.juego.detective.paisActual,modelObject.lugar)){
+					new PerdioJuegoView(this,modelObject.juego).open
 				}
 				
-				//Si el villano autor del crimen no se corresponde con el de la orden de arresto
-				// deberia -> new PerdioJuegoView(this,modelObject.juego).open
 				
 				modelObject.setPaisEnLista
 				this.close()
