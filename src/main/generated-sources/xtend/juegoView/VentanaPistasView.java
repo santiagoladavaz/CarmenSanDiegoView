@@ -1,5 +1,9 @@
 package juegoView;
 
+import Juego.Juego;
+import java.util.List;
+import juegoView.GanoJuegoView;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.uqbar.arena.layout.VerticalLayout;
@@ -11,11 +15,24 @@ import org.uqbar.arena.windows.WindowOwner;
 import org.uqbar.lacar.ui.model.Action;
 import pais.Lugar;
 import pais.LugarApplicationModel;
+import pais.Pais;
+import persona.Detective;
+import persona.Persona;
+import persona.Villano;
 
 @SuppressWarnings("all")
 public class VentanaPistasView extends SimpleWindow<LugarApplicationModel> {
   public VentanaPistasView(final WindowOwner parent, final LugarApplicationModel model) {
     super(parent, model);
+  }
+  
+  public Boolean esUltimoPaisDelVillano(final Juego juego, final Pais pais) {
+    return this.esUltimoPaisDelVillano(juego, pais);
+  }
+  
+  public Boolean estaVillanoEnLugar(final Lugar lugar, final Villano villano) {
+    Persona _okupa = lugar.getOkupa();
+    return Boolean.valueOf(_okupa.equals(villano));
   }
   
   protected void createMainTemplate(final Panel mainPanel) {
@@ -43,8 +60,46 @@ public class VentanaPistasView extends SimpleWindow<LugarApplicationModel> {
         it.setCaption("Continuar");
         final Action _function = new Action() {
           public void execute() {
+            boolean _and = false;
+            boolean _and_1 = false;
             LugarApplicationModel _modelObject = VentanaPistasView.this.getModelObject();
-            _modelObject.setPaisEnLista();
+            Juego _juego = _modelObject.getJuego();
+            Villano _villano = _juego.getVillano();
+            List<Pais> _planDeEscape = _villano.getPlanDeEscape();
+            Pais _last = IterableExtensions.<Pais>last(_planDeEscape);
+            LugarApplicationModel _modelObject_1 = VentanaPistasView.this.getModelObject();
+            Juego _juego_1 = _modelObject_1.getJuego();
+            Detective _detective = _juego_1.getDetective();
+            Pais _paisActual = _detective.getPaisActual();
+            boolean _equals = _last.equals(_paisActual);
+            if (!_equals) {
+              _and_1 = false;
+            } else {
+              LugarApplicationModel _modelObject_2 = VentanaPistasView.this.getModelObject();
+              Juego _juego_2 = _modelObject_2.getJuego();
+              boolean _villanoCorrecto = _juego_2.villanoCorrecto();
+              _and_1 = _villanoCorrecto;
+            }
+            if (!_and_1) {
+              _and = false;
+            } else {
+              LugarApplicationModel _modelObject_3 = VentanaPistasView.this.getModelObject();
+              Lugar _lugar = _modelObject_3.getLugar();
+              LugarApplicationModel _modelObject_4 = VentanaPistasView.this.getModelObject();
+              Juego _juego_3 = _modelObject_4.getJuego();
+              Detective _detective_1 = _juego_3.getDetective();
+              Villano _ordenDeArresto = _detective_1.getOrdenDeArresto();
+              Boolean _estaVillanoEnLugar = VentanaPistasView.this.estaVillanoEnLugar(_lugar, _ordenDeArresto);
+              _and = (_estaVillanoEnLugar).booleanValue();
+            }
+            if (_and) {
+              LugarApplicationModel _modelObject_5 = VentanaPistasView.this.getModelObject();
+              Juego _juego_4 = _modelObject_5.getJuego();
+              GanoJuegoView _ganoJuegoView = new GanoJuegoView(VentanaPistasView.this, _juego_4);
+              _ganoJuegoView.open();
+            }
+            LugarApplicationModel _modelObject_6 = VentanaPistasView.this.getModelObject();
+            _modelObject_6.setPaisEnLista();
             VentanaPistasView.this.close();
           }
         };

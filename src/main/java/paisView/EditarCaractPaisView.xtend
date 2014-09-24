@@ -1,14 +1,13 @@
-package paisView import org.uqbar.arena.windows.Dialog
-import org.uqbar.arena.windows.WindowOwner
-import org.uqbar.arena.widgets.Panel
+package paisView
+
 import org.uqbar.arena.layout.VerticalLayout
-import org.uqbar.arena.widgets.tables.Table
-import org.uqbar.arena.widgets.tables.Column
 import org.uqbar.arena.widgets.Button
-import org.uqbar.arena.widgets.TextBox
-import pais.Pais
-import pais.PaisApplicationModel
 import org.uqbar.arena.widgets.List
+import org.uqbar.arena.widgets.Panel
+import org.uqbar.arena.widgets.TextBox
+import org.uqbar.arena.windows.Dialog
+import org.uqbar.arena.windows.WindowOwner
+import pais.PaisApplicationModel
 
 class EditarCaractPaisView extends Dialog<PaisApplicationModel> {
 	
@@ -31,17 +30,6 @@ class EditarCaractPaisView extends Dialog<PaisApplicationModel> {
 			width = 500
 		]		
 		
-		
-//		var Table<String> y = new Table<String>(mainPanel,String)
-//		y.bindItemsToProperty("paisModel.caract")
-//		y.bindValueToProperty("caracteristica")
-//		y.heigth = 100
-//		y.setWidth(500)
-//		
-//		new Column<String>(y)=>[
-// 			title='''Caracteristicas'''
-// 			bindContentsToTransformer([caract|caract])
-//		]
 	
 		new Button(mainPanel) => [ 
 			caption = "Eliminar"

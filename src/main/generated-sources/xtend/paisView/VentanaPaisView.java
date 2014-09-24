@@ -23,6 +23,7 @@ import paisView.EditarLugaresView;
 public abstract class VentanaPaisView extends SimpleWindow<Pais> {
   public VentanaPaisView(final WindowOwner w, final Pais model) {
     super(w, model);
+    this.setTaskDescription("");
   }
   
   public abstract String getTitle();

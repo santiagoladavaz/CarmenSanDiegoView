@@ -7,16 +7,25 @@ import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.windows.SimpleWindow
 import org.uqbar.arena.windows.WindowOwner
 import pais.LugarApplicationModel
+import Juego.Juego
+import pais.Pais
+import pais.Lugar
+import persona.Villano
 
 class VentanaPistasView extends SimpleWindow<LugarApplicationModel>{
-	
-	
-	
-
 	
 	new(WindowOwner parent, LugarApplicationModel model) {
 		super(parent, model)
 	}
+	
+	def Boolean esUltimoPaisDelVillano(Juego juego,Pais pais){
+		juego.esUltimoPaisDelVillano(pais)
+	}
+	
+	def Boolean estaVillanoEnLugar(Lugar lugar,Villano villano){
+		lugar.okupa.equals(villano)
+	}
+	
 	
 	override protected createMainTemplate(Panel mainPanel) {
 		this.setTitle(modelObject.lugar.toString)
@@ -30,9 +39,23 @@ class VentanaPistasView extends SimpleWindow<LugarApplicationModel>{
 		// si hay que bindearlo a una propiedad entonces hay que cambiar cosas del modelo!
 		new Label(mainPanel).setText(modelObject.ocupanteInforma)
 		
+		
 		new Button(mainPanel) => [
 			caption = "Continuar"
 			onClick = [|
+				if(modelObject.juego.villano.planDeEscape.last.equals(modelObject.juego.detective.paisActual)
+					&&
+					modelObject.juego.villanoCorrecto
+					&&
+					estaVillanoEnLugar(modelObject.lugar,modelObject.juego.detective.ordenDeArresto)
+				){
+					new GanoJuegoView(this,modelObject.juego).open
+				
+				}
+				
+				//Si el villano autor del crimen no se corresponde con el de la orden de arresto
+				// deberia -> new PerdioJuegoView(this,modelObject.juego).open
+				
 				modelObject.setPaisEnLista
 				this.close()
 			]
