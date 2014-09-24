@@ -21,7 +21,7 @@ import pais.Lugar;
 import pais.LugarApplicationModel;
 import pais.Pais;
 import persona.Detective;
-import persona.DetectiveApplicationModel;
+import persona.ViajarApplicationModel;
 import persona.VillanoApplicationModel;
 import villanoView.ExpedienteSinBotonesView;
 
@@ -159,8 +159,8 @@ public class ResolverMisterioView extends SimpleWindow<Juego> {
           final Action _function = new Action() {
             public void execute() {
               Juego _modelObject = ResolverMisterioView.this.getModelObject();
-              DetectiveApplicationModel _detectiveApplicationModel = new DetectiveApplicationModel(_modelObject);
-              ViajarView _viajarView = new ViajarView(ResolverMisterioView.this, _detectiveApplicationModel);
+              ViajarApplicationModel _viajarApplicationModel = new ViajarApplicationModel(_modelObject);
+              ViajarView _viajarView = new ViajarView(ResolverMisterioView.this, _viajarApplicationModel);
               _viajarView.open();
             }
           };

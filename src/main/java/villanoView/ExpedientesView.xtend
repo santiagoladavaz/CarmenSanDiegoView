@@ -80,7 +80,5 @@ class ExpedientesView extends SimpleWindow<VillanoApplicationModel>{
 		]		
 		
 	}
-
-	
 	
 }

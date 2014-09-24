@@ -7,13 +7,13 @@ import org.uqbar.arena.widgets.List
 import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.windows.SimpleWindow
 import org.uqbar.arena.windows.WindowOwner
-import persona.DetectiveApplicationModel
+import persona.ViajarApplicationModel
 
-class ViajarView extends SimpleWindow<DetectiveApplicationModel>{
+class ViajarView extends SimpleWindow<ViajarApplicationModel>{
 	
 
 	
-	new(WindowOwner parent, DetectiveApplicationModel model) {
+	new(WindowOwner parent, ViajarApplicationModel model) {
 		super(parent, model)
 	}
 	

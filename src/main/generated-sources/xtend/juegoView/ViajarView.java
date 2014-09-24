@@ -11,11 +11,11 @@ import org.uqbar.arena.windows.SimpleWindow;
 import org.uqbar.arena.windows.WindowOwner;
 import org.uqbar.lacar.ui.model.Action;
 import org.uqbar.lacar.ui.model.ControlBuilder;
-import persona.DetectiveApplicationModel;
+import persona.ViajarApplicationModel;
 
 @SuppressWarnings("all")
-public class ViajarView extends SimpleWindow<DetectiveApplicationModel> {
-  public ViajarView(final WindowOwner parent, final DetectiveApplicationModel model) {
+public class ViajarView extends SimpleWindow<ViajarApplicationModel> {
+  public ViajarView(final WindowOwner parent, final ViajarApplicationModel model) {
     super(parent, model);
   }
   
@@ -58,7 +58,7 @@ public class ViajarView extends SimpleWindow<DetectiveApplicationModel> {
         it.setCaption("Volver al pais anterior");
         final Action _function = new Action() {
           public void execute() {
-            DetectiveApplicationModel _modelObject = ViajarView.this.getModelObject();
+            ViajarApplicationModel _modelObject = ViajarView.this.getModelObject();
             _modelObject.volver();
             ViajarView.this.close();
           }
@@ -73,7 +73,7 @@ public class ViajarView extends SimpleWindow<DetectiveApplicationModel> {
         it.setCaption("Viajar");
         final Action _function = new Action() {
           public void execute() {
-            DetectiveApplicationModel _modelObject = ViajarView.this.getModelObject();
+            ViajarApplicationModel _modelObject = ViajarView.this.getModelObject();
             _modelObject.viajar();
             ViajarView.this.close();
           }

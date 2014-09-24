@@ -16,22 +16,11 @@ import pais.Lugar;
 import pais.LugarApplicationModel;
 import pais.Pais;
 import persona.Detective;
-import persona.Persona;
-import persona.Villano;
 
 @SuppressWarnings("all")
 public class VentanaPistasView extends SimpleWindow<LugarApplicationModel> {
   public VentanaPistasView(final WindowOwner parent, final LugarApplicationModel model) {
     super(parent, model);
-  }
-  
-  public Boolean esUltimoPaisDelVillano(final Juego juego, final Pais pais) {
-    return this.esUltimoPaisDelVillano(juego, pais);
-  }
-  
-  public Boolean estaVillanoEnLugar(final Lugar lugar, final Villano villano) {
-    Persona _okupa = lugar.getOkupa();
-    return Boolean.valueOf(_okupa.equals(villano));
   }
   
   protected void createMainTemplate(final Panel mainPanel) {
@@ -60,37 +49,30 @@ public class VentanaPistasView extends SimpleWindow<LugarApplicationModel> {
         final Action _function = new Action() {
           public void execute() {
             LugarApplicationModel _modelObject = VentanaPistasView.this.getModelObject();
-            Juego _juego = _modelObject.getJuego();
-            LugarApplicationModel _modelObject_1 = VentanaPistasView.this.getModelObject();
-            Juego _juego_1 = _modelObject_1.getJuego();
-            Detective _detective = _juego_1.getDetective();
-            Pais _paisActual = _detective.getPaisActual();
-            LugarApplicationModel _modelObject_2 = VentanaPistasView.this.getModelObject();
-            Lugar _lugar = _modelObject_2.getLugar();
-            boolean _gano = _juego.gano(_paisActual, _lugar);
-            if (_gano) {
-              LugarApplicationModel _modelObject_3 = VentanaPistasView.this.getModelObject();
-              Juego _juego_2 = _modelObject_3.getJuego();
-              GanoJuegoView _ganoJuegoView = new GanoJuegoView(VentanaPistasView.this, _juego_2);
+            boolean _isGano = _modelObject.isGano();
+            if (_isGano) {
+              LugarApplicationModel _modelObject_1 = VentanaPistasView.this.getModelObject();
+              Juego _juego = _modelObject_1.getJuego();
+              GanoJuegoView _ganoJuegoView = new GanoJuegoView(VentanaPistasView.this, _juego);
               _ganoJuegoView.open();
             }
+            LugarApplicationModel _modelObject_2 = VentanaPistasView.this.getModelObject();
+            Juego _juego_1 = _modelObject_2.getJuego();
+            LugarApplicationModel _modelObject_3 = VentanaPistasView.this.getModelObject();
+            Juego _juego_2 = _modelObject_3.getJuego();
+            Detective _detective = _juego_2.getDetective();
+            Pais _paisActual = _detective.getPaisActual();
             LugarApplicationModel _modelObject_4 = VentanaPistasView.this.getModelObject();
-            Juego _juego_3 = _modelObject_4.getJuego();
-            LugarApplicationModel _modelObject_5 = VentanaPistasView.this.getModelObject();
-            Juego _juego_4 = _modelObject_5.getJuego();
-            Detective _detective_1 = _juego_4.getDetective();
-            Pais _paisActual_1 = _detective_1.getPaisActual();
-            LugarApplicationModel _modelObject_6 = VentanaPistasView.this.getModelObject();
-            Lugar _lugar_1 = _modelObject_6.getLugar();
-            boolean _perdio = _juego_3.perdio(_paisActual_1, _lugar_1);
+            Lugar _lugar = _modelObject_4.getLugar();
+            boolean _perdio = _juego_1.perdio(_paisActual, _lugar);
             if (_perdio) {
-              LugarApplicationModel _modelObject_7 = VentanaPistasView.this.getModelObject();
-              Juego _juego_5 = _modelObject_7.getJuego();
-              PerdioJuegoView _perdioJuegoView = new PerdioJuegoView(VentanaPistasView.this, _juego_5);
+              LugarApplicationModel _modelObject_5 = VentanaPistasView.this.getModelObject();
+              Juego _juego_3 = _modelObject_5.getJuego();
+              PerdioJuegoView _perdioJuegoView = new PerdioJuegoView(VentanaPistasView.this, _juego_3);
               _perdioJuegoView.open();
             }
-            LugarApplicationModel _modelObject_8 = VentanaPistasView.this.getModelObject();
-            _modelObject_8.setPaisEnLista();
+            LugarApplicationModel _modelObject_6 = VentanaPistasView.this.getModelObject();
+            _modelObject_6.setPaisEnLista();
             VentanaPistasView.this.close();
           }
         };

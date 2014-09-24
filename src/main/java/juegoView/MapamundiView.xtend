@@ -21,8 +21,6 @@ class MapamundiView extends SimpleWindow<JuegoAppModel> {
 		super(parent, model)
 	}
 
-	
-
 	override createMainTemplate(Panel mainPanel) {
 		this.title = "Mapamundi"
 		mainPanel.layout = new VerticalLayout

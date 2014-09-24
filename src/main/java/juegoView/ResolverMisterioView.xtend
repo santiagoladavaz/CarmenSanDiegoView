@@ -10,9 +10,9 @@ import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.windows.SimpleWindow
 import org.uqbar.arena.windows.WindowOwner
 import pais.LugarApplicationModel
-import persona.DetectiveApplicationModel
 import persona.VillanoApplicationModel
 import villanoView.ExpedienteSinBotonesView
+import persona.ViajarApplicationModel
 
 class ResolverMisterioView extends SimpleWindow<Juego> {
 	
@@ -91,17 +91,13 @@ class ResolverMisterioView extends SimpleWindow<Juego> {
 			]
 		]
 		
-		
 		new Label(botones).setText("Orden emitida contra: ")
 		new Label(botones).bindValueToProperty("detective.ordenDeArresto")
-			
-		
-		
 		
 		new Button(botones) => [
 			caption = "Viajar"
 			onClick = [ | 
-				new ViajarView(this,new DetectiveApplicationModel(modelObject)).open ]
+				new ViajarView(this, new ViajarApplicationModel(modelObject)).open ]
 		]
 		
 		new Button(botones) => [
@@ -111,11 +107,8 @@ class ResolverMisterioView extends SimpleWindow<Juego> {
 			]
 		]
 	
-	
 		new Lista(botones,"Recorrido Actual","detective.recorridoCriminal")
 		new Lista(botones,"Destinos Fallidos","detective.destinosFallidos")
-	
-	
 	}
 	
 	
@@ -126,8 +119,5 @@ class ResolverMisterioView extends SimpleWindow<Juego> {
 	override protected createFormPanel(Panel arg0) {
 		throw new UnsupportedOperationException("TODO: auto-generated method stub")
 	}
-		
-		
 
 }
-	

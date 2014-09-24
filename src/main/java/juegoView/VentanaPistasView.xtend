@@ -7,25 +7,12 @@ import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.windows.SimpleWindow
 import org.uqbar.arena.windows.WindowOwner
 import pais.LugarApplicationModel
-import Juego.Juego
-import pais.Pais
-import pais.Lugar
-import persona.Villano
 
 class VentanaPistasView extends SimpleWindow<LugarApplicationModel>{
 	
 	new(WindowOwner parent, LugarApplicationModel model) {
 		super(parent, model)
 	}
-	
-	def Boolean esUltimoPaisDelVillano(Juego juego,Pais pais){
-		juego.esUltimoPaisDelVillano(pais)
-	}
-	
-	def Boolean estaVillanoEnLugar(Lugar lugar,Villano villano){
-		lugar.okupa.equals(villano)
-	}
-	
 	
 	override protected createMainTemplate(Panel mainPanel) {
 		this.setTitle(modelObject.lugar.toString)
@@ -35,23 +22,18 @@ class VentanaPistasView extends SimpleWindow<LugarApplicationModel>{
 		new Label(mainPanel).setText("Estas visitando: ")
 		new Label(mainPanel).setText(modelObject.lugar.toString)
 		
-		//hay que corregir esto que se ve horrible!! - Buscar una manera de agrandar el label,
-		// si hay que bindearlo a una propiedad entonces hay que cambiar cosas del modelo!
 		new Label(mainPanel).setText(modelObject.ocupanteInforma)
-		
 		
 		new Button(mainPanel) => [
 			caption = "Continuar"
 			onClick = [|
-				if(modelObject.juego.gano
-					(modelObject.juego.detective.paisActual,modelObject.lugar)){
-						new GanoJuegoView(this,modelObject.juego).open
-					}
+				if (modelObject.gano){
+					new GanoJuegoView(this,modelObject.juego).open
+				}
 				
 				if(modelObject.juego.perdio(modelObject.juego.detective.paisActual,modelObject.lugar)){
 					new PerdioJuegoView(this,modelObject.juego).open
 				}
-				
 				
 				modelObject.setPaisEnLista
 				this.close()
